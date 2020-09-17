@@ -1,0 +1,199 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "./adappt-constants.scss";
+@import '~saturn-datepicker/_theming';
+@import '~saturn-datepicker/bundle.css';
+// @include sat-datepicker-theme($theme);
+// material theme data structure
+// https: //material.angular.io/guide/theming#defining-a-custom-theme
+// @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+// @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import "~@angular/material/prebuilt-themes/pink-bluegrey.css";
+
+// @import "~@angular/material/prebuilt-themes/purple-green.css";
+.noc-container {
+    position: absolute;
+    top: 64px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.noc-window {
+    height: 100%;
+    overflow: auto;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+::ng-deep .date-selected .mat-calendar-body-cell-content {
+    background-color: #17a2b8;
+    color: white;
+}
+
+::ng-deep .date-selected.mat-calendar-body-cell:hover .mat-calendar-body-cell-content {
+    background-color: #889799 !important;
+}
+
+.card-color {
+    background-color: transparent !important;
+}
+
+// .invoice-title h2,
+// .invoice-title h3 {
+//     display: inline-block!important;
+// }
+// .table>tbody>tr>.no-line {
+//     border-top: none;
+// }
+// .table>thead>tr>.no-line {
+//     border-bottom: none;
+// }
+// .table>tbody>tr>.thick-line {
+//     border-top: 2px solid;
+// }
+app-adappt-toolbar mat-toolbar {
+    height: 65px;
+    background: url('./assets/img/pattern.png')repeat $adappt-gray !important;
+    color: #FFF !important;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+.toolbar-header {
+    text-transform: uppercase;
+}
+
+.main-content {
+    padding: 20px !important;
+    max-height: calc(100% - 65px) !important;
+    overflow: auto !important;
+}
+
+.main-layout-content {
+    padding: 20px;
+    max-height: calc(100% - 60px);
+    overflow: auto;
+}
+
+.input-margin {
+    margin: 10px !important;
+}
+
+.add {
+    position: relative;
+    bottom: 10px;
+}
+
+.toggle-right {
+    float: right;
+    // padding: 20px;
+}
+
+.toggle-center {
+    position: relative;
+    left: 100px;
+}
+
+.toggle-left {
+    float: left;
+}
+
+.adappt-card {
+    // position: relative;
+    max-width: 100%;
+    // background-color: $adappt-gray !important;
+    // background: url('./assets/img/pattern.png')repeat $adappt-gray!important;
+    // border-radius: 25px 25px 25px 25px!important;
+}
+
+.adappt-icon-white {
+    width: 65px;
+    height: 65px;
+    background: url('./assets/img/adappt-icon-white.png') no-repeat center center $adappt-green;
+    background-size: 65%;
+}
+
+.addUser {
+    font-size: 50px;
+    color: $adappt-green !important;
+}
+
+.adappt-color {
+    color: $adappt-green !important;
+}
+
+.btn-color {
+    background-color: transparent !important;
+}
+
+.mainSize {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.full-width {
+    width: 100% !important;
+}
+
+@keyframes ble-in-use {
+    from {
+        color: blue;
+        transform: scale(1);
+    }
+
+    to {
+        color: $adappt-green;
+        transform: scale(1.2);
+    }
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar:hover {
+    width: 15px;
+    // transform: scale(1.5);
+}
+
+
+/* Track */
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}

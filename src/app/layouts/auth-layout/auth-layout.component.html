@@ -1,0 +1,36 @@
+<app-adappt-toolbar [title]="title"></app-adappt-toolbar>
+<div fxLayout="column" class="main-content">
+    <div fxLayout="row" fxLayoutAlign="center center">
+        <mat-card class="adappt-card" fxFlex="70" fxFlex.gt-md="40">
+            <form fxLayout="column" [formGroup]="loginFormGroup" (ngSubmit)="login()">
+                <mat-form-field fxFlex class="input-margin" appearance="outline">
+                    <mat-label>Email ID</mat-label>
+                    <input matInput formControlName="email" placeholder="Email ID" type="email" name="email" email required>
+                    <mat-error *ngIf="loginForm.email.invalid">Email ID is required!</mat-error>
+                </mat-form-field>
+                <mat-form-field fxFlex class="input-margin" appearance="outline">
+                    <mat-label>User Name</mat-label>
+                    <input matInput formControlName="username" placeholder="User Name" type="text" name="username" required>
+                    <mat-error *ngIf="loginForm.username.invalid">User Name is required!</mat-error>
+                </mat-form-field>
+                <mat-form-field fxFlex class="input-margin" appearance="outline">
+                    <mat-label>Password</mat-label>
+
+                    <input matInput [type]="show ? 'text' : 'password'" formControlName="password" placeholder="Password" type="password" name="password" required>
+                    <button mat-button *ngIf="!this.show" matSuffix mat-icon-button aria-label="Clear" (click)="this.show = !this.show;  ">
+                            <mat-icon>visibility</mat-icon>
+                    </button>
+                    <button mat-button *ngIf="this.show" matSuffix mat-icon-button aria-label="Clear" (click)="this.show = !this.show;  ">
+                        <mat-icon>visibility_off</mat-icon>
+                    </button>
+                    <mat-error *ngIf="loginForm.password.invalid">Password is required!</mat-error>
+                </mat-form-field>
+                <button class="input-margin md-button" type="submit" [disabled]="loginFormGroup.invalid" mat-raised-button color="primary">Login</button>
+            </form>
+        </mat-card>
+    </div>
+</div>
+<!-- <div class="copyright text-center">
+    &copy; Powered By
+    <a href="https://www.adappt.com/" target="_blank"><span class="adappt adappt-color"> Adappt Intelligence. Inc</span> </a>
+</div> -->

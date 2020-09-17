@@ -1,0 +1,409 @@
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Billing</h2>
+                </div>
+                <mat-card fxFlex="50" class="card-color">
+                    <mat-card-content fxLayoutAlign="start start">
+                        <mat-form-field fxFlex="40" appearance="outline" style="width:30%">
+                            <mat-label>Date</mat-label>
+                            <input matInput placeholder="Choose a date" [(ngModel)]="selected" (ngModelChange)="sendDataByDates()" [satDatepicker]="picker">
+                            <sat-datepicker #picker [rangeMode]="true">
+                            </sat-datepicker>
+                            <sat-datepicker-toggle matSuffix [for]="picker"></sat-datepicker-toggle>
+                        </mat-form-field>
+                        <div fxFlex="30" fxLayout="column" fxLayoutAlign="center center">
+                            <div fxFlex="15" fxLayoutAlign="center center">
+                                <button class="btn btn-success btn-sm" (click)="openPDF()">View Invoice</button>
+                            </div>
+                            <div fxFlex="60" fxLayoutAlign="center center">
+                                <button class="btn btn-danger btn-sm" (click)="downloadPDF()">Generate Invoice</button>
+                            </div>
+                        </div>
+
+                    </mat-card-content>
+
+                </mat-card>
+                <!-- <div class="card-body">
+                    <form>
+                        <div class="row">
+                            <div class="col-md-5 pr-md-1">
+                                <div class="form-group">
+                                    <label> Company (disabled) </label>
+                                    <input class="form-control" disabled="" placeholder="Company" type="text" value="Creative Code Inc." />
+                                </div>
+                            </div>
+                            <div class="col-md-3 px-md-1">
+                                <div class="form-group">
+                                    <label> Username </label>
+                                    <input class="form-control" placeholder="Username" type="text" value="michael23" />
+                                </div>
+                            </div>
+                            <div class="col-md-4 pl-md-1">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1"> Email address </label>
+                                    <input class="form-control" placeholder="mike@email.com" type="email" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 pr-md-1">
+                                <div class="form-group">
+                                    <label> First Name </label>
+                                    <input class="form-control" placeholder="Company" type="text" value="Mike" />
+                                </div>
+                            </div>
+                            <div class="col-md-6 pl-md-1">
+                                <div class="form-group">
+                                    <label> Last Name </label>
+                                    <input class="form-control" placeholder="Last Name" type="text" value="Andrew" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label> Address </label>
+                                    <input class=" form-control" placeholder="Home Address" type="text" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 pr-md-1">
+                                <div class="form-group">
+                                    <label> City </label>
+                                    <input class="form-control" placeholder="City" type="text" value="Mike" />
+                                </div>
+                            </div>
+                            <div class="col-md-4 px-md-1">
+                                <div class="form-group">
+                                    <label> Country </label>
+                                    <input class=" form-control" placeholder="Country" type="text" value="Andrew" />
+                                </div>
+                            </div>
+                            <div class="col-md-4 pl-md-1">
+                                <div class="form-group">
+                                    <label> Postal Code </label>
+                                    <input class="form-control" placeholder="ZIP Code" type="number" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <label> Description </label>
+                                    <textarea class="form-control" cols="80" placeholder="Here can be your description" rows="4" value="Mike">
+Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.
+</textarea
+                  >
+                </div>
+              </div>
+            </div>
+          </form>
+        </div> -->
+
+                <!-- <div class="card-footer">
+          <button class="btn btn-fill btn-danger" type="submit">Save</button>
+        </div> -->
+
+
+
+
+                <div id="htmlData" #htmlData>
+                    <div class="container">
+                        <div class="card">
+                            <div class="card-header">
+                                Invoice
+                                <h6 class="mb-3">From:</h6>
+                                <p> {{begin}}</p>
+                                <h6 class="mb-3">To:</h6>
+                                <p>{{end}}</p>
+                                <span class="float-right"> <strong>Status:</strong> Pending</span>
+
+                            </div>
+                            <div class="card-body">
+                                <div class="row mb-4">
+                                    <div class="col-sm-6">
+                                        <h6 class="mb-3">From:</h6>
+                                        <div>
+                                            <strong>Webz Poland</strong>
+                                        </div>
+                                        <div>Madalinskiego 8</div>
+                                        <div>71-101 Szczecin, Poland</div>
+                                        <div>Email: info@webz.com.pl</div>
+                                        <div>Phone: +48 444 666 3333</div>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <h6 class="mb-3">To:</h6>
+                                        <div>
+                                            <strong>Bob Mart</strong>
+                                        </div>
+                                        <div>Attn: Daniel Marek</div>
+                                        <div>43-190 Mikolow, Poland</div>
+                                        <div>Email: marek@daniel.com</div>
+                                        <div>Phone: +48 123 456 789</div>
+                                    </div>
+
+
+
+                                </div>
+
+                                <div class="table-responsive-sm">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th class="center">#</th>
+                                                <th>Item</th>
+                                                <th>Description</th>
+
+                                                <th class="right">Unit Cost</th>
+                                                <th class="center">Qty</th>
+                                                <th class="right">Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="center">1</td>
+                                                <td class="left strong">Origin License</td>
+                                                <td class="left">Extended License</td>
+
+                                                <td class="right">$999,00</td>
+                                                <td class="center">1</td>
+                                                <td class="right">$999,00</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="center">2</td>
+                                                <td class="left">Custom Services</td>
+                                                <td class="left">Instalation and Customization (cost per hour)</td>
+
+                                                <td class="right">$150,00</td>
+                                                <td class="center">20</td>
+                                                <td class="right">$3.000,00</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="center">3</td>
+                                                <td class="left">Hosting</td>
+                                                <td class="left">1 year subcription</td>
+
+                                                <td class="right">$499,00</td>
+                                                <td class="center">1</td>
+                                                <td class="right">$499,00</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-4 col-sm-5">
+
+                                    </div>
+
+                                    <div class="col-lg-4 col-sm-5 ml-auto">
+                                        <table class="table table-clear">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="left">
+                                                        <strong>Subtotal</strong>
+                                                    </td>
+                                                    <td class="right">$8.497,00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="left">
+                                                        <strong>Discount (20%)</strong>
+                                                    </td>
+                                                    <td class="right">$1,699,40</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="left">
+                                                        <strong>VAT (10%)</strong>
+                                                    </td>
+                                                    <td class="right">$679,76</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="left">
+                                                        <strong>Total</strong>
+                                                    </td>
+                                                    <td class="right">
+                                                        <strong>$7.477,36</strong>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--
+                <div id="htmlData" #htmlData>
+                    <div class="container">
+                        <div class="wrapper">
+                            <div class="row margin-0">
+                                <div class="col-sm-5">
+                                    <p>xyz Inc.<br /> 1250 Oabc Pkeee Stre 1010<br />Sunnyvale, CA 94085</p>
+                                </div>
+                                <div class="col-sm-7 padding-0">
+                                    <table class="table" cellspacing="0" cellpadding="10">
+                                        <tbody>
+                                            <tr>
+                                                <td class="first">
+                                                    <b>Invoice No</b>
+                                                    <span>111111</span>
+                                                </td>
+                                                <td class="first">
+                                                    <b>Dated</b>
+                                                    <span>11/12/2016</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <b>Delivery Note</b>
+                                                    <span>111111</span>
+                                                </td>
+                                                <td>
+                                                    <b>Mode/Terms of Payment</b>
+                                                    <span>11/12/2016</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="last">
+                                                    <b>Invoice No</b>
+                                                    <span>111111</span>
+                                                </td>
+                                                <td class="last">
+                                                    <b>Dated</b>
+                                                    <span>11/12/2016</span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="row margin-0">
+                                <div class="col-sm-5 border-right">
+                                    <p>Buyer:</p>
+                                    <p>abc Inc.<br /> 1130 Orrrrr Pkkk Saa 320<br />Sunnyvale, CA 94085</p>
+                                </div>
+                                <div class="col-sm-7 padding-0">
+                                    <table class="table">
+                                        <tr>
+                                            <td class="first b-left">
+                                                <b>Buyer's Order No</b>
+                                                <span>11/12/2016</span>
+                                            </td>
+                                            <td class="first">
+                                                <b>Dated</b>
+                                                <span>11/12/2016</span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="row margin-0">
+                                <div class="col-sm-12 padding-0">
+                                    <table class="invoice-bill">
+                                        <tr>
+                                            <td class="serial-no">
+                                                <b>SL. No.</b>
+                                            </td>
+                                            <td class="particulars">
+                                                <b>Particulars</b>
+                                            </td>
+                                            <td class="amount">
+                                                <b>Amount</b>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                1
+                                            </td>
+                                            <td>
+                                                <p>
+                                                    Unbxd Software License Fees for Jan 2017
+                                                </p>
+                                                <div class="particular-items">
+                                                    <p>
+                                                        Setup Fees
+                                                    </p>
+                                                    <p>
+                                                        POC Fees
+                                                    </p>
+                                                    <p>
+                                                        Monthly License Fees
+                                                    </p>
+                                                    <p>
+                                                        Overage Fees
+                                                    </p>
+                                                    <p>
+                                                        Additional Fees
+                                                    </p>
+                                                    <p>
+                                                        Discount Fees
+                                                    </p>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <p>$99</p>
+                                                <div class="particular-items amount-items">
+                                                    <p>$39</p>
+                                                    <p>$19</p>
+                                                    <p>$29</p>
+                                                    <p>$49</p>
+                                                    <p>$99</p>
+                                                    <p>$99</p>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>
+                                                <b>Total</b>
+                                            </td>
+                                            <td>$99</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="row margin-0 no-border">
+                                <div class="col-sm-12">
+                                    <p>Amount chargeable (in words)</p>
+                                    <p>USD Ninety Nine</p>
+                                    <p class="entry-id">Entry Id: <b>CORP 3793457</b></p>
+                                    <p>In case you wish to pay us through ACH / Wire Transfer.<br /> Refer our bank details below</p>
+                                    <p class="bank-details">
+                                        <span>Bank Name: XYZ Bank</span><br />
+                                        <span>Beneficiary Name: XYZ Bank</span><br />
+                                        <span>A/C No: 6563563466</span><br />
+                                        <span>ABA/Routing No: 23232323</span><br />
+                                        <span>Swift Code: 4545</span><br />
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row margin-0">
+                                <div class="col-sm-12 padding-0">
+                                    <div class="pull-right authorised-sign-wrapper">
+                                        <p>For Unbxd Inc</p>
+                                        <span>sign over here</span>
+                                        <p>Authorised Signature</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+<app-adappt-toolbar [title]="title"></app-adappt-toolbar>
+<div class="noc-container">
+    <div class="noc-window" appNoRightClickDirective>
+        <mat-form-field appearance="outline" style="width: 95%">
+            <mat-label>Search</mat-label>
+            <input matInput [(ngModel)]="filterData" (keyup)="applyFilterFunction($event)">
+        </mat-form-field>
+        <button mat-icon-button class="primary">
+        <mat-icon class="mat-icon material-icons addUser" (click)="getUsers()">refresh</mat-icon>
+        </button>
+        <app-devices-table-generic class="full-width" *ngIf="tableData.length > 0" [selected]="selected" [tableFields]="tableFields" [tableFilter]="filterData" [tableData]="tableData" (updatedRow)="updatedRow($event)" (filteredData)="filteredData($event)">
+        </app-devices-table-generic>
+        <button mat-icon-button class="primary input-margin">
+            <mat-icon class="mat-icon material-icons addUser" (click)="AddUser()">person_add_alt_1</mat-icon>
+        </button>
+        <!-- <button mat-raised-button color="primary" (click)="AddUser()">Add User</button> -->
+    </div>
+</div>

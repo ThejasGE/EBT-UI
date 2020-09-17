@@ -1,0 +1,47 @@
+<div fxFlex>
+    <h1 mat-dialog-title>Update Services</h1>
+    <div mat-dialog-content>
+        <p>Select Service type</p>
+        <div fxLayout="column">
+            <form fxLayout="column" [formGroup]="form">
+                <mat-slide-toggle color="primary" [(ngModel)]="hasParking" (change)="toggle($event)" formControlName="hasParking">
+                    Parking
+                </mat-slide-toggle>
+                <mat-slide-toggle color="primary" [(ngModel)]="hasLMS" (change)="toggle($event)" formControlName="hasLMS">
+                    LMS
+                </mat-slide-toggle>
+                <mat-slide-toggle color="primary" [(ngModel)]="hasOpenArea" (change)="toggle($event)" formControlName="hasOpenArea">
+                    Open Area
+                </mat-slide-toggle>
+                <mat-slide-toggle color="primary" [(ngModel)]="hasHotdesk" (change)="toggle($event)" formControlName="hasHotdesk">
+                    Hot Desk
+                </mat-slide-toggle>
+                <mat-slide-toggle color="primary" [(ngModel)]="hasCrbs" (change)="toggle($event)" formControlName="hasCrbs">
+                    CRBS
+                </mat-slide-toggle>
+                <mat-slide-toggle color="primary" [(ngModel)]="hasOccupancy" (change)="toggle($event)" formControlName="hasOccupancy">
+                    Occupancy
+                </mat-slide-toggle>
+                <mat-slide-toggle color="primary" [(ngModel)]="hasAllocation" (change)="toggle($event)" formControlName="hasAllocation">
+                    Seat Allocation
+                </mat-slide-toggle>
+
+
+                <!-- <form [formGroup]="form" novalidate>
+                <mat-form-field class="select-form">
+                    <mat-select [formControl]="selectedServices" placeholder="Services" multiple>
+                        <mat-option *ngFor="let product of productType" selected="true" [value]="name">
+                            {{product.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                </form> -->
+            </form>
+        </div>
+    </div>
+
+    <div mat-dialog-actions>
+        <button mat-raised-button color="warn" (click)="onNoClick()">Cancel</button>
+        <button mat-raised-button color="basic" type="button" (click)="updateService()" cdkFocusInitial>Update</button>
+    </div>
+</div>

@@ -1,0 +1,190 @@
+<div fxLayout="row" fxLayout.xs="column" class="full-height">
+    <md-card fxFlex="50%;" fxFlex.xs="80%" class="notOccupied full-height">
+
+
+        <md-card-content class="d-flex justify-content-center">
+
+            <div fxlayout="row" class="d-flex justify-content-center" fxflex>
+                <h2 class="big-text">ENTER</h2>
+            </div>
+        </md-card-content>
+
+
+        <md-card-content class="d-flex justify-content-center">
+            <div class="single-chart col-sm-7">
+                <svg viewBox="0 0 36 36" class="circular-chart blue" style="align-content: center;">
+                    <path class="circle-bg" d="M18 2.0845
+                                    a 15.9155 15.9155 0 0 1 0 31.831
+                                    a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    <path class="circle" stroke-dasharray="60, 100" d="M18 2.0845
+                                    a 15.9155 15.9155 0 0 1 0 31.831
+                                    a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    <text x="18" y="20.35" class="percentage" style="color: beige;">30%</text>
+                </svg>
+                <!-- <svg viewBox="0 0 36 36" class="circular-chart blue">
+                    <path class="circle-bg" d="M18 2.0845
+                                        a 15.9155 15.9155 0 0 1 0 31.831
+                                        a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    <path class="circle" stroke-dasharray="{{fill}}, {{fill}}" d="M18 2.0845
+                                        a 15.9155 15.9155 0 0 1 0 31.831
+                                        a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    <text x="18" y="20.35" class="percentage">{{fill}}%</text>
+                </svg> -->
+            </div>
+            <!-- <md-card-content class="d-flex justify-content-center">
+                <h1 class="big-text" style="font-family: Avenir;"><b>Enter</b></h1>
+            </md-card-content> -->
+
+        </md-card-content>
+        <md-card-content>
+            <div fxlayout="row" class="d-flex justify-content-center col-sm-12" fxflex>
+                <!-- <div class="Sansation-Regular text-center" flex> -->
+                <span layout-align="center none" class="peoplefont"><i class="fa fa-users" aria-hidden="true"></i> :
+                    10/40</span>
+                <!-- </div> -->
+            </div>
+        </md-card-content>
+        <md-card-content>
+            <div fxlayout="row" class="d-flex justify-content-center col-sm-12" fxflex>
+                <!-- <div class="Sansation-Regular text-center" flex> -->
+                <span layout-align="center none" class="peoplefont "><i class="fa fa-clock" aria-hidden="true"></i> :
+                    10 Minutes</span>
+                <!-- </div> -->
+            </div>
+        </md-card-content>
+
+        <!-- <div fxlayout="column" class="d-flex justify-content-center" fxflex> -->
+        <!-- <div class="text-center"> -->
+        <!-- <h3 class="big-text" style="font-family: Avenir;"><b>Enter</b></h3> -->
+        <!-- </div> -->
+        <!-- </div> -->
+
+
+
+
+
+    </md-card>
+
+    <md-card fxFlex="50%;" fxFlex.xs="80%;" style="background-color:whitesmoke;" class="full-height">
+        <md-card-content class="d-flex justify-content-end">
+
+            <div fxlayout="row" class="d-flex justify-content-end" fxflex>
+                <mat-button title="Dashboard" class="bttn" routerLink="/commissioning">
+                    <i class="fa fa-bars"></i></mat-button>
+            </div>
+        </md-card-content>
+        <md-card-content>
+            <div fxlayout="row" class="d-flex justify-content-center" style="padding-top: 5%;" fxflex>
+                <!-- <div class="Sansation-Regular text-center" flex> -->
+                <span layout-align="center none" class="peoplefont1"><i class="fa fa-calendar" aria-hidden="true"></i> :
+                    Sep 11 14:15:40</span>
+                <!-- </div> -->
+            </div>
+        </md-card-content>
+        <md-card-content>
+            <div fxlayout="row" class="d-flex justify-content-center" style="padding-top: 5%;" fxflex>
+                <!-- <div class="Sansation-Regular text-center" flex> -->
+                <span layout-align="center none" class="room1">
+                    Meeting Room</span>
+                <!-- </div> -->
+            </div>
+        </md-card-content>
+        <md-card-content>
+            <div fxlayout="row" class="d-flex justify-content-center" style="padding-top: 5%;" fxflex>
+                <!-- <div class="Sansation-Regular text-center" flex> -->
+
+                <div class="text-center" fxflex>
+                    <h3 style="font-size: 3vw;font-style: oblique;padding-top: 5%; color: black;">XYZ is
+                        using Adappt</h3>
+                    <h3 style="font-size: 3vw;font-style: oblique;padding-top: 2%; color: black;">to keep
+                        occupancy of this space</h3>
+                    <h3 style="font-size: 3vw;font-style: oblique;color: black;">At a safe level through out
+                        the day
+                    </h3>
+                </div>
+            </div>
+        </md-card-content>
+        <md-card-content>
+            <div class="d-flex justify-content-center" fxFlex>
+                <img src="../../../assets/img/adappt.png" style="height:80px;width: 280px;" />
+            </div>
+        </md-card-content>
+
+        <!-- 
+            <div class="col-md-13">
+                <div class=" card card-user">
+                    <div class=" card-body">
+                        <p class=" card-text"></p>
+                        <div class=" author">
+                            <div class=" block block-one"></div>
+                            <div class=" block block-two"></div>
+                            <div class=" block block-three"></div>
+                            <div class=" block block-four"></div>
+                            <a href="javascript:void(0)">
+                                <img alt="..." class=" avatar" src="../../../assets/img/adappt-icon-green.png" />
+
+                                <h5 class=" title" style="font-size: medium;">Time</h5>
+                            </a>
+                            <p class=" description" style="font-size: large;">Room Name</p>
+                        </div>
+                        <div class=" card-description" style="font-size: x-large;">
+                            XYZ is using Adappt<br>
+                            to keep occupancy of this space
+                            At a safe level through out the day<br>
+                        </div>
+                    </div>
+                    <div class=" card-footer">
+                        <div class=" button-container">
+                            <button title="Commissioning" class=" btn btn-icon btn-round btn-facebook"
+                                href="javascript:void(0)">
+                                <i class=" fa fa-cogs"> </i>
+                            </button>
+                            <button title="Wifi Configuration" class=" btn btn-icon btn-round btn-twitter"
+                                href="javascript:void(0)">
+                                <i class=" fa fa-wifi"> </i>
+                            </button>
+                            <button title="Analytics" class=" btn btn-icon btn-round btn-google"
+                                href="javascript:void(0)">
+                                <i class="fa fa-cubes"> </i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        <!-- <div layout="row" layout-align="end end">
+                <md-menu-bar hide-xs class="menuiconcss">
+                    <md-menu>
+                        <md-button [ng-click]="$mdOpenMenu()"
+                            class="md-icon-button medium-icon-btn dark-header icon-font">
+                            <md-icon><i class="material-icons icon-font  ">menu</i></md-icon>
+                        </md-button>
+                        <md-menu-content width="2">
+                            <md-menu-item>
+                                <md-button ng-click="logout()">Logout</md-button>
+                            </md-menu-item>
+                        </md-menu-content>
+                    </md-menu>
+                </md-menu-bar>
+            </div> -->
+        <!-- <div layout="row" layout-align="center center">
+                <h3 style="font-size: 3vw;font-family: Sansation-Regular;padding-top: 10px;">Time</h3>
+            </div>
+            <div layout="row" layout-align="center center" flex>
+                <h3 style="font-family:Sansation-Dark;font-size: 4vw;font-family: Sansation-Dark;padding-top:20px;">
+                    Room</h3>
+
+            </div>
+            <div class="text-center" flex>
+                <h3 style="font-size: 3vw!important;font-family: Sansation-Light;padding-top: 35px;">XYZ is using Adappt
+                    to keep occupancy of this space</h3>
+                <h3 style="font-size: 3vw!important;font-family: Sansation-Light;">At a safe level through out the day
+                </h3>
+            </div>
+            <div layout-align="center center" layout="row" flex>
+                <img src="../../../assets/img/adappt-icon-green.png" style="height:80px;width: 280px;" />
+            </div> -->
+
+        <!-- </md-card-content> -->
+    </md-card>
+
+</div>

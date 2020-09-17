@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <title>Adappt Commissioning</title>
+    <!--     Fonts and icons     -->
+    <!-- <link rel="stylesheet" href="css/material-icons.css"> -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet" />
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCyMUCvYAfuHQrpJbgKvPn0QOiTjJI1gMs"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script scr="http://www.cloudformatter.com/Resources/Pages/CSS2Pdf/Script/xepOnline.jqPlugin.js"></script>
+    <script src="assets/xepOnline.jqPlugin.js"></script>
+
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
+    <style type="text/css">
+        body,
+        html {
+            height: 100%;
+        }
+        
+        .app-loading {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+        
+        .app-loading .spinner {
+            height: 200px;
+            width: 200px;
+            animation: rotate 2s linear infinite;
+            transform-origin: center center;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+        
+        .app-loading .spinner .path {
+            stroke-dasharray: 1, 200;
+            stroke-dashoffset: 0;
+            animation: dash 1.5s ease-in-out infinite;
+            stroke-linecap: round;
+            stroke: #ddd;
+        }
+        
+        @keyframes rotate {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        
+        @keyframes dash {
+            0% {
+                stroke-dasharray: 1, 200;
+                stroke-dashoffset: 0;
+            }
+            50% {
+                stroke-dasharray: 89, 200;
+                stroke-dashoffset: -35px;
+            }
+            100% {
+                stroke-dasharray: 89, 200;
+                stroke-dashoffset: -124px;
+            }
+        }
+    </style>
+</head>
+
+<body class="mat-typography mainSize">
+    <app-root>
+        <div class="app-loading">
+            <div class="logo"></div>
+            <svg class="spinner" viewBox="25 25 50 50">
+          <circle
+            class="path"
+            cx="50"
+            cy="50"
+            r="20"
+            fill="none"
+            stroke-width="2"
+            stroke-miterlimit="10"
+          />
+        </svg>
+        </div>
+    </app-root>
+    <noscript>Please enable JavaScript to continue using this application.</noscript>
+</body>
+
+</html>
