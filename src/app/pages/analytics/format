@@ -1,0 +1,9 @@
+if date selection is one day
+
+data format
+labels = ["12am","1am",to 11pm]
+data = [20,22,40]
+
+if date selection is more than one day
+labels = ["12/09/2020","13/09/2020]
+data=[30,31]

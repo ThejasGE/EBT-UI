@@ -1,0 +1,127 @@
+<md-content class="md-padding" layout="row" layout-align="center center">
+    <div class="adappt-logo logo-lg"></div>
+</md-content>
+<md-content class="md-padding" layout="row" layout-align="center center">
+    <md-card flex-gt-sm=30 flex-sm=60 flex-xs=80 md-whiteframe="8">
+        <md-card-content class="padding-lg">
+            <div class="text-center">
+                <md-progress-circular ng-show="makingAjaxCall"></md-progress-circular>
+                <h1><span class="underline-text">Wifi Network Available</span></h1>
+            </div>
+            <md-input-container class="md-block">
+                <md-subheader class="md-no-sticky">Available Networks</md-subheader>
+                <!-- <md-list-item name="network" class="md-2-line" ng-repeat="network in networks">
+                <div class="md-list-item-text">
+                    <span>{{network}}</span>
+                    
+        
+                </div>
+                <div ng-message="networkform.network.$error" ng-if="network.length==0">
+                    <div ng-message="required">No Networks Available</div>
+                </div> -->
+                <!-- <md-button class="md-raised md-primary" ng-click="searchNetwork();">Refresh</md-button> -->
+
+                <!-- </md-list-item> -->
+
+                <!-- <md-divider ></md-divider> -->
+                <md-select placeholder="Available Wifi Networks" ng-repeat="network in networks"
+                    class="no-margin-padding text-white" style="max-width: 300px;">
+                    <md-optgroup label="Wifi Networks">
+
+                        <md-option ng-repeat value="horlinePoints">{{network}}</md-option>
+                        <!-- <md-option value="verlinePoints">Vertical Line Points</md-option> -->
+
+                    </md-optgroup>
+                </md-select>
+            </md-input-container>
+            <md-input-container class=md-block>
+                <md-button class="md-raised md-primary" ng-click="searchNetwork();">Refresh</md-button>
+                <div>
+                    <span>It Automatically gets Refresh every 30secs if not press <b>Refresh</b> button</span>
+                </div>
+            </md-input-container>
+
+            <form type="post" name="networkform" ng-submit="networkConnect()">
+                <!-- <md-input-container class="md-block">
+                    <md-subheader class="md-no-sticky">Available Networks</md-subheader>
+                <md-list-item name="network" class="md-2-line" ng-repeat="network in networks">
+                    <div class="md-list-item-text">
+                        <h5>{{network}}</h5>
+            
+                    </div>
+                    <div ng-message="networkform.network.$error">
+                        <div ng-message="required">No Networks Available</div>
+                    </div>
+                </md-list-item>
+                <md-divider ></md-divider>
+                </md-input-container> -->
+                <md-input-container class="md-block">
+                    <input required md-no-asterisk type="text" value={{network}} name="username"
+                        ng-model="wifi.username" placeholder="User Name" ng-change="inputChange()" />
+                    <div ng-messages="networkform.username.$error">
+                        <div ng-message="required">User Name is required. Copy User Name from Available Network and
+                            Paste here</div>
+                    </div>
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <input required md-no-asterisk type="password" name="password" minlength="8"
+                        ng-model="wifi.password" placeholder="Password" />
+                    <div ng-messages="networkform.password.$error">
+                        <div ng-message="required">Password is required with minimum 8 Characters.</div>
+                    </div>
+                </md-input-container>
+                <md-input-container class="md-block" layout="row" layout-align="center center">
+                    <div flex layout="column" layout-align="center stretch">
+
+                        <md-button class="md-raised btn adappt-btn" type="submit">Connect</md-button>
+                        <md-button class="md-raised btn adappt-btn" ng-click="issettings2page()"
+                            ui-sref="settingsdashboard">Back To Settings</md-button>
+                    </div>
+                </md-input-container>
+            </form>
+        </md-card-content>
+    </md-card>
+</md-content>
+
+
+
+
+
+<!-- <div flex=25>
+    <img src="img/wifi.png" class="dialogimage">
+    <md-dialog aria-label="Wifi Network" class="md-padding" flex=100 style="background-color: rgb(236, 218, 218);">
+    <div layout="row" class="md-toolbar-tools">
+        <h3 class="border-bottom dialogheader">Available Networks</h3>
+        <form type="post" name="networkform" ng-submit="networkConnect()">
+            <md-dialog-content class="md-dialog-content text-dark" ng-cloak>
+                <md-subheader class="md-no-sticky">Available</md-subheader>
+                <md-list-item name="network" class="md-2-line" ng-repeat="network in networks">
+                    <div class="md-list-item-text">
+                        <h5>{{network}}</h5>
+            
+                    </div>
+                    <div ng-message="networkform.network.$error">
+                        <div ng-message="required">No Networks Available</div>
+                    </div>
+                </md-list-item>
+                <md-divider ></md-divider>
+                <md-input-container class="md-block text-dark">
+                    <input required md-no-asterisk type="text" name="username" ng-model="wifi.username" placeholder="{{network}}"/>
+                    <div ng-message="networkform.username.$error">
+                        <div ng-message="required"> Copy Username From Available Network and Paste Here</div>
+                    </div>
+                </md-input-container>
+                <md-input-container class="md-block text-dark">
+                    <input required md-no-asterisk type="password" name="password" ng-model="wifi.password" placeholder="enter password"/>
+                    <div ng-message="networkform.password.$error">
+                        <div ng-message="required">Password is Required</div>
+                    </div>
+                </md-input-container>
+                
+            </md-dialog-content>
+
+        </form>
+
+    </div>
+</md-dialog>
+</div> -->

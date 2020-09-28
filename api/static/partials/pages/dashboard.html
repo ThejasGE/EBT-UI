@@ -1,0 +1,447 @@
+<section layout="column" class="full-height" flex>
+    <div ng-include="'partials/includes/logo-toolbar.html'"></div>
+    <md-card flex md-whiteframe="8" layout-padding class="dark-side-back">
+        <!-- <div ng-include="'partials/includes/sidenav.html'"></div> -->
+
+        <md-content layout="row">
+            <div ng-include="'partials/includes/sidenav.html'"></div>
+            <div flex="50">
+                <div layout-padding>
+                    <div class="border margin-top" style="height:60px">
+                        <div layout="row">
+                            <div layout="row" flex class="padding border-right text-white"
+                                style="padding-right: 10px;height: 45px;">
+                                <h4>Sensor Name:<b>{{sensorName}}</b></h4>
+                                <!-- <div class="md-switch .md-bar .md-thumb:before ">
+                                    <md-switch style="padding-bottom: 51px;margin-left: 26px;" ng-model="recordselectedValue" ng-change="changeRecordValue()">
+
+                                    </md-switch>
+                                </div> -->
+
+                            </div>
+                            <div layout="row" flex class="padding text-white" style="padding-left: 10px;height: 45px;">
+                                <h4>Sensor Address:<b>{{bleAddress}}</b></h4>
+                                <!-- <hr class="dark-line"> -->
+                                <!-- <div class="md-switch .md-bar .md-thumb:before ">
+                                    <md-switch style="padding-bottom: 51px;margin-left: 26px;" ng-model="testselectedValue" ng-change="changeTestValue();">
+
+                                    </md-switch> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border">
+                        <div layout="row" layout-align="center center">
+
+                            <!--  <img ng-if="!markimage" src="data:image/jpeg;base64,{{liveCameraImage}}" alt="LOADING...." style="color:#fff; border: 3px solid black; width:645px;height:485px;">
+ -->
+                            <canvas ng-show="!markimage" id="mcanvas" width=645 height=485></canvas>
+                            <canvas ng-show="markimage" id="canvas" width=645 height=485></canvas>
+                            <!-- <img style="color:#fff; border: 3px solid black;left:-4px;top:-4px" ng-if="markimage" model="areasArray" ng-areas="areasArray" ng-areas-allow="{'edit':true, 'move':true, 'resize':true, 'select':true, 'remove':true, 'nudge':true}" ng-areas-on-add="showNewlyMarkedImage"
+                                ng-areas-on-remove="onRemoveArea" ng-areas-on-change="onChangeAreas" ng-areas-extend-data="{pageNumber: 1, tag: 'img900px'}" ng-src="data:image/jpeg;base64,{{liveCameraImage}}">
+ -->
+
+                        </div>
+                    </div>
+                    <div class="border">
+                        <div layout="column" layout-align="center center" style="margin-top: 10px;">
+
+                            <div layout="row" layout-align="center center" style="margin:5px;">
+                                <div class="md-switch .md-bar .md-thumb:before text-white"
+                                    style="background-color: #00937D;">
+                                    <md-switch ng-model="testselectedValue"
+                                        ng-change="changeTestValue(); startStopLiveView();">Start Live View</md-switch>
+                                </div>
+                                <!-- <md-button class="md-raised md-primary" ng-click="startStopLiveView()" ng-disabled="liveStatus">Start Live View</md-button> -->
+                                <!-- <md-button class="md-raised md-primary" ng-click="startStopLiveView()" ng-disabled="!liveStatus">Mark Segment -->
+                                <!-- </md-button> -->
+                                <!-- <md-button class="md-raised md-primary" ng-disabled="!markimage" ng-click="saveToJSON()">Save</md-button> -->
+                                <!-- <md-button class="md-raised md-primary" ng-disabled="!liveStatus" ng-click="reload()">Deploy</md-button> -->
+                                <!-- <md-button class="md-raised md-primary" ui-sref="imageList">Image List</md-button> -->
+
+                            </div>
+                        </div>
+                        <!--  <h4 style="color:red; font-weight: bold;">IMPORTANT!: Please click deploy, if the live view is running after the commissioning is done.</h4> -->
+
+                    </div>
+                    <!-- </div> -->
+
+                    <!-- <div flex class="padding" style="padding-left: 10px;">
+                                <h4>Test-Video :</h4>
+                                <hr class="dark-line">
+                                <md-input-container class="no-margin-padding" style="max-width: 150px;">
+                                    <input maxlength="10" name="HostAddress" aria-label="None" ng-model="sensorName">
+                                </md-input-container>
+                                <md-button class="md-raised md-primary" ng-click="updateSensorName()">Update</md-button> -->
+                </div>
+            </div>
+            </div>
+            </div>
+
+
+
+
+            </div>
+
+            <div flex=50 class="">
+                <div flex layout-padding>
+                    <!-- <div class="border" style="height:205px">
+                        <h3>Instructions:</h3>
+                        <hr class="dark-line">
+                        <ul>
+
+                            <li>Click on
+                                <md-button class="md-raised md-primary md-small" ng-click="startStopLiveView()" ng-disabled="liveStatus">Start Live View</md-button> to adjust the camera and watch the live feed</li> -->
+                    <!-- <li>Click on
+                                <md-button class="md-raised md-primary" ng-click="startStopLiveView()" ng-disabled="!liveStatus">Mark Segment
+                                </md-button>
+                                to mark areas of image</li> -->
+                    <!-- <li>Click on
+                                <md-button class="md-raised md-primary" ng-disabled="!markimage" ng-click="saveToJSON()">Save</md-button>
+                                to save marked areas of image</li> -->
+                    <!-- <li>Click on
+                                <md-button class="md-raised md-primary md-small" ng-disabled="!liveStatus" ng-click="reload()">Deploy</md-button>
+                                after adjusting the camera</li> -->
+
+                    <!-- <li ng-if="!isDelete">Click on
+                                <md-button class="md-raised md-primary md-small" ng-disabled="!markimage" ng-click="stopMarking()">Stop Marking</md-button>
+                                stop marking to enable deleting segments</li>
+                            <li ng-if="isDelete">Click on
+                                <md-button class="md-raised md-primary md-small" ng-disabled="!markimage" ng-click="continueMarking()">Resume Marking</md-button>
+                                to continue marking segments</li> -->
+                    <!--  <li>Set IMAGE STORAGE LIMIT to store the specified number of images.</li>
+ -->
+                    <!-- <li>Click on
+                                <md-button class="md-raised md-primary md-small" ui-sref="imageList">Image List</md-button>
+                                to view processed images</li> -->
+
+
+
+                    <!-- <li>
+                                <h4 style="color:red; font-weight: bold;">Note: Please make sure screen resolution is 100%.
+                                </h4>
+                            </li>
+                        </ul>
+                    </div> -->
+                    <!-- <div class="border margin-top" style="height:137px">
+                        <div layout="row">
+                            <div flex class="padding border-right" style="padding-right: 10px;height: 120px;">
+                                <h4>SD Card Serial Number :<b>{{sdcardserial}}</b></h4>
+                                <hr class="dark-line"> -->
+                    <!-- <md-input-container class="no-margin-padding" style="max-width: 150px;">
+                                    <label name="HostAddress" aria-label="None">{{sdcardserial}}</label>
+                                </md-input-container> -->
+                    <!-- <md-button class="md-raised md-primary" ng-click="updateHostAddress()">Update
+                                </md-button> -->
+                    <!-- </div> -->
+                    <!-- <div flex class="padding" style="padding-left: 10px;">
+                                <h4>Sensor Name :<b>{{sensorName}}</b></h4>
+                                <hr class="dark-line"> -->
+                    <!-- <md-input-container class="no-margin-padding" style="max-width: 150px;">
+                                    <label name="HostAddress" aria-label="None">{{sensorName}}</label>
+                                </md-input-container> -->
+                    <!-- <md-button class="md-raised md-primary" ng-click="updateSensorName()">Update</md-button> -->
+                    <!-- </div>
+                        </div>
+                    </div> -->
+                    <!-- <div class="border">
+                        <h3>SD Card Serial: 
+                            <b>{{sdcardserial}}</b></h3>
+                    </div>
+                    <div class="border">
+                        <h3>Sensor Name: <b>{{sensorName}}</b></h3>
+                    </div> -->
+                    <!-- <div class="border margin-top" style="height:137px">
+                        <div layout="row">
+                            <div flex class="padding border-right" style="padding-right: 10px;height: 120px;">
+                                <h4>Location Name :</h4>
+                                <hr class="dark-line">
+                                <md-input-container class="no-margin-padding" style="max-width: 150px;">
+                                    <input name="locationName" aria-label="None" ng-model="locationName">
+                                </md-input-container>
+                                <md-button class="md-raised md-primary" ng-click="updateLocationName()">Update
+                                </md-button>
+                            </div>
+                            <div flex class="padding" style="padding-left: 10px;">
+                                <h4>Capacity :</h4>
+                                <hr class="dark-line">
+                                <md-input-container class="no-margin-padding" style="max-width: 150px;">
+                                    <input maxlength="3" name="capacity" aria-label="None" ng-model="capacity">
+                                </md-input-container>
+                                <md-button class="md-raised md-primary" ng-click="updateCapacity()">Update</md-button>
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="border text-white">
+                        <h3>Video:</h3>
+                        <div class="border margin-top" style="height:80px">
+                            <div layout="row">
+                                <div flex class="padding border-right text-white"
+                                    style="max-width: 200px;background-color: #00937D ;">
+                                    <div class="md-switch .md-bar .md-thumb:before text-white"
+                                        style="background-color: #00937D;">
+                                        <md-switch ng-model="testselectedValue"
+                                            ng-change="changeTestValue(); startStopLiveView();">Start Live View
+                                        </md-switch>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="border text-white">
+                        <h3>Camera Alignment Settings: </h3>
+                    </div>
+                    <div class="border margin-top" style="height:137px">
+                        <div layout="row">
+                            <div flex class="padding border-right text-white"
+                                style="padding-right: 0px;height: 0px; max-width: 350px;">
+                                <h4>Client Line Points:</h4>
+                                <hr class="text-white">
+                                <md-select placeholder="Select Line Points" ng-model="selectedParameter"
+                                    class="no-margin-padding text-white" style="max-width: 300px;">
+                                    <md-optgroup label="Line Points">
+
+                                        <md-option value="horlinePoints">Horizontal Line Points</md-option>
+                                        <md-option value="verlinePoints">Vertical Line Points</md-option>
+
+                                    </md-optgroup>
+                                </md-select>
+                            </div>
+
+                            <!-- <h4>Horizontal Line Points:</h4>
+                                <hr class="dark-line">
+                                <md-input-container class="no-margin-padding" style="max-width: 150px;">
+                                    <input name="horlinepoints" aria-label="None" ng-model="horlinePoints">
+                                </md-input-container>
+                                <md-button class="md-raised md-primary" ng-click="updateHorLinePoints()">Update
+                                </md-button> 
+                                </div> -->
+                            <!-- <div flex class="padding border-right" style="padding-right: 10px;height: 120px;">
+                                <h4>Vertical Line Points:</h4>
+                                <hr class="dark-line">
+                                <md-input-container class="no-margin-padding" style="max-width: 150px;">
+                                    <input name="verlinepoints" aria-label="None" ng-model="verlinePoints">
+                                </md-input-container>
+                                <md-button class="md-raised md-primary" ng-click="updateVerLinePoints()">Update
+                                </md-button>
+                            </div> -->
+                            <div ng-show="selectedParameter == 'verlinePoints'" class="inline-block">
+                                <div flex class="padding" style="padding-left: 10px;">
+                                    <!-- <h4>Vertical Line Points:</h4> -->
+                                    <!-- <hr class="dark-line"> -->
+                                    <!-- <md-input-container class="no-margin-padding" style="max-width: 150px;">
+                                    <input name="linepoints" aria-label="None" ng-model="linePoints">
+                                </md-input-container> -->
+                                    </br />
+                                    <br />
+                                    <br />
+                                    <md-button class="md-raised md-primary" ng-click="updateVerLinePoints()">Update
+                                    </md-button>
+                                </div>
+                            </div>
+                            <div ng-show="selectedParameter == 'horlinePoints'" class="inline-block">
+                                <div flex class="padding" style="padding-left: 10px;">
+                                    <!-- <h4>Horizontal Line Points:</h4> -->
+                                    <!-- <hr class="dark-line"> -->
+                                    <!-- <md-input-container class="no-margin-padding" style="max-width: 150px;">
+                                    <input name="linepoints" aria-label="None" ng-model="linePoints">
+                                </md-input-container> -->
+                                    </br />
+                                    <br />
+                                    <br />
+                                    <md-button class="md-raised md-primary" ng-click="updateHorLinePoints()">Update
+                                    </md-button>
+                                </div>
+                            </div>
+
+
+
+
+
+                            <!-- <div flex class="padding" style="padding-left: 10px;">
+                                <h4>Entrance :</h4>
+                                <hr class="dark-line">
+                                <md-input-container class="no-margin-padding" style="max-width: 150px;">
+                                    <input name="updateEntranceData" aria-label="None" ng-model="data.counter.entrance">
+                                </md-input-container>
+                                <md-button class="md-raised md-primary" ng-click="updateEntranceData()">Update</md-button>
+                            </div> -->
+                        </div>
+                    </div>
+                    <!-- <div class="border margin-top" style="height:137px">
+                        <div layout="row">
+                            
+                            <div flex class="padding border-right" style="padding-right: 10px;height: 120px;">
+                                <h4>Line Points :</h4>
+                                <hr class="dark-line">
+                                <md-input-container class="no-margin-padding" style="max-width: 150px;">
+                                    <input name="linePoints" aria-label="None" ng-model="linePoints">
+                                </md-input-container>
+                                <md-button class="md-raised md-primary" ng-click="updateLinePoints()">Update
+                                </md-button>
+                            </div>
+                            <div flex class="padding" style="padding-left: 10px;">
+                                <h4>Entrance :</h4>
+                                <hr class="dark-line">
+                                <md-input-container class="no-margin-padding" style="max-width: 150px;">
+                                    <input name="updateEntranceData" aria-label="None" ng-model="data.counter.entrance">
+                                </md-input-container>
+                                <md-button class="md-raised md-primary" ng-click="updateEntranceData()">Update</md-button>
+                            </div>
+                            <div flex class="padding" style="padding-left: 10px;">
+                                <h4>Minutes Inactive :</h4>
+                                <hr class="dark-line">
+                                <md-input-container class="no-margin-padding" style="max-width: 150px;">
+                                    <input maxlength="10" name="HostAddress" aria-label="None" ng-model="data.counter.minutes_inactive">
+                                </md-input-container>
+                                <md-button class="md-raised md-primary" ng-click="updateMinutesInactive()">Update</md-button>
+                            </div>
+                        </div>
+                    </div> -->
+                    <!-- <div class="border margin-top" style="height:137px">
+                        <div layout="row">
+                            <div flex class="padding border-right" style="padding-right: 10px;height: 120px;">
+                                <h4>Minutes InActive:</h4>
+                                <hr class="dark-line">
+                                <md-input-container class="no-margin-padding" style="max-width: 150px;">
+                                    <input maxlength="10" name="HostAddress" aria-label="None" ng-model="data.counter.minutes_inactive">
+                                </md-input-container>
+                                <md-button class="md-raised md-primary" ng-click="updateMinutesInactive()">Update
+                                </md-button>
+                            </div>
+                            <div flex class="padding" style="padding-left: 10px;">
+                                <h4>Percent Cap:</h4>
+                                <hr class="dark-line">
+                                <md-input-container class="no-margin-padding" style="max-width: 150px;">
+                                    <input maxlength="5" name="HostAddress" aria-label="None" ng-model="data.counter.percent_cap">
+                                </md-input-container>
+                                <md-button class="md-raised md-primary" ng-click="updatePercentCapData()">Update</md-button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border margin-top" style="height:137px">
+                        <div layout="row">
+                            <div flex class="padding border-right" style="padding-right: 10px;height: 120px;">
+                                <h4>Min Wait Time:</h4>
+                                <hr class="dark-line">
+                                <md-input-container class="no-margin-padding" style="max-width: 150px;">
+                                    <input maxlength="10" name="HostAddress" aria-label="None" ng-model="data.counter.min_wait_time">
+                                </md-input-container>
+                                <md-button class="md-raised md-primary" ng-click="updateMinWaitTime()">Update
+                                </md-button>
+                            </div>
+                            <div flex class="padding" style="padding-left: 10px;">
+                                <h4>Max Wait Time:</h4>
+                                <hr class="dark-line">
+                                <md-input-container class="no-margin-padding" style="max-width: 150px;">
+                                    <input maxlength="10" name="HostAddress" aria-label="None" ng-model="data.counter.max_wait_time">
+                                </md-input-container>
+                                <md-button class="md-raised md-primary" ng-click="updateMaxWaitTime()">Update</md-button>
+                            </div>
+                        </div>
+                    </div> -->
+                    <!-- <div class="border margin-top" style="height:137px">
+                        <div layout="row">
+                            <div flex class="padding border-right" style="padding-right: 10px;height: 120px;">
+                                <h4>Entrance:</h4>
+                                <hr class="dark-line">
+                                <md-input-container class="no-margin-padding" style="max-width: 150px;">
+                                    <input name="updateEntranceData" aria-label="None" ng-model="data.counter.entrance">
+                                </md-input-container>
+                                <md-button class="md-raised md-primary" ng-click="updateEntranceData()">Update
+                                </md-button>
+                            </div> -->
+                    <!-- <div flex class="padding" style="padding-left: 10px;">
+                                <h4>Reset:</h4>
+                                <hr class="dark-line">
+                                <div class="md-switch .md-bar .md-thumb:before ">
+                                    <md-switch style="padding-bottom: 51px;margin-left: 26px;" ng-model="data.counter.reset" ng-change="changeResetValue()">
+
+                                    </md-switch>
+                                </div>
+                            </div> -->
+                    <!-- </div>
+                    </div> -->
+
+                    <div class="border margin-top" style="height:137px">
+                        <div layout="row">
+                            <div flex class="padding border-right text-white"
+                                style="padding-right: 0px;height: 0px; max-width: 350px;">
+                                <h4>Entrance:</h4>
+                                <hr class="dark-line">
+                                <md-select placeholder="Select Entrance Point" ng-model="data.counter.entrance"
+                                    class="no-margin-padding text-white" style="max-width: 300px;">
+                                    <md-optgroup label="Entrance Point">
+
+                                        <md-option value="up">Up</md-option>
+                                        <md-option value="down">Down</md-option>
+
+                                    </md-optgroup>
+                                </md-select>
+                                <!-- <md-button class="md-raised md-primary" ng-click="updateEntranceData()">Update
+                                </md-button> -->
+                            </div>
+                            <div flex class="padding" style="padding-left: 10px;">
+                                <!-- <h4>Horizontal Line Points:</h4> -->
+                                <!-- <hr class="dark-line"> -->
+                                <!-- <md-input-container class="no-margin-padding" style="max-width: 150px;">
+                                    <input name="linepoints" aria-label="None" ng-model="linePoints">
+                                </md-input-container> -->
+                                </br />
+                                <br />
+                                <br />
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- <div flex class="padding border-right" style="padding-right: 10px;height: 120px;">
+                                <h4> Percent Cap :</h4>
+                                <hr class="dark-line">
+                                <md-input-container class="no-margin-padding" style="max-width: 150px;">
+                                    <input maxlength="4" name="HostAddress" aria-label="None" ng-model="data.counter.percent_cap">
+                                </md-input-container>
+                                <md-button class="md-raised md-primary" ng-click="updatePercentCapData()">Update
+                                </md-button>
+                            </div> -->
+                    <!-- <div flex class="padding" style="padding-left: 10px;">
+                                <h4>Min Wait Time :</h4>
+                                <hr class="dark-line">
+                                <md-input-container class="no-margin-padding" style="max-width: 150px;">
+                                    <input maxlength="10" name="HostAddress" aria-label="None" ng-model="data.counter.min_wait_time">
+                                </md-input-container>
+                                <md-button class="md-raised md-primary" ng-click="updateMinWaitTime()">Update</md-button>
+                            </div>
+                            
+                            <div flex class="padding" style="padding-left: 10px;">
+                                <h4>Max Wait Time :</h4>
+                                <hr class="dark-line">
+                                <md-input-container class="no-margin-padding" style="max-width: 150px;">
+                                    <input maxlength="10" name="HostAddress" aria-label="None" ng-model="data.counter.max_wait_time">
+                                </md-input-container>
+                                <md-button class="md-raised md-primary" ng-click="updateMaxWaitTime()">Update</md-button>
+                            </div> -->
+                    <!-- </div>
+                    </div> -->
+
+                    <!-- <div class="border margin-top" style="height:123px">
+                        <h4>Location Details :</h4>
+                        <hr class="dark-line">
+                        <md-input-container class="no-margin-padding">
+                            <input type=number name="imageCount" aria-label="None" ng-model="imageCount" max="5000">
+                        </md-input-container>
+                        <md-button class="md-raised md-primary" ng-click="updateImageCount()">Set</md-button>
+                    </div> -->
+                </div>
+            </div>
+        </md-content>
+    </md-card>
+</section>
+
+<style>
+    md-menu-bar {
+        padding: 0 20px 0 0;
+    }
+</style>

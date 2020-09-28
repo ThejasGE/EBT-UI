@@ -26,6 +26,12 @@ export const ROUTES: RouteInfo[] = [
     class: ""
   },
   {
+    path: "/analytics",
+    title: "Analytics",
+    icon: "icon-chart-bar-32",
+    class: ""
+  },
+  {
     path: "/commissioning",
     title: "Commissioning",
     icon: "icon-settings",
@@ -47,21 +53,21 @@ export const ROUTES: RouteInfo[] = [
   {
     path: "/settings",
     title: "Settings",
-    icon: "icon-settings",
+    icon: "icon-settings-gear-63",
     class: ""
   },
-  {
-    path: "/onBoard",
-    title: "onBoard",
-    icon: "icon-spaceship",
-    class: ""
-  },
-  {
-    path: "/mobile",
-    title: "Mobile",
-    icon: "icon-mobile",
-    class: ""
-  },
+  // {
+  //   path: "/onBoard",
+  //   title: "onBoard",
+  //   icon: "icon-spaceship",
+  //   class: ""
+  // },
+  // {
+  //   path: "/mobile",
+  //   title: "Mobile",
+  //   icon: "icon-mobile",
+  //   class: ""
+  // },
 
   {
     path: "/display",

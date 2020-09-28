@@ -8,7 +8,8 @@ const httpOptions = {
   })
 };
 // const urlPrefix = '10.8.0.235';
-const urlPrefix = 'http://192.168.1.3:8001';
+const urlPrefix = '//192.168.0.109:8001';
+
 @Injectable({
   providedIn: 'root'
 })

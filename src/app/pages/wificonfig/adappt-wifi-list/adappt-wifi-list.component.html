@@ -1,0 +1,43 @@
+<!-- <mat-accordion fxFlex class="adappt-accordion-headers-align">
+    <mat-expansion-panel class="adappt-expansion" *ngFor="let wifi of wifiList" hideToggle>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                {{wifi.ssid}}
+            </mat-panel-title>
+            <mat-panel-description>
+                <div *ngIf="wifi.saved && !wifi.connected">
+                    Saved
+                </div>
+                <div *ngIf="wifi.connected">{{wifi.ip}}</div>
+                <div *ngIf="!wifi.saved && !wifi.connected">
+                    Not Saved
+                </div>
+                <mat-icon [ngClass]="wifiStatus(wifi)">{{getWifiIcon(wifi)}}</mat-icon>
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="container-padding">
+            <div *ngIf="wifi.saved && !wifi.connected" fxLayoutGap="20px" fxLayoutAlign="center center">
+                <button class="input-margin md-button" (click)="connectWifi(wifi)" mat-raised-button color="primary" mat-button>Connect</button>
+                <button class="input-margin md-button" (click)="removeWifi(wifi)" mat-raised-button color="warn" mat-button>Remove</button>
+            </div>
+            <div *ngIf="wifi.connected && wifi.saved">
+                <form [formGroup]="wifiFormGroup" (ngSubmit)="setStaticIp(wifi)" fxLayoutGap="20px" fxLayoutAlign="center center">
+                    <mat-form-field class="input-margin no-padding" appearance="outline">
+                        <mat-label>IP Address</mat-label>
+                        <input matInput [(ngModel)]="wifi.ip" formControlName="ipAddress" placeholder="IP Address" type="text" name="ipAddress" required>
+                        <mat-error *ngIf="wifiForm.ipAddress.invalid">IP Address is invalid!</mat-error>
+                    </mat-form-field>
+                    <button class="input-margin md-button" type="submit" [disabled]="wifiFormGroup.invalid || wifiFormGroup.disabled" mat-raised-button color="primary">Set Static IP</button>
+                    <button class="input-margin md-button" (click)="disconnectWifi(wifi)" type="button" mat-raised-button color="warn" mat-button>Disconnect</button>
+                </form>
+            </div>
+            <div *ngIf="!wifi.saved && !wifi.connected" fxFlex fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center center">
+                <mat-form-field appearance="outline" class="no-padding">
+                    <mat-label>Password</mat-label>
+                    <input [(ngModel)]="wifi.password" type="text" name="password" matInput placeholder="Password">
+                </mat-form-field>
+                <button class="input-margin md-button" (click)="saveAndConnect(wifi)" mat-raised-button color="primary" mat-button>Connect & Save</button>
+            </div>
+        </div>
+    </mat-expansion-panel>
+</mat-accordion> -->

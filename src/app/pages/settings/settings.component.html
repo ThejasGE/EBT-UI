@@ -7,7 +7,7 @@
                     <!-- <div class=" row"> -->
                     <div class=" text-left">
                         <!-- <h4 class=" card-category">Settings</h4> -->
-                        <h2 class=" card-title"> <i class=" tim-icons icon-settings-gear-63 text-success"> </i>Wait
+                        <h2 class=" card-title"> <i class=" tim-icons icon-settings-gear-63 text-success"> </i> Wait
                             Time</h2>
                     </div>
                     <!-- <div class=" col-sm-6"> -->
@@ -56,30 +56,36 @@
                 <div class=" card-body">
 
                     <div class=" row">
-                        <div class=" col-md-4 pr-md-1">
+                        <!-- <div class=" col-md-4 pr-md-1">
                             <div class=" form-group">
-                                <h4> Enter Capacity:</h4>
-                                <input matTooltip="Info about the action" class=" form-control" placeholder="10"
-                                    type="text" />
+                                <h4><i matTooltip="Enter the Capacity of the Room to be filled"
+                                        class=" tim-icons icon-alert-circle-exc text-success"> </i> Enter Capacity:</h4>
+                                <input title="Enter the Capacity of the Room to be filled" class=" form-control"
+                                    [(ngModel)]="capacity" placeholder="10" type="text" />
                             </div>
-                            <button matTooltip="Info about the action" class="btn btn-success btn-sm"
-                                ng-click="updateEntranceData()">Update
+                            <button class="btn btn-success btn-sm" (click)="updateCapacity()">Update
+                            </button>
+                        </div> -->
+                        <div class=" col-md-5 pr-md-1">
+                            <div class=" form-group">
+                                <h4><i matTooltip="Enter the Minimum Wait Time the person should wait"
+                                        class=" tim-icons icon-alert-circle-exc text-success"> </i> Minimum Wait Time:
+                                </h4>
+                                <input title="Enter the Minimum Wait Time the person should wait" class=" form-control"
+                                    [(ngModel)]="min_wait_time" placeholder="5" type="text" />
+                            </div>
+                            <button class="btn btn-success btn-sm" (click)="updateMinWaitTime()">Update
                             </button>
                         </div>
-                        <div class=" col-md-3 px-md-1">
+                        <div class=" col-md-5 px-md-1">
                             <div class=" form-group">
-                                <h4> Min Wait Time:</h4>
-                                <input class=" form-control" placeholder="5" type="text" />
+                                <h4><i matTooltip="Enter the Maximum Wait Time the person should wait"
+                                        class=" tim-icons icon-alert-circle-exc text-success"> </i> Maximum Wait Time:
+                                </h4>
+                                <input title="Enter the Maximum Wait Time the person should wait" class=" form-control"
+                                    [(ngModel)]="max_wait_time" placeholder="45" type="text" />
                             </div>
-                            <button class="btn btn-success btn-sm" ng-click="updateEntranceData()">Update
-                            </button>
-                        </div>
-                        <div class=" col-md-4 pl-md-1">
-                            <div class=" form-group">
-                                <h4>Max Wait Time</h4>
-                                <input class=" form-control" placeholder="45" type="email" />
-                            </div>
-                            <button class="btn btn-success btn-sm" ng-click="updateEntranceData()">Update
+                            <button class=" btn btn-success btn-sm" (click)="updateMaxWaitTime()">Update
                             </button>
                         </div>
                     </div>
@@ -100,7 +106,7 @@
                                 <input matInput placeholder="Enter Capacity" value="15">
                             </mat-form-field> -->
                     <!-- < fxlayout="row" class="d-flex justify-content-center" style="padding-top: 5%;" fxflex> -->
-                    <!-- <button class="btn btn-success btn-sm" ng-click="updateEntranceData()">Update
+                    <!-- <button class="btn btn-success btn-sm" (click)="updateEntranceData()">Update
                             </button>
 
                         </div>
@@ -121,7 +127,7 @@
                                 <input matInput placeholder="Enter Capacity" value="15">
                             </mat-form-field> -->
                     <!-- < fxlayout="row" class="d-flex justify-content-center" style="padding-top: 5%;" fxflex> -->
-                    <!-- <button class="btn btn-success btn-sm" ng-click="updateEntranceData()">Update
+                    <!-- <button class="btn btn-success btn-sm" (click)="updateEntranceData()">Update
                             </button>
 
                         </div>
@@ -142,7 +148,7 @@
                     <!-- <div class=" row"> -->
                     <div class="text-left">
                         <!-- <h4 class=" card-category">Settings</h4> -->
-                        <h2 class=" card-title"><i class=" tim-icons icon-settings-gear-63 text-success"> </i>Counter
+                        <h2 class=" card-title"><i class=" tim-icons icon-settings-gear-63 text-success"> </i> Counter
                             Settings</h2>
                     </div>
                     <!-- <div class=" col-sm-6"> -->
@@ -191,34 +197,43 @@
                 <div class=" card-body">
 
                     <div class=" row">
-                        <div class=" col-md-4 pr-md-2">
+                        <div class=" col-md-5 pr-md-1">
                             <div class=" form-group">
-                                <h4> Percentage Capacity:</h4>
-                                <input class=" form-control" placeholder="10" type="text" />
+                                <h4><i matTooltip="Enter the Percentage Capacity where the People could Occupy"
+                                        class=" tim-icons icon-alert-circle-exc text-success"> </i> Percentage Capacity:
+                                </h4>
+                                <input title="Enter the Percentage Capacity where the People could Occupy"
+                                    class=" form-control" [(ngModel)]="percent_cap" placeholder="10" type="text" />
                             </div>
-                            <button class="btn btn-success btn-sm" ng-click="updateEntranceData()">Update
+                            <button class="btn btn-success btn-sm" (click)="updatePercentageCap()">Update
                             </button>
                         </div>
-                        <div class=" col-md-3 px-md-1">
+                        <div class=" col-md-5 px-md-1">
                             <div class=" form-group">
-                                <h4> Minutes InActive:</h4>
-                                <input class=" form-control" placeholder="5" type="text" />
+                                <h4><i matTooltip="Enter the Minutes InActive Time to reset the Occupancy Count"
+                                        class=" tim-icons icon-alert-circle-exc text-success"> </i> Minutes InActive:
+                                </h4>
+                                <input title="Enter the Minutes InActive Time to reset the Occupancy Count"
+                                    class=" form-control" [(ngModel)]="minutes_inactive" placeholder="5" type="text" />
                             </div>
-                            <button class="btn btn-success btn-sm" ng-click="updateEntranceData()">Update
+                            <button class="btn btn-success btn-sm" (click)="updateMinutesInactive()">Update
                             </button>
                         </div>
-                        <div class=" col-md-4 pl-md-1">
+                        <!-- <div class=" col-md-4 pl-md-1">
                             <div class="form-group">
-                                <h4 for="exampleFormControlSelect1">Select Entrance Points:</h4>
-                                <select class="form-control" id="exampleFormControlSelect1">
-                                    <option style="color: black;">Meeting Room</option>
-                                    <option style="color: black;">Conference Room</option>
+                                <h4 for="exampleFormControlSelect1"><i matTooltip="Select the Location"
+                                        class=" tim-icons icon-alert-circle-exc text-success"> </i> Select Location:
+                                </h4>
+                                <select title="Select the Location" class="form-control" id="exampleFormControlSelect1"
+                                    [(ngModel)]="location">
+                                    <option style="color: black;" value="meeting Room">Meeting Room</option>
+                                    <option style="color: black;" value="conference Room">Conference Room</option>
 
                                 </select>
                             </div>
-                            <button class="btn btn-success btn-sm" ng-click="updateEntranceData()">Update
+                            <button class="btn btn-success btn-sm" (click)="updateLocationName()">Update
                             </button>
-                        </div>
+                        </div> -->
                     </div>
 
                     <!-- <md-card-content>
@@ -236,7 +251,7 @@
                                 <input matInput placeholder="Enter Capacity" value="15">
                             </mat-form-field> -->
                     <!-- < fxlayout="row" class="d-flex justify-content-center" style="padding-top: 5%;" fxflex> -->
-                    <!-- <button class="btn btn-success btn-sm" ng-click="updateEntranceData()">Update
+                    <!-- <button class="btn btn-success btn-sm" (click)="updateEntranceData()">Update
                             </button>
 
                         </div>
@@ -256,7 +271,7 @@
                                 </optgroup>
                             </select> -->
                     <!-- < fxlayout="row" class="d-flex justify-content-center" style="padding-top: 5%;" fxflex> -->
-                    <!-- <button class="btn btn-success btn-sm" ng-click="updateEntranceData()">Update
+                    <!-- <button class="btn btn-success btn-sm" (click)="updateEntranceData()">Update
                             </button>
 
                         </div>
@@ -290,27 +305,31 @@
                     </h2>
                 </div>
                 <div class=" card-body">
-                    <md-card-content>
-                        <div class=" row">
-                            <div class=" col-md-5 pr-md-1">
-                                <div class=" form-group">
-                                    <h4> Model Path:</h4>
-                                    <input class=" form-control" placeholder="" type="text" />
-                                </div>
-                                <button class="btn btn-success btn-sm" ng-click="updateEntranceData()"> <i
-                                        class=" tim-icons icon-cloud-upload-94 text-danger-states"></i>Upload
-                                </button>
+
+                    <div class=" row">
+                        <div class=" col-md-5 pr-md-1">
+                            <div class=" form-group">
+                                <h4><i matTooltip="Name of Current Model"
+                                        class=" tim-icons icon-alert-circle-exc text-success"> </i> Current Model:
+                                </h4>
+                                <input title="Upload Current Model File" class=" form-control" placeholder=""
+                                    type="text" />
                             </div>
-                            <div class=" col-md-5 px-md-1">
-                                <div class=" form-group">
-                                    <h4>Label Path:</h4>
-                                    <input class=" form-control" placeholder="" type="text" />
-                                </div>
-                                <button class="btn btn-success btn-sm" ng-click="updateEntranceData()"> <i
-                                        class=" tim-icons icon-cloud-upload-94 text-danger-states"></i>Upload
-                                </button>
+                            <!-- <button class="btn btn-success btn-sm"> <i
+                                    class=" tim-icons icon-cloud-upload-94 text-danger-states"></i>Upload
+                            </button> -->
+                        </div>
+                        <div class=" col-md-5 px-md-1">
+                            <div class=" form-group">
+                                <h4><i matTooltip="Upload New Model File"
+                                        class=" tim-icons icon-alert-circle-exc text-success"> </i> New Model:</h4>
+                                <input title="Upload New Model File" class=" form-control" placeholder="" type="text" />
                             </div>
-                            <!-- <div class=" col-md-4 pl-md-1">
+                            <button class="btn btn-success btn-sm"> <i
+                                    class=" tim-icons icon-cloud-upload-94 text-danger-states"></i>Upload
+                            </button>
+                        </div>
+                        <!-- <div class=" col-md-4 pl-md-1">
                                 <div class="form-group">
                                     <h4 for="exampleFormControlSelect1">Select Entrance Points:</h4>
                                     <select class="form-control" id="exampleFormControlSelect1">
@@ -319,11 +338,11 @@
 
                                     </select>
                                 </div>
-                                <button class="btn btn-success btn-sm" ng-click="updateEntranceData()">Update
+                                <button class="btn btn-success btn-sm" (click)="updateEntranceData()">Update
                                 </button>
                             </div> -->
-                        </div>
-                    </md-card-content>
+                    </div>
+
                     <!-- <md-card-content>
                         <div class=" card-header">
                             <h4 class=" card-title">Label Path:</h4>
@@ -340,7 +359,7 @@
                             </mat-form-field> -->
                     <!-- < fxlayout="row" class="d-flex justify-content-center" style="padding-top: 5%;" fxflex> -->
                     <!-- <i class=" tim-icons icon-settings text-danger-states"></i> -->
-                    <!-- <button class="btn btn-success btn-sm" ng-click="updateEntranceData()"> <i
+                    <!-- <button class="btn btn-success btn-sm" (click)="updateEntranceData()"> <i
                                     class=" tim-icons icon-cloud-upload-94 text-danger-states"></i>Upload
                             </button>
 
@@ -360,35 +379,40 @@
                     </h2>
                 </div>
                 <div class=" card-body">
-                    <md-card-content>
-                        <div class=" row">
-                            <div class=" col-md-5 pr-md-1">
-                                <div class=" form-group">
-                                    <h4> Frequency:</h4>
-                                    <input class=" form-control" placeholder="10" type="text" />
-                                </div>
-                                <button class="btn btn-success btn-sm" ng-click="updateEntranceData()">Set
-                                </button>
+
+                    <div class=" row">
+                        <div class=" col-md-5 pr-md-1">
+                            <div class=" form-group">
+                                <h4><i matTooltip="Set Frequency Range"
+                                        class=" tim-icons icon-alert-circle-exc text-success"> </i> Frequency:</h4>
+                                <input title="Set Frequency Range" class=" form-control" [(ngModel)]="frequency"
+                                    placeholder="10" type="text" />
                             </div>
-                            <div class=" col-md-5 px-md-1">
-                                <div class=" form-group">
-                                    <h4> Buffer Frames:</h4>
-                                    <input class=" form-control" placeholder="5" type="text" />
-                                </div>
-                                <button class="btn btn-success btn-sm" ng-click="updateEntranceData()">Set
-                                </button>
+                            <button class="btn btn-success btn-sm" (click)="updateFrequency()">Set
+                            </button>
+                        </div>
+                        <div class=" col-md-5 px-md-1">
+                            <div class=" form-group">
+                                <h4><i matTooltip="Set Number of Buffer Frames per second"
+                                        class=" tim-icons icon-alert-circle-exc text-success"> </i> Buffer Frames:
+                                </h4>
+                                <input title="Set Number of Buffer Frames per second" class=" form-control"
+                                    [(ngModel)]="buffer_frames" placeholder="5" type="text" />
                             </div>
-                            <!-- <div class=" col-md-4 pl-md-1">
+                            <button class="btn btn-success btn-sm" (click)="updateBufferFrames()">Set
+                            </button>
+                        </div>
+                        <!-- <div class=" col-md-4 pl-md-1">
                                 <div class=" form-group">
                                     <h4>Max Wait Time</h4>
                                     <input class=" form-control" placeholder="45" type="email" />
                                 </div>
-                                <button class="btn btn-success btn-sm" ng-click="updateEntranceData()">Update
+                                <button class="btn btn-success btn-sm" (click)="updateEntranceData()">Update
                                 </button>
                             </div> -->
-                        </div>
+                    </div>
 
-                    </md-card-content>
+
                     <!-- <md-card-content>
                         <div class=" card-header">
                             <h4 class=" card-title">Buffer Frames:</h4>
@@ -405,7 +429,7 @@
                             </mat-form-field> -->
                     <!-- < fxlayout="row" class="d-flex justify-content-center" style="padding-top: 5%;" fxflex> -->
                     <!-- <i class=" tim-icons icon-settings text-danger-states"></i> -->
-                    <!-- <button class="btn btn-success btn-sm" ng-click="updateEntranceData()">Set
+                    <!-- <button class="btn btn-success btn-sm" (click)="updateEntranceData()">Set
                             </button>
 
                         </div>
@@ -422,38 +446,39 @@
                 <div class=" card-header">
                     <!-- <h4 class=" card-category">Settings</h4> -->
                     <h2 class=" card-title">
-                        <i class=" tim-icons icon-settings text-success"> </i>Tracking:
+                        <i class=" tim-icons icon-settings text-success"> </i> Tracking:
                     </h2>
                 </div>
                 <div class=" card-body">
-                    <md-card-content>
-                        <div class=" row">
-                            <div class=" col-md-4 pr-md-1">
-                                <div class=" form-group">
-                                    <h4> Max Days:</h4>
-                                    <input class=" form-control" placeholder="10" type="text" />
-                                </div>
-                                <button class="btn btn-success btn-sm" ng-click="updateEntranceData()">Update
-                                </button>
+
+                    <div class=" row">
+                        <!-- <div class=" col-md-4 pr-md-1">
+                            <div class=" form-group">
+                                <h4> Max Days:</h4>
+                                <input class=" form-control" [(ngModel)]="max_days" placeholder="10" type="text" />
                             </div>
-                            <div class=" col-md-3 px-md-1">
-                                <div class=" form-group">
-                                    <h4> Min Distance:</h4>
-                                    <input class=" form-control" placeholder="5" type="text" />
-                                </div>
-                                <button class="btn btn-success btn-sm" ng-click="updateEntranceData()">Update
-                                </button>
+                            <button class="btn btn-success btn-sm" (click)="updateMaxDays()">Update
+                            </button>
+                        </div> -->
+                        <div class=" col-md-5 pr-md-1">
+                            <div class=" form-group">
+                                <h4> Max Distance:</h4>
+                                <input class=" form-control" [(ngModel)]="max_distance" placeholder="5" type="text" />
                             </div>
-                            <div class=" col-md-4 pl-md-1">
-                                <div class=" form-group">
-                                    <h4>Max Disappeared</h4>
-                                    <input class=" form-control" placeholder="45" type="email" />
-                                </div>
-                                <button class="btn btn-success btn-sm" ng-click="updateEntranceData()">Update
-                                </button>
-                            </div>
+                            <button class="btn btn-success btn-sm" (click)="updateMaxDistance()">Update
+                            </button>
                         </div>
-                    </md-card-content>
+                        <div class=" col-md-5 px-md-1">
+                            <div class=" form-group">
+                                <h4>Max Disappeared</h4>
+                                <input class=" form-control" [(ngModel)]="max_disappeared" placeholder="45"
+                                    type="email" />
+                            </div>
+                            <button class="btn btn-success btn-sm" (click)="updateMaxDisappeared()">Update
+                            </button>
+                        </div>
+                    </div>
+
                     <!-- <md-card-content>
                         <div class=" card-header">
                             <h4 class=" card-title">Max Days:</h4>
@@ -469,7 +494,7 @@
                                 <input matInput placeholder="Enter Capacity" value="15">
                             </mat-form-field> -->
                     <!-- < fxlayout="row" class="d-flex justify-content-center" style="padding-top: 5%;" fxflex> -->
-                    <!-- <button class="btn btn-success btn-sm" ng-click="updateEntranceData()">Update
+                    <!-- <button class="btn btn-success btn-sm" (click)="updateEntranceData()">Update
                             </button>
 
                         </div>
@@ -490,7 +515,7 @@
                                 <input matInput placeholder="Enter Capacity" value="15">
                             </mat-form-field> -->
                     <!-- < fxlayout="row" class="d-flex justify-content-center" style="padding-top: 5%;" fxflex> -->
-                    <!-- <button class="btn btn-success btn-sm" ng-click="updateEntranceData()">Update
+                    <!-- <button class="btn btn-success btn-sm" (click)="updateEntranceData()">Update
                             </button>
 
                         </div>

@@ -16,14 +16,13 @@ Created using IcoMoon - icomoon.io
 
 
 /*------------------------
-	base class definition
+    base class definition
 -------------------------*/
-
 .tim-icons {
     display: inline-block;
     font: normal normal normal 1em/1 'Nucleo';
     vertical-align: middle;
-    speak: none;
+    /* speak: none; */
     text-transform: none;
     /* Better Font Rendering */
     -webkit-font-smoothing: antialiased;
@@ -33,19 +32,22 @@ Created using IcoMoon - icomoon.io
 .font-icon-detail {
     text-align: center;
     padding: 45px 0 30px;
-    border: 1px solid #e44cc4;
+    border: 1px solid #E44CC4;
     border-radius: .1875rem;
     margin: 15px 0;
     min-height: 168px;
 }
 
 .font-icon-detail1 {
-    text-align: right!important;
-    font-size: 16px!important;
-    /* padding: 45px 0 30px; */
-    /* border: 1px solid #e44cc4; */
+    text-align: left !important;
+    font-size: 4vw !important;
 }
 
+.font-icon-detail2 {
+    text-align: left !important;
+    font-size: x-large !important;
+    padding-top: 46px;
+}
 
 /* .font-icon-detail2 {
 
@@ -121,6 +123,7 @@ Created using IcoMoon - icomoon.io
     0% {
         -webkit-transform: rotate(0deg);
     }
+
     100% {
         -webkit-transform: rotate(360deg);
     }
@@ -130,6 +133,7 @@ Created using IcoMoon - icomoon.io
     0% {
         -moz-transform: rotate(0deg);
     }
+
     100% {
         -moz-transform: rotate(360deg);
     }
@@ -143,6 +147,7 @@ Created using IcoMoon - icomoon.io
         -o-transform: rotate(0deg);
         transform: rotate(0deg);
     }
+
     100% {
         -webkit-transform: rotate(360deg);
         -moz-transform: rotate(360deg);

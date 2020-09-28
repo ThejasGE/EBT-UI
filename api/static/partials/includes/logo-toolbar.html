@@ -1,0 +1,31 @@
+<md-toolbar layout="row" layout-align="center center" class="dark-header" md-whiteframe="5">
+    <div class="adappt-logo-white hide-sm hide-xs"></div>
+    <div class="adappt-icon hide-gt-sm"></div>  
+    <button title="Settings" class="btn" ng-click="toggleSidenav()"><i class="fa fa-bars"></i>
+        <md-tooltip md-direction="bottom " class="md-block md-tooltip md-tooltip-bottom ">Menu</md-tooltip></button>
+    <div layout="row" flex layout-align="center center">
+        <h2 md-truncate>Commission Page</h2>
+    </div>
+    <!-- <md-button class="md-icon md-icon-button md-primary" ng-click="gotofirmware()">
+        <i class="material-icons" md-menu-origin> settings </i>
+    </md-button> -->
+    <md-menu-bar layout="row" layout-align="center center">
+        <md-menu>
+            <md-button class="md-icon md-icon-button md-primary" ng-click="$mdMenu.open()">
+                <i class="material-icons" md-menu-origin> account_circle </i>
+            </md-button>
+            <md-menu-content width="2">
+                <md-menu-item ng-hide="issettings2page()">
+                    <md-button ui-sref="settingsdashboard"> Settings </md-button>
+                </md-menu-item>
+                <md-menu-item ng-hide="issettingsbackpage()">
+                    <md-button ui-sref="dashboard"> Back </md-button>
+                </md-menu-item>
+                <md-menu-item>
+                    <md-button ng-click="logout()" ui-sref="login"> Logout </md-button>
+                </md-menu-item>
+
+            </md-menu-content>
+        </md-menu>
+    </md-menu-bar>
+</md-toolbar>

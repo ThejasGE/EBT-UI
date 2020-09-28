@@ -1,0 +1,141 @@
+<!-- <div ng-controller="dashCtrl" layout="column" style="height: 500px;" ng-cloak> -->
+
+    <!-- <section layout="row" flex> -->
+
+      <md-sidenav flex="15" md-component-id="left" class="md-sidenav-left md-whiteframe-glow-z1 dark-side-nav"
+                  md-whiteframe="4" md-disable-close-events>
+        <div layout="column" flex="105">
+
+        <md-toolbar class="md-theme-indigo">
+          <!-- <h1 class="md-toolbar-tools">More Details</h1> -->
+          <div class="adappt-logo-white hide-sm hide-xs"></div>
+      <div class="adappt-icon hide-gt-sm"></div>
+      <hr class="dark-line"/>
+        </md-toolbar>
+
+        <md-content class="dark-line dark-side-nav1">
+          <!-- <p>
+            This sidenav is showing the backdrop, but users can't close the
+             sidenav by clicking on the backdrop or pressing the 'Escape' key.
+          </p> -->
+          <md-button ui-sref="homepage" class="" style="align-content: left;">
+            <i class="fa fa-home"></i>
+          Home&nbsp;&nbsp;&nbsp;
+          </md-button>
+        </md-content>
+        <md-content class="dark-line dark-side-nav1">
+          
+          <md-button ui-sref="analytics" class="">
+            <i class="fa fa-bar-chart"></i>
+          Analytics
+          </md-button>
+        </md-content>
+        <md-content class="dark-line dark-side-nav1">
+          
+          <md-button ui-sref="dashboard" class="">
+            <i class="fa fa-puzzle-piece"></i>
+          Sensor Commission
+          </md-button>
+        </md-content>
+        <md-content class="dark-line dark-side-nav1">
+          
+          <md-button ui-sref="network" class="">
+            <i class="fa fa-wifi"></i>
+          Wifi Network
+          </md-button>
+        </md-content>
+        <md-content class="dark-line dark-side-nav1">
+          
+          <md-button ui-sref="settingsdashboard" class="">
+            <i class="fa fa-cogs"></i>
+          Settings
+          </md-button>
+          <!-- <md-select placeholder="Select Settings" class="no-margin-padding">
+            <md-optgroup label="Settings">
+                
+                <md-option value="horlinePoints">Model Settings</md-option>
+                <md-option value="verlinePoints">Counter Settings</md-option>
+                
+            </md-optgroup>
+        </md-select> -->
+        </md-content>
+        
+        <md-content class="dark-line dark-side-nav1">
+          
+          <md-button ng-click="logout()" class="">
+            <i class="fa fa-sign-out"></i>
+          Logout
+          </md-button>
+        </md-content>
+        <md-content class="dark-line dark-side-nav1">
+          
+          <md-button ng-click="toggleSidenav()" class="" style="align-content: left;">
+            <i class="fa fa-times-circle"></i>
+          Close&nbsp;&nbsp;&nbsp;
+          </md-button>
+        </md-content>
+        </div>
+      </md-sidenav>
+
+      <!-- <md-content flex layout-padding>
+
+        <div layout="column" layout-align="top top">
+          <button class="btn" ng-click="toggleSidenav()"><i class="fa fa-bars"></i></button>
+          <p>
+            Developers can disable closing the sidenav on backdrop clicks and
+             'Escape' key events.<br/>
+          </p>
+
+          <div>
+            <md-button ng-click="toggleSidenav()" class="md-raised md-primary">
+              Open Sidenav
+            </md-button>
+          </div>
+
+        </div>
+        
+
+      </md-content> -->
+    
+  
+<!-- 
+    </section>
+
+  </div> -->
+  
+<!-- <md-sidenav flex="15" md-component-id="left" class="md-sidenav-left md-whiteframe-glow-z1 sidenavLength" md-is-locked-open="$mdMedia('gt-xs')">
+  <div layout="column" flex="90">
+      <div class="adappt-crbs-logo crbs-logo-container" ui-sref="crbsDashboard.myBookings"></div>
+      <div layout="column" layout-align="center center" class="iconMargin cursorPointer" ui-sref="crbsDashboard.myBookings" layout-wrap>
+          <img src="../img/bookings.svg" class="bookingsiconSize" />
+          <strong class="iconStyle">My Bookings</strong>
+      </div>
+      <div layout="column" layout-align="center center" class="iconMargin cursorPointer" ui-sref="crbsDashboard.layoutBooking" layout-wrap>
+          <img src="../img/map-location.svg" class="bookingsiconSize" />
+          <strong class="iconStyle">Layout Book</strong>
+      </div>
+      <div layout="column" layout-align="center center" class="iconMargin cursorPointer" ui-sref="crbsDashboard.multiCity" layout-wrap>
+          <img src="../img/bookings.svg" class="bookingsiconSize" />
+          <strong class="iconStyle">Book Room</strong>
+      </div>
+      <div layout="column" layout-align="center center" class="iconMargin cursorPointer" ui-sref="crbsDashboard.bookDesk" layout-wrap>
+          <img src="../img/desk.svg" class="bookingsiconSize" />
+          <strong class="iconStyle">Book Desk</strong>
+      </div>
+      <div layout="column" layout-align="center center" class="iconMargin cursorPointer" ui-sref="crbsDashboard.bookParking" layout-wrap>
+          <img src="../img/park.png" class="bookingsiconSize" />
+          <strong class="iconStyle">Book Parking</strong>
+      </div>
+      <div layout="column" layout-align="center center" class="iconMargin cursorPointer" ui-sref="commissionsettings" ng-if="isAdmin" layout-wrap>
+          <img src="../img/settings.svg" class="bookingsiconSize" />
+          <strong class="iconStyle">Settings</strong>
+      </div>
+      <div layout="row" layout-align="center center" class=" cursorPointer" ng-if="isAdmin" ui-sref="index.crbsAdminDashboard" flex="5">
+          <i class="material-icons menu2 text-white" style="margin:0px;position:absolute;border:1px solid #FFF;color:#FFF;padding:5px;border-radius:50%;">keyboard_backspace</i>
+      </div>
+  </div>
+  <div layout="row" layout-align="center center" class="iconMargin cursorPointer" layout-wrap style="position:fixed;bottom:0;background:#2a2a2a;margin:5px;" ng-click="logout()">
+      <img src="../img/exit.svg" class="bookingsiconSize" />
+      <strong class="iconStyle">Sign Out</strong>
+  </div>
+</md-sidenav> -->

@@ -5,13 +5,13 @@ from datetime import datetime,timedelta
 from werkzeug.security import generate_password_hash, check_password_hash
 
 class DB:
-    def __init__(self):
-        self.path='db/data.db'
+    def __init__(self,path='db/data.db'):
+        self.path=path
         #self.conn = connectToDb()      
         
      
     def connectToDb(self):
-        return sqlite3.connect('db/data.db')
+        return sqlite3.connect(self.path)
     
     #return sqlite3.connect(os.path.abspath('db/footfallCounter.db'))
 
@@ -33,6 +33,25 @@ class DB:
             conn.execute(query)
             conn.commit()
             conn.close()
+
+            
+    def readDatabyDate(self,min_date=None,max_date=None):
+     
+            conn = self.connectToDb()
+            if min_date and max_date:
+                query='SELECT ENTER,EXIT,FILL,FILL_PERC,WAIT,TIMESTAMP FROM peopleCounting WHERE TIMESTAMP between %s and %s' % (min_date.timestamp(),max_date.timestamp())
+            elif min_date and not max_date:
+                query='SELECT ENTER,EXIT,FILL,FILL_PERC,WAIT,TIMESTAMP FROM peopleCounting WHERE TIMESTAMP >= %s' % (min_date.timestamp())
+            elif not min_date and max_date:
+                query='SELECT ENTER,EXIT,FILL,FILL_PERC,WAIT,TIMESTAMP FROM peopleCounting WHERE TIMESTAMP <= %s' % (max_date.timestamp())
+            else:
+                query='SELECT ENTER,EXIT,FILL,FILL_PERC,WAIT,TIMESTAMP FROM peopleCounting'
+            cursor=conn.execute(query)
+            title=['enter','exit','fill','fill_perc','wait','timestamp']
+            rows = cursor.fetchall()
+            conn.close()
+            return rows,title
+
         
     def readDbLatestData(self):
         temp = {}

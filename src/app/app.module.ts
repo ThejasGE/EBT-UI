@@ -8,9 +8,9 @@ import { ToastrModule } from 'ngx-toastr';
 import { AppComponent } from "./app.component";
 import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.component";
 import { AuthLayoutComponent } from '../app/layouts/auth-layout/auth-layout.component';
-import { UserProfileSettingComponent } from "./layouts/user-profile-setting/user-profile-setting.component"
-import { CreateUserComponent } from './layouts/create-user/create-user.component';
-import { CreateCustomerComponent } from './layouts/create-customer/create-customer.component';
+// import { UserProfileSettingComponent } from "./layouts/user-profile-setting/user-profile-setting.component"
+// import { CreateUserComponent } from './layouts/create-user/create-user.component';
+// import { CreateCustomerComponent } from './layouts/create-customer/create-customer.component';
 import { HomedisplayComponent } from './layouts/homedisplay/homedisplay.component';
 import { WebSocketService } from './web-socket.service';
 import { NgxEasypiechartModule } from 'ngx-easypiechart';
@@ -122,13 +122,15 @@ import { from } from 'rxjs';
     MatDatepickerModule,
     MatMenuModule,
     FlexLayoutModule,
+
     NgxUiLoaderModule,
     NgxEasypiechartModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
 
 
   ],
-  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, UserProfileSettingComponent, CreateUserComponent, CreateCustomerComponent, NoRightClickDirectiveDirective, HomedisplayComponent],
+
+  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, NoRightClickDirectiveDirective, HomedisplayComponent],
   providers: [CustomerService, UserService, httpInterceptorProviders, WebSocketService],
   bootstrap: [AppComponent],
   schemas: [

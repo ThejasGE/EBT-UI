@@ -1,0 +1,356 @@
+
+<section layout="column" class="full-height" flex>
+    <div ng-include="'partials/includes/logo-toolbar.html'"></div>
+    <md-card flex md-whiteframe="8" layout-padding class="dark-side-back">
+        
+        <md-content layout="row">
+            <div ng-include="'partials/includes/sidenav.html'"></div>
+            <div flex="50">
+                <div layout-padding>
+                    <div class="border text-white">
+                        <h3>WIFI Settings: </h3>
+                    </div>
+                    <div class="border margin-top" style="height:137px">
+                        <div layout="row">
+                            <div flex class="padding border-right text-white" style="padding-right: 10px;height: 120px;">
+                                
+                                <h4>Search Available Network:</h4>
+                                <hr class="dark-line">
+                                <!-- <md-input-container class="no-margin-padding" style="max-width: 150px;">
+                                    <input maxlength="10" name="HostAddress" aria-label="None" ng-model="data.tracking.buffer_frames">
+                                </md-input-container> -->
+                                <md-button class="md-raised md-primary" ng-click=addNetwork()>Search</md-button>
+                            </div>
+                            <div flex class="padding text-white" style="padding-left: 10px;">
+                                <h4>Network Connected to Sensor</h4>
+                                <hr class="text-white">
+                                <md-input-container class="md-block">
+                                    <md-subheader class="md-no-sticky text-white">Networks Connected</md-subheader>
+                                <md-list-item name="network" class="md-2-line" ng-repeat="network in networks">
+                                    <div class="md-list-item-text">
+                                        <span>{{network}}</span>
+                                    </div>
+                                </md-list-item>
+                                </md-input-container>
+                            </div>
+                            <!-- <div id="#network" class="inline-block" style="display:none;"> -->
+                                <!-- <div flex class="padding" style="padding-left: 10px;">
+                                    <md-select placeholder="Search Network" ng-model="network">
+                                        <md-optgroup label="network">
+                                            <md-option ng-value="network" ng-repeat="network in network"></md-option>
+                                    </md-select>
+                                    </div> -->
+                        </div>
+                        </div>
+                    <div class="border text-white">
+                        <h3>Model Settings: </h3>
+                    </div>
+                    <div class="border margin-top" style="height:137px">
+                        <div layout="row">
+                            <div flex class="padding border-right text-white" style="padding-right: 10px;height: 120px;">
+                                <h4>Model_Path :</h4>
+                                <hr class="text-white">
+                                <md-input-container class="no-margin-padding" style="max-width: 150px;">
+                                    <input maxlength="4" name="HostAddress" aria-label="None" ng-model="hostAddress">
+                                </md-input-container>
+                                <md-button class="md-raised md-primary" ng-click="updateHostAddress()">Upload
+                                </md-button>
+                            </div>
+                            <div flex class="padding text-white" style="padding-left: 10px;">
+                                <h4>Label_Path :</h4>
+                                <hr class="text-white">
+                                <md-input-container class="no-margin-padding" style="max-width: 150px;">
+                                    <input maxlength="10" name="HostAddress" aria-label="None" ng-model="sensorName">
+                                </md-input-container>
+                                <md-button class="md-raised md-primary" ng-click="updateSensorName()">Upload</md-button>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="border text-white">
+                        <h3>Detection: </h3>
+                    </div>
+                    <div class="border margin-top text-white" style="height:137px">
+                        <div layout="row">
+                            <div flex class="padding border-right" style="padding-right: 10px;height: 120px;">
+                                <h4>Min_Confedence :</h4>
+                                <hr class="dark-line">
+                                <md-input-container class="no-margin-padding" style="max-width: 150px;">
+                                    <input name="HostAddress" aria-label="None" ng-model="data.detection.min_conf">
+                                </md-input-container>
+                                <md-button class="md-raised md-primary" ng-click="updateMinConfedence()">Update
+                                </md-button>
+                            </div>
+                            <div flex class="padding" style="padding-left: 10px;">
+                                <h4>Max-Boxes :</h4>
+                                <hr class="dark-line">
+                                <md-input-container class="no-margin-padding" style="max-width: 150px;">
+                                    <input name="HostAddress" aria-label="None" ng-model="data.detection.max_boxes">
+                                </md-input-container>
+                                <md-button class="md-raised md-primary" ng-click="updateMaxBoxes()">Update</md-button>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="border">
+                        <h3>Database: </h3>
+                    </div>
+                    <!-- <div class="border margin-top" style="height:55px"> -->
+                        <!-- <div layout="row"> -->
+                            <!-- <div layout="row" flex class="padding border-right" style="padding-right: 10px;height: 40px;">
+                                <h4>WIFI :</h4>
+                                <div class="md-switch .md-bar .md-thumb:before ">
+                                    <md-switch style="padding-bottom: 51px;margin-left: 26px;" ng-model="wifiselectedValue" ng-change="changeWifiValue()">
+
+                                    </md-switch>
+                                </div>
+
+                            </div>
+                            <div layout="row" flex class="padding" style="padding-left: 10px;height: 40px;">
+                                <h4>Cloud :</h4>
+                                <hr class="dark-line">
+                                <div class="md-switch .md-bar .md-thumb:before ">
+                                    <md-switch style="padding-bottom: 51px;margin-left: 26px;" ng-model="cloudselectedValue" ng-change="changeCloudValue()">
+
+                                    </md-switch>
+                                </div>
+                            </div> -->
+                            <!-- <div flex class="padding" style="padding-left: 10px;">
+                                <h4>Test-Video :</h4>
+                                <hr class="dark-line">
+                                <md-input-container class="no-margin-padding" style="max-width: 150px;">
+                                    <input maxlength="10" name="HostAddress" aria-label="None" ng-model="sensorName">
+                                </md-input-container>
+                                <md-button class="md-raised md-primary" ng-click="updateSensorName()">Update</md-button> -->
+                        <!-- </div> -->
+
+                    <!-- </div> -->
+                    <div class="border margin-top" style="height:55px">
+                        <div layout="row">
+                            <div layout="row" flex class="padding border-right" style="padding-right: 10px;height: 40px;">
+                                <h4>Capacity:</h4>
+                                <!-- <h4>Capacity :</h4> -->
+                                <hr class="dark-line">
+                                <md-input-container class="no-margin-padding" style="max-width: 102px;">
+                                    <input style="margin-top: -16px;
+                                    padding-left: 5px;
+                                    font-size: 100%;
+                                    padding-bottom: 6px;font-family: Roboto,Helvetica Neue,sans-serif;" maxlength="3" name="capacity" aria-label="None" ng-model="capacity">
+                                </md-input-container>
+                                <md-button class="md-raised md-primary" ng-click="updateCapacity()">Update</md-button>
+                            </div>
+                            <!-- <div layout="row" flex class="padding border-right" style="padding-right: 10px;height: 40px;">
+                                <h4>Gateway :</h4>
+                                <div class="md-switch .md-bar .md-thumb:before ">
+                                    <md-switch style="padding-bottom: 51px;margin-left: 26px;" ng-model="gatewayselectedValue" ng-change="changeGatewayValue()">
+
+                                    </md-switch>
+                                </div>
+
+                            </div> -->
+                            <div layout="row" flex class="padding" style="padding-left: 10px; height: 40px;">
+                                <h4>Max Days :</h4>
+                                <div>
+                                    <!-- <hr class="dark-line"> -->
+
+                                    <md-input-container class="no-margin-padding" style="max-width: 102px;
+                                    padding-left: 16px;">
+                                        <input style="margin-top: -16px;
+                                        padding-left: 5px;
+                                        font-size: 100%;
+                                        padding-bottom: 6px;font-family: Roboto,Helvetica Neue,sans-serif;
+                                    " maxlength="4" name="HostAddress" aria-label="None" ng-model="data.db.max_days">
+                                    </md-input-container>
+                                    <md-button style="margin-top:-32px;" class="md-raised md-primary" ng-click="updateMaxDays()">Update
+                                    </md-button>
+
+
+                                </div>
+
+                            </div>
+
+                            <!-- <div flex class="padding" style="padding-left: 10px;">
+                                <h4>Test-Video :</h4>
+                                <hr class="dark-line">
+                                <md-input-container class="no-margin-padding" style="max-width: 150px;">
+                                    <input maxlength="10" name="HostAddress" aria-label="None" ng-model="sensorName">
+                                </md-input-container>
+                                <md-button class="md-raised md-primary" ng-click="updateSensorName()">Update</md-button> -->
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+
+
+            </div>
+
+            <div flex=50 class="">
+                <div flex layout-padding>
+
+                    <div class="border">
+                        <h3>Motion Parameters: </h3>
+                    </div>
+                    <div class="border margin-top" style="height:137px">
+                        <div layout="row">
+                            <div flex class="padding border-right" style="padding-right: 10px;height: 120px;">
+                                <h4>Frequency:</h4>
+                                <hr class="dark-line">
+                                <md-input-container class="no-margin-padding" style="max-width: 150px;">
+                                    <input name="HostAddress" aria-label="None" ng-model="data.motion.frequency">
+                                </md-input-container>
+                                <md-button class="md-raised md-primary" ng-click="updateFrequency()">Set
+                                </md-button>
+                            </div>
+                            <div flex class="padding" style="padding-left: 10px;">
+                                <h4>Buffer Frames:</h4>
+                                <hr class="dark-line">
+                                <md-input-container class="no-margin-padding" style="max-width: 150px;">
+                                    <input maxlength="10" name="HostAddress" aria-label="None" ng-model="data.tracking.buffer_frames">
+                                </md-input-container>
+                                <md-button class="md-raised md-primary" ng-click="updateBufferFrames()">Update</md-button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border">
+                        <h3>Counter Settings: </h3>
+                    </div>
+                    <div class="border margin-top" style="height:137px">
+                        <div layout="row">
+                            <div flex class="padding border-right" style="padding-right: 10px;height: 120px;">
+                                <h4>Max Distance:</h4>
+                                <hr class="dark-line">
+                                <md-input-container class="no-margin-padding" style="max-width: 150px;">
+                                    <input maxlength="4" name="HostAddress" aria-label="None" ng-model="data.tracking.max_distance">
+                                </md-input-container>
+                                <md-button class="md-raised md-primary" ng-click="updateMaxDistance()">Update
+                                </md-button>
+                            </div>
+                            <div flex class="padding" style="padding-left: 10px;">
+                                <h4>Max Dissappeared :</h4>
+                                <hr class="dark-line">
+                                <md-input-container class="no-margin-padding" style="max-width: 150px;">
+                                    <input maxlength="10" name="HostAddress" aria-label="None" ng-model="data.tracking.max_disappeared">
+                                </md-input-container>
+                                <md-button class="md-raised md-primary" ng-click="updateMaxDissappeared();">Update</md-button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border margin-top" style="height:137px">
+                        <div layout="row">
+                            <div flex class="padding border-right" style="padding-right: 10px;height: 120px;">
+                                <h4>Minutes InActive:</h4>
+                                <hr class="dark-line">
+                                <md-input-container class="no-margin-padding" style="max-width: 150px;">
+                                    <input maxlength="10" name="HostAddress" aria-label="None" ng-model="data.counter.minutes_inactive">
+                                </md-input-container>
+                                <md-button class="md-raised md-primary" ng-click="updateMinutesInactive()">Update
+                                </md-button>
+                            </div>
+                            <div flex class="padding" style="padding-left: 10px;">
+                                <h4>Percent Cap:</h4>
+                                <hr class="dark-line">
+                                <md-input-container class="no-margin-padding" style="max-width: 150px;">
+                                    <input maxlength="5" name="HostAddress" aria-label="None" ng-model="data.counter.percent_cap">
+                                </md-input-container>
+                                <md-button class="md-raised md-primary" ng-click="updatePercentCapData()">Update</md-button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border margin-top" style="height:137px">
+                        <div layout="row">
+                            <div flex class="padding border-right" style="padding-right: 10px;height: 120px;">
+                                <h4>Min Wait Time:</h4>
+                                <hr class="dark-line">
+                                <md-input-container class="no-margin-padding" style="max-width: 150px;">
+                                    <input maxlength="10" name="HostAddress" aria-label="None" ng-model="data.counter.min_wait_time">
+                                </md-input-container>
+                                <md-button class="md-raised md-primary" ng-click="updateMinWaitTime()">Update
+                                </md-button>
+                            </div>
+                            <div flex class="padding" style="padding-left: 10px;">
+                                <h4>Max Wait Time:</h4>
+                                <hr class="dark-line">
+                                <md-input-container class="no-margin-padding" style="max-width: 150px;">
+                                    <input maxlength="10" name="HostAddress" aria-label="None" ng-model="data.counter.max_wait_time">
+                                </md-input-container>
+                                <md-button class="md-raised md-primary" ng-click="updateMaxWaitTime()">Update</md-button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- <div class="border margin-top" style="height:137px">
+                        <div layout="row">
+                            <div flex class="padding border-right" style="padding-right: 10px;height: 120px;">
+                                
+                                <h4>Buffer Frames :</h4>
+                                <hr class="dark-line">
+                                <md-input-container class="no-margin-padding" style="max-width: 150px;">
+                                    <input maxlength="10" name="HostAddress" aria-label="None" ng-model="data.tracking.buffer_frames">
+                                </md-input-container>
+                                <md-button class="md-raised md-primary" ng-click="updateBufferFrames()">Update</md-button>
+                            </div>
+                            <div flex class="padding" style="padding-left: 10px;">
+                                <h4>Check whether the sensor is connected WIFI/Hotspot:</h4>
+                                <hr class="dark-line"> -->
+                                <!-- <md-input-container class="no-margin-padding" style="max-width: 150px;">
+                                    <input maxlength="10" name="HostAddress" aria-label="None" ng-model="data.tracking.buffer_frames">
+                                </md-input-container> -->
+                                <!-- <md-button class="md-raised md-primary" ng-click="updateBufferFrames()">Check</md-button>
+                            </div>
+
+                        </div>
+                    </div> -->
+                   
+
+                            <!-- <div flex class="padding" style="padding-left: 10px;">
+                                <h4>Search Available Network :</h4>
+                                <hr class="dark-line"> -->
+                                <!-- <md-input-container class="no-margin-padding" style="max-width: 150px;">
+                                    <input maxlength="10" name="HostAddress" aria-label="None" ng-model="data.tracking.buffer_frames">
+                                </md-input-container> -->
+                                <!-- <br/>
+                                
+                                <md-button class="md-raised md-primary" ng-click="searchNetwork()">Search Network</md-button>
+                            </div> -->
+                        </div>
+                    </div>
+
+
+
+
+                            <!-- <div flex class="padding" style="padding-left: 10px;">
+                                <h4>Buffer Frames :</h4>
+                                <hr class="dark-line">
+                                <md-input-container class="no-margin-padding" style="max-width: 150px;">
+                                    <input maxlength="10" name="HostAddress" aria-label="None" ng-model="data.tracking.buffer_frames">
+                                </md-input-container>
+                                <md-button class="md-raised md-primary" ng-click="updateBufferFrames()">Update</md-button>
+                            </div>
+
+                        </div> -->
+                    
+
+
+
+                    <!-- <div class="border margin-top" style="height:123px">
+                        <h4>Location Details :</h4>
+                        <hr class="dark-line">
+                        <md-input-container class="no-margin-padding">
+                            <input type=number name="imageCount" aria-label="None" ng-model="imageCount" max="5000">
+                        </md-input-container>
+                        <md-button class="md-raised md-primary" ng-click="updateImageCount()">Set</md-button>
+                    </div> -->
+                </div>
+            </div>
+        </md-content>
+    </md-card>
+</section>
+
+<style>
+    md-menu-bar {
+        padding: 0 20px 0 0;
+    }
+</style>

@@ -1,3 +1,4 @@
+
 from flask import Flask, url_for, request, jsonify, render_template, make_response, send_file
 from flask_cors import CORS
 import os
@@ -10,12 +11,13 @@ import db
 from datetime import datetime
 import os.path
 from os import path
-
+import pandas as pd
 from werkzeug.security import generate_password_hash, check_password_hash
 import sqlite3
 import time
 import re
-
+from dateutil.parser import isoparse
+from datetime import datetime,timedelta
 
 app = Flask(__name__, static_url_path='')
 app.config['CORS_HEADERS'] = 'Content-Type'
@@ -35,6 +37,24 @@ cors = CORS(app, resources={r"*": {"origins": "*"}})
 def index():
     return render_template("index.html")
 
+# def liveCameraOff():
+#     cmd = "ps -aef | grep liveView.py | awk '{print $2}' | sudo xargs kill -9"
+#     subprocess.Popen(cmd, shell=True)
+
+def getLiveAppStatus():
+    cmd = "ps -aef | grep liveView.py | awk '{print $2}'"
+    # print os.popen("ps -aef | grep demopcamera.py").read()
+    pids = os.popen(cmd).read()
+    # print os.popen("ps -aef | grep demopcamera.py").read()
+    pids = pids.split()
+    print(pids)
+    if(len(pids) > 2):
+        print("true")
+        return True
+    else:
+        print("false")
+        return False
+
 def liveCameraOff():
     cmd = "ps -aef | grep liveView.py | awk '{print $2}' | sudo xargs kill -9"
     subprocess.Popen(cmd, shell=True)
@@ -43,9 +63,9 @@ def liveCameraOff():
 def liveCameraOn():
     cmd = "ps -aef | grep liveView.py | awk '{print $2}' | sudo xargs kill -9"
     subprocess.Popen(cmd, shell=True)
-    cmd = "ps -aef | grep model_tracking.py | awk '{print $2}' | sudo xargs kill -9"
+    cmd = "ps -aef | grep yolo_opencv.py | awk '{print $2}' | sudo xargs kill -9"
     subprocess.Popen(cmd, shell=True)
-    cmd = "nohup python /home/pi/tf_inference/liveView.py &"
+    cmd = "nohup python /home/pi/Arraystorm/liveView.py &"
     subprocess.Popen(cmd, shell=True)
 
 @app.route('/login', methods=['POST'])
@@ -103,15 +123,34 @@ def CreateWifiConfig(SSID, password):
 
   print("Wifi config added")
 
+@app.route('/startLiveCamera', methods=['GET'])
+def startLiveCamera():
+    liveCameraOn()
+    status = getLiveAppStatus()
+    if(status):
+        return jsonify(msg="Live view started!"), 200
+    else:
+        return jsonify(err="Camera busy!!. Please try after 1 minute!"), 400
+
+
+@app.route('/stopLiveCamera', methods=['GET'])
+def stopLiveCamera():
+    liveCameraOff()
+    status = getLiveAppStatus()
+    # if(not status):
+    # liveCameraOff()
+    return jsonify(msg="Live view stopped!"), 200
+    # else:
+    # return jsonify(err="Unable to stop live view. Please try again. Else refresh webpage!"), 400
+
+
 @app.route('/getCameraData', methods=['GET'])
 def getCameraData():
-        #image=np.load('db/data.npy')
-        #encodedImage = base64.encodestring(image)
-        #return encodedImage
-    with open("web/static/pcImg/pcamera.jpg", "rb") as dataUrl:
+    with open("/home/pi/Arraystorm/static/pcImg/pcamera.jpg", "r") as dataUrl:
         image = dataUrl.read()
         encodedImage = base64.encodestring(image)
         return encodedImage
+
 
 @app.route('/checkUpdates', methods=['GET'])
 def checkUpdates():
@@ -167,7 +206,16 @@ def getConfig():
     data=db.readConfig()
     return jsonify(data)
 
-
+@app.route('/getLiveCameraData', methods=['GET'])
+def getLiveCameraData():
+    with open("/home/pi/Arraystorm/static/pcImg/liveCamera.jpg", "r") as dataUrl:
+        imageLive = dataUrl.read()
+        encodedLiveImage = base64.encodestring(imageLive)
+        return encodedLiveImage
+@app.route('/liveAppStatus', methods=['GET'])
+def liveAppStatus():
+    status = getLiveAppStatus()
+    return jsonify(status=status)
 
 def pc_off():
     cmd = "ps -aef | grep /home/pi/tflite1/tf_inference/model_tracking.py | awk '{print $2}' | sudo xargs kill -9"
@@ -191,14 +239,14 @@ def getLiveAppStatus():
         print("false")
         return False
 
-@app.route('/startLiveCamera', methods=['GET'])
-def startLiveCamera():
-    liveCameraOn()
-    status = getLiveAppStatus()
-    if(status):
-        return jsonify(msg="Live view started!"), 200
-    else:
-        return jsonify(err="Camera busy!!. Please try after 1 minute!"), 400
+# @app.route('/startLiveCamera', methods=['GET'])
+# def startLiveCamera():
+#     liveCameraOn()
+#     status = getLiveAppStatus()
+#     if(status):
+#         return jsonify(msg="Live view started!"), 200
+#     else:
+#         return jsonify(err="Camera busy!!. Please try after 1 minute!"), 400
 
 # @app.route('/getBleAddress', methods=['GET'])
 # def getBleAddress():
@@ -258,6 +306,46 @@ def getSDcardSerialNumber():
         return jsonify(address=data), 200
     else:
         return jsonify(err="Data not found"), 404
+
+@app.route('/getTimeSeriesData', methods=['POST'])
+def getTSData():
+    input_dates=request.json
+    print(input_dates)
+    min_date=isoparse(input_dates['beginDate']).replace(tzinfo=None)
+    max_date=isoparse(input_dates['endDate']).replace(tzinfo=None)
+    max_date+=timedelta(hours = 23,minutes=59)
+    #db_data, title = DB().readDatabyDate()
+    db_data,title=DB().readDatabyDate(min_date,max_date)
+    data=pd.DataFrame(db_data,columns=title).drop(['enter','exit','wait'],axis=1)
+    #data=data[data['fill']>0]
+    data['datetime']=data['timestamp'].astype('float32').apply(datetime.fromtimestamp)
+    data['datetime']=data['datetime'].astype('datetime64[ns]')
+    data['fill']=data['fill'].astype('float32')
+    data['fill_perc']=data['fill_perc'].astype('float32')
+    data['date']=data['datetime'].dt.date.astype('datetime64[D]')
+    #if data.empty:
+        #display(data.reset_index().to_dict(orient='list'))
+    #    return jsonify(data.reset_index().to_dict(orient='list'))
+    if (max_date-min_date).days>=1:
+        index=pd.date_range(min_date, max_date)
+        data=data.groupby('date').mean()
+        data=data.reindex(index)
+        data=data.fillna(0)
+        data.index.name='date'
+    else:
+        data=data.groupby('datetime').mean().resample('H').mean().reset_index()
+        data['time']=data['datetime'].dt.strftime('%I %p')
+        data=data.groupby('time').mean()
+        index=pd.date_range(min_date, max_date,freq='H').strftime('%I %p')
+        data=data.reindex(index)
+        data=data.fillna(0)
+        data.index.name='date'
+        data=data.round()#.to_dict()
+        data.index=data.index.astype(str)
+    data=data.round()#.to_dict()
+    data.index=data.index.astype(str)
+    #data.reset_index().to_dict(orient='list')
+    return jsonify(data.reset_index().to_dict(orient='list'))
 
 # @app.route('/getCameraData', methods=['GET'])
 # def getCameraData():    

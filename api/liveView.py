@@ -1,17 +1,24 @@
-#Date: 01 November 2019
-#Functionality: Code activates and captures image from USB Webcamera
-#This code works for ELP camera and platforms supported are Raspberry Pi 3B+ and Raspberry Pi 0  
+# import the necessary packages
+from picamera.array import PiRGBArray
+from picamera import PiCamera
 import time
 import cv2
-
-vs=cv2.VideoCapture(0)   #source set to 0, USB Webcam
-
-time.sleep(2.0)          #Wakeup time
-
-while True:
-	ret,frame = vs.read()
-
-	frame = cv2.resize(frame,(160,120)) #160,120 resolution so that the image loads fast
-	cv2.imwrite("web/static/pcImg/pcamera.jpg",frame)
-        key = cv2.waitKey(1) & 0xFF
-
+# initialize the camera and grab a reference to the raw camera capture
+camera = PiCamera()
+camera.resolution = (160,120)
+camera.framerate = 15
+rawCapture = PiRGBArray(camera, size=(160,120))
+# allow the camera to warmup
+time.sleep(0.1)
+# capture frames from the camera
+for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
+	image = frame.array
+	# show the frame
+	cv2.imwrite("/home/pi/Arraystorm/static/pcImg/liveCamera.jpg", image)
+	# cv2.imshow("frame",image)
+	key = cv2.waitKey(1) & 0xFF
+	# clear the stream in preparation for the next frame
+	rawCapture.truncate(0)
+	# if the `q` key was pressed, break from the loop
+	# if key == ord("q"):
+	# 	break

@@ -1,10 +1,10 @@
 import { Routes } from "@angular/router";
 
 // import {AuthLayoutComponent} from "../auth-layout/auth-layout.component";
-import { DashboardComponent } from "../../pages/dashboard/dashboard.component";
-import { ClientServicesComponent } from "../../pages/client-services/client-services.component";
-import { BillingComponent } from "../../pages/billing/billing.component"
-import { onBoardComponent } from "../../pages/onBoard/onboard.component"
+import { AnalyticsComponent } from "../../pages/analytics/analytics.component";
+// import { ClientServicesComponent } from "../../pages/client-services/client-services.component";
+// import { BillingComponent } from "../../pages/billing/billing.component"
+// import { onBoardComponent } from "../../pages/onBoard/onboard.component"
 import { mobileComponent } from '../../pages/mobile/mobile.component'
 import { IconsComponent } from "../../pages/icons/icons.component";
 import { MapComponent } from "../../pages/map/map.component";
@@ -20,14 +20,15 @@ import { SettingsComponent } from '../../pages/settings/settings.component';
 
 export const AdminLayoutRoutes: Routes = [
   // { path: "dashboard", component: DashboardComponent },
-  { path: "client-services", component: ClientServicesComponent },
-  { path: "billing", component: BillingComponent },
-  { path: "onBoard", component: onBoardComponent },
-  { path: "mobile", component: mobileComponent },
+  // { path: "client-services", component: ClientServicesComponent },
+  // { path: "billing", component: BillingComponent },
+  // { path: "onBoard", component: onBoardComponent },
+  // { path: "mobile", component: mobileComponent },
   { path: "commissioning", component: CommissioningComponent },
   { path: "wifisetting", component: WificonfigComponent },
   { path: "homepage", component: HomepageComponent },
-  { path: "settings", component: SettingsComponent }
+  { path: "settings", component: SettingsComponent },
+  { path: "analytics", component: AnalyticsComponent }
 
   // { path: "display", component: HomedisplayComponent }
   // { path: "icons", component: IconsComponent },

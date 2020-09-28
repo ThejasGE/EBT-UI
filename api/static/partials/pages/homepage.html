@@ -1,0 +1,78 @@
+<!-- <div ng-include="'partials/includes/logo-toolbar.html'"></div> -->
+<md-content layout="row" class="full-height">
+    <!-- <div ng-include="'partials/includes/logo-toolbar.html'"></div> -->
+    <div ng-include="'partials/includes/sidenav.html'"></div>
+    <div flex="50">
+        <md-card class="notOccupied full-height"
+            ng-class="{'almostOccupied': isRoomOccupied(),'occupied':isRoomFullOccupied()}">
+            <div layout="row" layout-align="center center" flex>
+                <!-- <div class="text-center"> -->
+                <h3 class="big-text " style="font-family: Avenir;"><b>{{Entry}}</b>
+                    <!-- </div> -->
+            </div>
+            <!-- <div class="text-center" hide-gt-sm>
+                <h3 class="small-text "><b>{{Entry}}</b>
+            </div> -->
+            <!-- <div layout="row"> -->
+            <svg viewBox="0 0 36 36" class="circular-chart blue" style="align-content: center;">
+                <path class="circle-bg" d="M18 2.0845
+                                a 15.9155 15.9155 0 0 1 0 31.831
+                                a 15.9155 15.9155 0 0 1 0 -31.831" />
+                <path class="circle" stroke-dasharray="{{fill}}, {{fill}}" d="M18 2.0845
+                                a 15.9155 15.9155 0 0 1 0 31.831
+                                a 15.9155 15.9155 0 0 1 0 -31.831" />
+                <text x="18" y="20.35" class="percentage">{{fill}}%</text>
+            </svg>
+            <!-- </div> -->
+            <div layout="row" layout-align="center center" flex>
+                <!-- <div class="Sansation-Regular text-center" flex> -->
+                <span layout-align="center none" class="peoplefont Sansation-Regular"><i class="fa fa-group"
+                        aria-hidden="true"></i> : {{upCount}}/{{downCount}}</span>
+                <!-- </div> -->
+            </div>
+            <div layout="row" layout-align="center center" flex>
+                <!-- <div class="text-center" style="padding:30px 0px;" flex> -->
+                <span style="font-size: 5vw;color: white;padding-bottom:46px;font-family: 'Sansation-Regular';"
+                    layout-align="center none "><i class="fa fa-clock-o " aria-hidden="true "></i> :
+                    {{waitingtime}}</span>
+                <!-- </div> -->
+                <!-- <div layout="row" layout-align="center center"> -->
+            </div>
+        </md-card>
+    </div>
+    <div flex="50">
+        <md-card class="full-height" style="margin:0px" flex>
+            <div layout="row" layout-align="end end">
+                <md-menu-bar hide-xs class="menuiconcss">
+                    <md-menu>
+                        <md-button ng-click="$mdOpenMenu();toggleSidenav();"
+                            class="md-icon-button medium-icon-btn dark-header icon-font">
+                            <md-icon><i class="material-icons icon-font  ">menu</i></md-icon>
+                        </md-button>
+                        <md-menu-content width="2">
+                            <md-menu-item>
+                                <md-button ng-click="toggleSidenav()">Close</md-button>
+                            </md-menu-item>
+                        </md-menu-content>
+                    </md-menu>
+                </md-menu-bar>
+            </div>
+            <div layout="row" layout-align="center center">
+                <h3 style="font-size: 3vw;font-family: Sansation-Regular;padding-top: 10px;">{{time}}</h3>
+            </div>
+            <div layout="row" layout-align="center center" flex>
+                <h3 style="font-family:Sansation-Dark;font-size: 4vw;font-family: Sansation-Dark;padding-top:20px;">
+                    {{roomname}}</h3>
+
+            </div>
+            <div class="text-center" flex>
+                <h3 style="font-size: 3vw!important;font-family: Sansation-Light;padding-top: 35px;">XYZ is using Adappt
+                    to keep occupancy of this space</h3>
+                <h3 style="font-size: 3vw!important;font-family: Sansation-Light;">At a safe level through out the day
+                </h3>
+            </div>
+            <div layout-align="center center" layout="row" flex>
+                <img src="../../img/adappt (1).png" style="height:80px;width: 280px;" />
+        </md-card>
+    </div>
+</md-content>

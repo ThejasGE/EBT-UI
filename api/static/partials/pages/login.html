@@ -1,0 +1,42 @@
+<md-content class="md-padding" layout="row" layout-align="center center">
+  <div class="adappt-logo logo-lg"></div>
+</md-content>
+<md-content class="md-padding" layout="row" layout-align="center center">
+  <md-card flex-gt-sm=30 flex-sm=60 flex-xs=80 md-whiteframe="8">
+    <md-card-content class="padding-lg">
+      <div class="text-center">
+        <md-progress-circular ng-show="makingAjaxCall"></md-progress-circular>
+        <h1><span class="underline-text">Login</span></h1>
+      </div>
+      <form type="post" name="loginForm" ng-submit="login()">
+        <md-input-container class="md-block">
+          <input required md-no-asterisk type="text" name="loginid" ng-model="user.loginId" placeholder="Login ID" />
+          <div ng-messages="loginForm.loginid.$error">
+            <div ng-message="required">Login ID is required.</div>
+          </div>
+        </md-input-container>
+        <md-input-container class="md-block">
+          <input required md-no-asterisk type="text" name="username" ng-model="user.userName" placeholder="User Name"
+            ng-change="inputChange()" />
+          <div ng-messages="loginForm.username.$error">
+            <div ng-message="required">User Name is required.</div>
+          </div>
+        </md-input-container>
+        <md-input-container class="md-block">
+          <input required md-no-asterisk type="password" name="password" ng-model="user.password"
+            placeholder="Password" />
+          <div ng-messages="loginForm.password.$error">
+            <div ng-message="required">Password is required.</div>
+          </div>
+        </md-input-container>
+        <md-input-container class="md-block" layout="row" layout-align="center center">
+          <div flex layout="column" layout-align="center stretch">
+
+            <md-button class="md-raised btn adappt-btn" type="submit">Login</md-button>
+            <md-button class="md-raised btn adappt-btn" ui-sref="homePageCtrl">Back To Home</md-button>
+          </div>
+        </md-input-container>
+      </form>
+    </md-card-content>
+  </md-card>
+</md-content>

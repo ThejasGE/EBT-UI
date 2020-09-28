@@ -1,0 +1,320 @@
+#world-map {
+    width: 100%;
+    height: 380px;
+}
+
+.amcharts-chart-div a {
+    display: none !important;
+}
+
+.big-text {
+    font-size: 26px;
+}
+
+.toolbarposition {
+    margin-right: 223px;
+}
+
+.tlwidth {
+    padding: 13px;
+}
+
+.fab-medium-btn {
+    font-size: 35px;
+    line-height: 51px!important;
+    background-color: #00937D!important;
+}
+
+.dark-header md-icon {
+    color: rgba(255, 255, 255, 0.87)!important;
+}
+
+.sensor-param {
+    cursor: auto;
+}
+
+.sensor-param * {
+    color: #ddd!important;
+    transition: all 0.3s ease-in-out;
+}
+
+.sensor-param:hover .icon {
+    transform: scale(1.2);
+}
+
+.sensor-param:hover .icon * {
+    transform: scale(1.2);
+    color: #00937d!important;
+}
+
+.sensor-param:hover .md-icon {
+    transform: scale(1.2);
+}
+
+.sensor-param:hover .md-icon * {
+    transform: scale(1.2);
+    color: #00937D!important;
+}
+
+.cardBorder {
+    border-radius: 15px 15px 15px 15px!important;
+    border: 3px solid black;
+}
+
+.notOccupied {
+    background-color: #00937D;
+    margin: 0px;
+}
+
+.occupied {
+    background-color: #EE3F46;
+    margin: 0px;
+}
+
+.almostOccupied {
+    background-color: #FFAB40;
+    margin: 0px;
+}
+
+.adappt-card1 {
+    background-color: #F44336!important;
+}
+
+.color {
+    background-color: white!important;
+}
+
+.cardpadding {
+    padding: 100px;
+    margin-top: -70px;
+}
+
+.spacevertical {
+    padding-bottom: 500px;
+}
+
+.spacevertical2 {
+    padding-bottom: 200px;
+}
+
+.peoplefont {
+    font-size: 5vw;
+    color: white;
+    /* padding-right: 480px; */
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.big-text {
+    font-size: 11vw;
+    /* font-style: oblique; */
+    /* font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; */
+    font-family: 'Avenir';
+    color: white;
+}
+
+.fontarial {
+    font-family: Arial, Helvetica, sans-serif!important;
+}
+
+.percentagetext {
+    text-align: center;
+    font-size: 131px;
+    color: white;
+    font-family: inherit;
+    padding-bottom: 83px;
+}
+
+.RoomNameCss {
+    text-align: center;
+}
+
+.textposition {
+    display: block;
+    font-size: 5.67em;
+    margin-top: 4.33em;
+    margin-bottom: 2.33em;
+    margin-left: 156px;
+    margin-right: 0;
+    font-weight: bold;
+}
+
+.textposition1 {
+    display: block;
+    font-size: 5.67em;
+    margin-top: -2.67em;
+    margin-bottom: 6.33em;
+    margin-left: 122px;
+    margin-right: 0;
+    font-weight: bold;
+    padding-top: 34px;
+}
+
+md-switch .md-bar {
+    background-color: rgb(158, 158, 158)!important;
+}
+
+md-switch .md-thumb:before {
+    background-color: #d40b0b00!important;
+}
+
+md-switch.md-checked .md-thumb {
+    background-color: #00937D!important;
+}
+
+
+/* md-switch .md-bar {
+    background-color: rgb(158, 158, 158)!important;
+} */
+
+.logo {
+    /* margin-right: 289px; */
+    /* min-width: 182px; */
+    height: 189px;
+    width: 350px;
+    /* min-height: 70px; */
+    background: url(../img/adappt-icon-green.png) no-repeat center center;
+    background-size: 27%;
+    /* margin-bottom: -204px; */
+    /* margin-top: 82px!important; */
+    /* margin-left: 295px!important; */
+}
+
+.dashboard-logo-size {
+    font-size: 1.5em;
+}
+
+.md-padding {
+    padding: 10px;
+}
+
+.border {
+    border: 1px solid #bbb;
+    padding: 10px;
+}
+
+.border-left {
+    border-left: 1px solid #979797;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #979797;
+}
+
+.border-right {
+    border-right: 1px solid #979797;
+}
+
+.border-top {
+    border-top: 1px solid #979797;
+}
+
+.menuiconcss {
+    display: inline-block;
+    padding: 5px;
+    position: relative;
+    padding-left: 845px;
+}
+
+#chartdiv {
+    width: 100%;
+    height: 450px;
+}
+
+.card-h3 {
+    font-size: 1em!important;
+    margin-top: 10px!important;
+}
+
+.card-icon-adappt-color {
+    border-right: 1px solid rgba(211, 211, 211, 0.6);
+    color: #00937d;
+}
+
+.card-icon {
+    border-right: 1px solid rgba(211, 211, 211, 0.6);
+}
+
+.adappt-clock-card {
+    background: #00937d;
+    color: #fff;
+}
+
+.building-font {
+    font-size: 60px;
+}
+
+.cmp_padding {
+    padding: 5px 10px 5px 10px;
+}
+
+.angular-google-map-container {
+    height: 55vh;
+    width: 100wh;
+}
+
+.gm-style div a div {
+    display: none;
+}
+
+.gmnoscreen {
+    display: none;
+}
+
+.gm-style-cc {
+    display: none;
+}
+
+.gm-svpc {
+    display: none;
+}
+
+.gm-style-mtc div {
+    display: none;
+}
+
+.gm-style-iw div>div {
+    color: black!important;
+}
+
+#Adappt-map {
+    height: 100%;
+    width: 100%;
+}
+
+#Adappt {
+    height: 100%;
+    width: 100%;
+}
+
+.gm-fullscreen-control {
+    display: none;
+}
+
+.mapSpecialMargin {
+    margin-right: 8px;
+}
+
+.marker-legend {
+    background: url(../img/map-marker.png) no-repeat center;
+    height: 33px;
+    width: 33px;
+    margin: 2px;
+}
+
+.red-marker-legend {
+    background: url(../img/map-marker-red.png) no-repeat center;
+    height: 33px;
+    width: 33px;
+    margin: 2px;
+}
+
+.yellow-marker-legend {
+    background: url(../img/map-marker-yellow.png) no-repeat center;
+    height: 33px;
+    width: 33px;
+    margin: 2px;
+}
+
+.seat_buttons {
+    min-width: 148px!important;
+}

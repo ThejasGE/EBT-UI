@@ -3,14 +3,17 @@
         <div class=" col-md-6">
             <div class=" card">
                 <div class=" card-header">
-                    <h2 class=" card-title">Sensor Address:<b>{{sensorName}}</b></h2>
+                    <h3 class=" card-title">Sensor Name: <b>{{sensorName}}</b></h3>
+                </div>
+                <div class=" card-header">
+                    <h3 class=" card-title">Sensor Address: <b>{{bleAddress}}</b></h3>
                 </div>
                 <div class=" card-body">
 
                     <h4 class=" card-title"> Live Image View: </h4>
                     <div layout="row" layout-align="center center" style="padding:5px;min-height: 300px;">
                         <!-- <img src="data:image/jpeg;base64,{{liveCameraImage}}" alt="LOADING...."
-                            style="color:#fff; border: 3px solid rgb(187, 30, 30); width:450px;height:310px"> -->
+                            style="color:#fff; border: 3px solid rgb(187, 30, 30); width:500px;height:310px"> -->
                         <img src="../../../assets/img/pcamera.jpg" alt="loading"
                             style="color:#fff; border: 3px solid rgb(187, 30, 30); width:450px;height:310px">
                     </div>
@@ -32,44 +35,91 @@
 
                 <div class=" card-body">
 
-                    <md-card-content>
 
-                        <div class=" row">
-                            <!-- <div class=" col-md-5 pr-md-1">
+
+                    <div class=" row">
+                        <!-- <div class=" col-md-5 pr-md-1">
                                 <div class=" form-group">
                                     <label> Company (disabled) </label>
                                     <input class=" form-control" disabled="" placeholder="Company" type="text"
                                         value="Creative Code Inc." />
                                 </div>
                             </div> -->
-                            <div class=" col-md-5 px-md-2">
-                                <div class="form-group">
-                                    <h4 for="exampleFormControlSelect1">Line Points:</h4>
-                                    <select class="form-control" id="exampleFormControlSelect1">
-                                        <option style="color: black;">Horizontal Line Points</option>
-                                        <option style="color: black;">Vertical Line Points</option>
+                        <div class=" col-md-5 pr-md-1">
+                            <div class="form-group">
+                                <h4 for="exampleFormControlSelect1"><i matTooltip="Select Line Points Intersection"
+                                        class=" tim-icons icon-alert-circle-exc text-success"> </i> Line Points:
+                                </h4>
+                                <select name="linePoints" id="linePoints" title="Select Line Points Intersection"
+                                    class="form-control" placeholder="Horizontal Line Points" [(ngModel)]="linePoints">
+                                    <option style="color: black;" value="0.0,0.5,1.0,0.5">Horizontal Line Points
+                                    </option>
+                                    <option style="color: black;" value="0.5,0.0,0.5,1.0">Vertical Line Points
+                                    </option>
 
-                                    </select>
-                                </div>
-                                <button class="btn btn-success btn-sm" ng-click="updateEntranceData()">Update
-                                </button>
-
+                                </select>
                             </div>
-                            <div class=" col-md-4 pl-md-1">
-                                <div class="form-group">
-                                    <h4 for="exampleFormControlSelect1">Entrance Points:</h4>
-                                    <select class="form-control" id="exampleFormControlSelect1">
-                                        <option style="color: black;">Up</option>
-                                        <option style="color: black;">Down</option>
+                            <button class="btn btn-success btn-sm" (click)="updateLinePoints()">Update
+                            </button>
 
-                                    </select>
-                                </div>
-                                <button class="btn btn-success btn-sm" ng-click="updateEntranceData()">Update
-                                </button>
+                        </div>
+                        <div class=" col-md-5 px-md-1">
+                            <div class="form-group">
+                                <h4 for="exampleFormControlSelect1"><i matTooltip="Specify Entrance Point of door"
+                                        class=" tim-icons icon-alert-circle-exc text-success"> </i> Entrance Points:
+                                </h4>
+                                <select title="Specify Entrance Point of door" class="form-control"
+                                    [(ngModel)]="entrance" id="exampleFormControlSelect1">
+                                    <option style="color: black;" value="up">Up</option>
+                                    <option style="color: black;" value="down">Down</option>
 
+                                </select>
+                            </div>
+                            <button class="btn btn-success btn-sm" (click)="updateEntranceData()">Update
+                            </button>
+
+                        </div>
+                        <div class=" col-md-10 px-md-1 ">
+
+                            <div class="card-header">
+                                <h4 class=" card-title">General Settings:</h4>
                             </div>
                         </div>
-                        <!-- <div fxlayout="row" class="d-flex justify-content-start " fxflex>
+
+                        <div class=" col-md-5 pr-md-1">
+                            <div class=" form-group">
+                                <h4><i matTooltip="Enter the Capacity of the Room to be filled"
+                                        class=" tim-icons icon-alert-circle-exc text-success"> </i> Enter Capacity:</h4>
+                                <input title="Enter the Capacity of the Room to be filled" class=" form-control"
+                                    [(ngModel)]="capacity" placeholder="10" type="text" />
+                            </div>
+                            <button class="btn btn-success btn-sm" (click)="updateCapacity()">Update
+                            </button>
+                        </div>
+                        <div class=" col-md-5 px-md-1">
+                            <div class="form-group">
+                                <h4 for="exampleFormControlSelect1"><i matTooltip="Select the Location"
+                                        class=" tim-icons icon-alert-circle-exc text-success"> </i> Select Location:
+                                </h4>
+                                <select title="Select the Location" class="form-control" id="exampleFormControlSelect1"
+                                    [(ngModel)]="location">
+                                    <option style="color: black;" value="meeting Room">Meeting Room</option>
+                                    <option style="color: black;" value="conference Room">Conference Room</option>
+
+                                </select>
+                            </div>
+                            <button class="btn btn-success btn-sm" (click)="updateLocation()">Update
+                            </button>
+
+                        </div>
+
+                        <!-- <div class=" card-header">
+                            <h4 class=" card-title">Client Line Points:</h4>
+                        </div> -->
+
+                    </div>
+
+                    <!-- <div fxlayout="row" class="d-flex justify-content-start " fxflex>
                             <select placeholder="Select Line Points" [ng-model]="selectedParameter"
                                 style="max-width: 300px;">
                                 <optgroup label="Select Line Points">
@@ -85,7 +135,7 @@
 
                         </div> -->
 
-                    </md-card-content>
+
                     <!-- <md-card-content>
                         <div class=" card-header">
                             <h4 class=" card-title">Entrance:</h4>
@@ -158,6 +208,26 @@
                             </span>
                         </ngb-alert> -->
                 </div>
+
+
+
+
+
+
+
+                <!-- <div class=" col-md-4 pr-md-1">
+                        <div class=" form-group">
+                            <h4><i matTooltip="Enter the Capacity of the Room to be filled"
+                                    class=" tim-icons icon-alert-circle-exc text-success"> </i> Enter Capacity:</h4>
+                            <input title="Enter the Capacity of the Room to be filled" class=" form-control"
+                                [(ngModel)]="capacity" placeholder="10" type="text" />
+                        </div>
+                        <button class="btn btn-success btn-sm" (click)="updateCapacity()">Update
+                        </button>
+                    </div> -->
+
+
+
             </div>
         </div>
         <div class=" col-md-6">
@@ -180,13 +250,13 @@
                                         </button>
                                     </div> -->
                                     <div class=" col-md-6">
-                                        <button class=" btn btn-success btn-sm">
-                                            Start Live View
-                                        </button>
+                                        <button mat-raised-button class=" btn btn-success btn-sm"
+                                            (click)="startStopLiveView()" [disabled]="liveStatus">Start Live
+                                            View</button>
                                     </div>
                                     <div class=" col-md-6">
-                                        <button class=" btn btn-success btn-sm"
-                                            (click)="showNotification('top', 'right')">
+                                        <button mat-raised-button class=" btn btn-success btn-sm"
+                                            [disabled]="!liveStatus" (click)="reLoad()">
                                             Deploy
                                         </button>
                                     </div>

@@ -1,0 +1,44 @@
+// @import "../../../adappt-constants.scss";
+.adappt-expansion {
+    margin: 15px 0px !important;
+    // background: rgba(0, 147, 125, 0.3);
+}
+
+mat-icon {
+    &.wifi-connected {
+        color: #00937d
+    }
+}
+
+.mat-expansion-panel {
+    transition: background 0.3s ease-in-out;
+    background: #3a3a3a;
+
+    .mat-expansion-panel-header-title,
+    .mat-expansion-panel-header-description {
+        color: #FFF !important;
+    }
+
+    &.mat-expanded {
+        background: #FFF;
+
+        .mat-expansion-panel-header {
+            background: rgba(58, 58, 58, 0.6) !important;
+        }
+
+        .mat-expansion-panel-header-title,
+        .mat-expansion-panel-header-description {
+            color: #FFF !important;
+        }
+    }
+}
+
+.adappt-accordion-headers-align .mat-expansion-panel-header-title,
+.adappt-accordion-headers-align .mat-expansion-panel-header-description {
+    flex-basis: 0;
+}
+
+.adappt-accordion-headers-align .mat-expansion-panel-header-description {
+    justify-content: space-between;
+    align-items: center;
+}

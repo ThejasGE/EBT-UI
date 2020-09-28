@@ -2,10 +2,10 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { BrowserModule } from "@angular/platform-browser";
 import { Routes, RouterModule } from "@angular/router";
-import { AdapptAuthGuard } from "./adappt-auth.guard"
+// import { AdapptAuthGuard } from "./adappt-auth.guard"
 import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.component";
 import { AuthLayoutComponent } from '../app/layouts/auth-layout/auth-layout.component';
-import { UserProfileSettingComponent } from './layouts/user-profile-setting/user-profile-setting.component';
+// import { UserProfileSettingComponent } from './layouts/user-profile-setting/user-profile-setting.component';
 import { HomedisplayComponent } from './layouts/homedisplay/homedisplay.component'
 import { NoRightClickDirectiveDirective } from './no-right-click-directive.directive';
 
@@ -23,7 +23,7 @@ const routes: Routes = [
     ]
   },
   //         { path: '404', component: NotFoundComponent },
-  { path: "userprofile", component: UserProfileSettingComponent },
+  // { path: "userprofile", component: UserProfileSettingComponent },
   { path: "display", component: HomedisplayComponent },
   { path: '**', component: AuthLayoutComponent }
 ];

@@ -14,7 +14,7 @@
     "label_path": "tf_models/omni_mobnet3_240_v3/labelmap.txt"
   },
   "motion": {
-    "frequency": "0.0"
+    "frequency": 5.5
   },
   "detection": {
     "min_conf": "0.75",
@@ -26,24 +26,24 @@
     "buffer_frames": "12"
   },
   "location": {
-    "location_name": "Meeting Room",
-    "capacity": 10
+    "location_name": "meeting Room",
+    "capacity": 24
   },
   "counter": {
     "line_points": [
       [
-        0,
-        0.5
+        0.5,
+        0
       ],
       [
-        1,
-        0.5
+        0.5,
+        1
       ]
     ],
     "entrance": "down",
     "minutes_inactive": "120",
-    "percent_cap": 95.5,
-    "min_wait_time": 31,
+    "percent_cap": 55.5,
+    "min_wait_time": 12,
     "max_wait_time": 1821,
     "reset": false
   },
