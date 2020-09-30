@@ -160,8 +160,8 @@ def checkUpdates():
 
 @app.route('/getNetworkInfo', methods=['GET'])
 def getNetworkInfo():
-	data = os.popen('sudo /usr/bin/autohotspotN').read()
-	return jsonify(data)
+    data = os.popen('sudo /usr/bin/autohotspotN').read()
+    return jsonify(data)
 #    if(data == "Wifi already connected to a network\n"):
 #         return jsonify(msg="[INFO] 1. TON Wi-Fi on the device\
 #             2. Select d004 from the list of available Wi-Fi network\
@@ -173,12 +173,12 @@ def getNetworkInfo():
 
 @app.route('/getScanNetwork', methods=['GET'])
 def getScanNetwork():
-	with open("/home/pi/tf_inference/logs/networkscan.txt", 'r') as readFile:
-		data = readFile.read()
-		if(data):
-			return jsonify(Essid=data), 200
-		else:
-			return jsonify(err="Address not found"), 404
+    with open("/home/pi/tf_inference/logs/networkscan.txt", 'r') as readFile:
+        data = readFile.read()
+        if(data):
+            return jsonify(Essid=data), 200
+        else:
+            return jsonify(err="Address not found"), 404
 
 @app.route('/putScanNetwork', methods=['POST'])
 def putScanNetwork():
@@ -287,9 +287,9 @@ def getAnalyticsData():
 
 @app.route("/putJsonData", methods=['POST'])
 def putJsonData():
-	data = request.get_json()
-	saveConfig(data)
-	return jsonify(data)
+    data = request.get_json()
+    saveConfig(data)
+    return jsonify(data)
 
 @app.route('/putIndividualData', methods=['POST'])
 def putIndividualData():
@@ -306,6 +306,110 @@ def getSDcardSerialNumber():
         return jsonify(address=data), 200
     else:
         return jsonify(err="Data not found"), 404
+
+        
+@app.route('/getCardData', methods=['POST'])    
+def getCardData():
+    input_dates=request.json
+    #print(input_dates)
+    min_date=isoparse(input_dates['beginDate']).replace(tzinfo=None)
+    max_date=isoparse(input_dates['endDate']).replace(tzinfo=None)
+    max_date+=timedelta(hours = 23,minutes=59)
+    
+    
+    prev_week_min=min_date - timedelta(days=min_date.weekday())
+    prev_week_min-= timedelta(days=7)
+    prev_week_max=prev_week_min+timedelta(days=6, hours=23, minutes=59)
+    prev_week_min,prev_week_max
+
+    min_date = min_date - timedelta(days=min_date.weekday())
+    max_date = max_date +  (timedelta(days=6)-timedelta(days=max_date.weekday()))
+    
+    config_data=db.readConfig()
+    capacity=config_data['location']['capacity']
+    
+    db_data,title=DB().readDatabyDate(prev_week_min,max_date)
+    data=pd.DataFrame(db_data,columns=title).drop(['enter','exit','wait'],axis=1)
+
+    data['datetime']=data['timestamp'].astype('float32').apply(datetime.fromtimestamp)
+    data['datetime']=data['datetime'].astype('datetime64[ns]')
+    data['weekofyear']=data['datetime'].dt.weekofyear
+    data=data.groupby('weekofyear')['fill'].agg(('mean','max'))
+    data=data.fillna(0).round(0)
+    data['perc_change']=data['mean'].pct_change()*100
+    data['capacity']=capacity
+    data=data.iloc[-1]
+    #output {'mean': 0.0, 'max': 2.0, 'perc_change': -100.0, 'capacity': 10.0}
+    return jsonify(data.to_dict())
+        
+@app.route('/getDistributionData', methods=['POST'])
+def getDistributionData():
+    input_dates=request.json
+   
+    min_date=isoparse(input_dates['beginDate']).replace(tzinfo=None)
+    max_date=isoparse(input_dates['endDate']).replace(tzinfo=None)
+    
+    db_data,title=DB().readDatabyDate(min_date,max_date)
+    config_data=readConfig()
+    capacity=config_data['location']['capacity']
+
+    data=pd.DataFrame(db_data,columns=title).drop(['enter','exit','wait'],axis=1)
+
+    num_bins=5
+    if capacity<num_bins:
+        num_bins=capacity
+
+    bins=np.linspace(0,capacity,num_bins,dtype=int).tolist()
+    bins.append(np.inf)
+
+    labels=[]
+    for i,l in zip(bins[:-1],bins[1:]):
+        if l==np.inf:
+            str_label='{}{}'.format('>',i)
+        else:
+            str_label='{}-{}'.format(i+1,l)
+        labels.append(str_label)
+
+
+    data['bins']=pd.cut(data['fill'],bins=bins,retbins=False,include_lowest=False,labels=labels,right=True)
+    data=data.groupby('bins')['fill'].agg(('count'))/data[data['fill']>0]['fill'].count()*100
+    data=data.fillna(0).round(0)
+   
+    '''
+    {'bins': ['1-2', '3-5', '6-7', '8-10', '>10'],
+     'fill': [70.0, 15.0, 7.0, 5.0, 3.0]}
+    '''
+    return jsonify(data.reset_index().to_dict(orient='list'))
+
+        
+@app.route('/getDayofWeekData', methods=['POST'])
+def getDayofWeekData():
+    input_dates=request.json
+    print(input_dates)
+    min_date=isoparse(input_dates['beginDate']).replace(tzinfo=None)
+    max_date=isoparse(input_dates['endDate']).replace(tzinfo=None)
+    max_date+=timedelta(hours = 23,minutes=59)
+    min_date = min_date - timedelta(days=min_date.weekday())
+    max_date = max_date +  (timedelta(days=6)-timedelta(days=max_date.weekday()))
+
+    db_data,title=DB().readDatabyDate(min_date,max_date)
+    data=pd.DataFrame(db_data,columns=title).drop(['enter','exit','wait'],axis=1)
+    data['datetime']=data['timestamp'].astype('float32').apply(datetime.fromtimestamp)
+    data['datetime']=data['datetime'].astype('datetime64[ns]')
+    data['date']=data['datetime'].dt.date.astype('datetime64[D]')
+
+    index=pd.date_range(min_date, max_date)
+    data=data.groupby('date').mean()
+    data=data.reindex(index)
+    data['weekday']=data.index.day_name().str[:3]
+    data=data.groupby('weekday',sort=False).mean().fillna(0).round(1)
+    
+    '''
+    {'weekday': ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+     'fill': [0.4, 0.0, 0.0, 0.5, 0.4, 2.5, 0.0],
+     'fill_perc': [39.8, 0.0, 0.0, 40.1, 43.5, 253.4, 0.0]}
+    '''
+    return jsonify(data.reset_index().to_dict(orient='list'))
 
 @app.route('/getTimeSeriesData', methods=['POST'])
 def getTSData():
