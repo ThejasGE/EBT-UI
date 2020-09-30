@@ -330,13 +330,21 @@ def getCardData():
     
     db_data,title=DB().readDatabyDate(prev_week_min,max_date)
     data=pd.DataFrame(db_data,columns=title).drop(['enter','exit','wait'],axis=1)
+    data['fill']=data['fill'].astype('float32')
+    data['fill_perc']=data['fill_perc'].astype('float32')
 
-    data['datetime']=data['timestamp'].astype('float32').apply(datetime.fromtimestamp)
-    data['datetime']=data['datetime'].astype('datetime64[ns]')
+    if data.empty:
+        index=pd.date_range(prev_week_min, max_date,name='datetime')
+        data=data.set_index('timestamp').reindex(index).reset_index()
+    else:
+        data['datetime']=data['timestamp'].astype('float32').apply(datetime.fromtimestamp)
+        data['datetime']=data['datetime'].astype('datetime64[ns]')
+        
     data['weekofyear']=data['datetime'].dt.weekofyear
     data=data.groupby('weekofyear')['fill'].agg(('mean','max'))
-    data=data.fillna(0).round(0)
+    
     data['perc_change']=data['mean'].pct_change()*100
+    data=data.fillna(0).round(0)
     data['capacity']=capacity
     data=data.iloc[-1]
     #output {'mean': 0.0, 'max': 2.0, 'perc_change': -100.0, 'capacity': 10.0}
@@ -397,6 +405,8 @@ def getDayofWeekData():
     data['datetime']=data['timestamp'].astype('float32').apply(datetime.fromtimestamp)
     data['datetime']=data['datetime'].astype('datetime64[ns]')
     data['date']=data['datetime'].dt.date.astype('datetime64[D]')
+    data['fill']=data['fill'].astype('float32')
+    data['fill_perc']=data['fill_perc'].astype('float32')
 
     index=pd.date_range(min_date, max_date)
     data=data.groupby('date').mean()
