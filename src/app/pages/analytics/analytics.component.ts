@@ -11,6 +11,7 @@ import { AdapptSnackbarService } from '../../adappt-snackbar.service';
 import { AdapptHttpService } from '../../adappt-http.service'
 import * as moment from "moment";
 import { Observable } from 'rxjs/internal/Observable';
+// import { ConsoleReporter } from 'jasmine';
 // import * as momenttime from "moment-timezone";
 
 @Component({
@@ -22,7 +23,9 @@ export class AnalyticsComponent implements OnInit {
   public ctx;
   public datasets: any;
   public data: any;
+  public data1:any;
   public myChartData;
+  public myChartLast;
   public clicked: boolean = true;
   public clicked1: boolean = false;
   public clicked2: boolean = false;
@@ -82,7 +85,7 @@ export class AnalyticsComponent implements OnInit {
     this.barChart();
     this.dougnutChart();
 
-    this.LastLineChart();
+   
 
 
     // const activationDate = this.getNowUTC();
@@ -95,8 +98,11 @@ export class AnalyticsComponent implements OnInit {
 
   }
   public updateOptions() {
+    console.log(this.data,"hrerereererere")
     this.myChartData.data.datasets[0].data = this.data;
     this.myChartData.update();
+    this.myChartLast.data.datasets[0].data=this.data1;
+    this.myChartLast.update();
   }
 
   pad = function (num) {
@@ -131,6 +137,7 @@ export class AnalyticsComponent implements OnInit {
       this.barChartData = data;
       console.log(this.barChartData, "graph data")
       this.FirstLineChart(this.barChartData);
+      this.LastLineChart(this.barChartData);
     })
   }
 
@@ -368,10 +375,16 @@ export class AnalyticsComponent implements OnInit {
           },
           ticks: {
             suggestedMin: 0,
-            suggestedMax: 100,
-            padding: 20,
+            // suggestedMax: 100,
+            padding: 10,
             fontColor: "#9a9a9a",
-            // stepSize: 20
+            // stepSize: 3,
+            userCallback(chart_labels, index, labels) {
+              // only show if whole number
+              if (Math.floor(chart_labels) === chart_labels) {
+                  return chart_labels;
+              }
+           }
           }
         }],
 
@@ -421,8 +434,10 @@ export class AnalyticsComponent implements OnInit {
     this.myChartData = new Chart(this.ctx, config);
   }
 
-  LastLineChart() {
-
+  LastLineChart(data) {
+    console.log(data, "graph data in last line chart")
+    var chart_labels = data.date;
+    
     let namedChartAnnotation = ChartAnnotation;
     namedChartAnnotation["id"] = "annotation";
     Chart.pluginService.register(namedChartAnnotation);
@@ -485,7 +500,7 @@ export class AnalyticsComponent implements OnInit {
             // suggestedMax: 100,
             padding: 10,
             fontColor: "#9e9e9e",
-            stepSize: 20
+            // stepSize: 20
           }
         }],
 
@@ -504,36 +519,35 @@ export class AnalyticsComponent implements OnInit {
       }
     };
 
-    var data1 = {
-      labels: ['12AM', '1AM', '2AM', '3AM', '4AM', '5AM', '6AM', '7AM', '8AM', '9AM', '10AM', '11AM', '12PM', '1PM', '2PM', '3PM', '4PM', '5PM', '6PM', '7PM', '8PM', '9PM', '10PM', '11PM'],
-      datasets: [{
-        label: "People Inside",
-        fill: true,
-        backgroundColor: gradientStroke,
-        borderColor: '#00d6b4',
-        borderWidth: 2,
-        borderDash: [],
-        borderDashOffset: 0.0,
-        pointBackgroundColor: '#00d6b4',
-        pointBorderColor: 'rgba(255,255,255,0)',
-        pointHoverBackgroundColor: '#00d6b4',
-        // pointHoverBorderColor:"'#00d6b4	",
-        pointBorderWidth: 20,
-        pointHoverRadius: 4,
-        pointHoverBorderWidth: 15,
-        pointRadius: 4,
-        data: [NaN, 2.0, null, 6, 13, 30.0, 46, 30, 25, 85, 22, 0, 11, 0, 88, 100, 45, 20, 50, 86]
-      }]
-    };
-
-    var myChart = new Chart(this.ctx, {
+    var config1 = {
       type: 'line',
-      data: data1,
-      options: gradientChartOptionsConfigurationWithTooltipGreen
-
-
-
-    });
+      data:{
+        labels: chart_labels,
+        datasets: [{
+          label: "People Inside",
+          fill: true,
+          backgroundColor: gradientStroke,
+          borderColor: '#00d6b4',
+          borderWidth: 2,
+          borderDash: [],
+          borderDashOffset: 0.0,
+          pointBackgroundColor: '#00d6b4',
+          pointBorderColor: 'rgba(255,255,255,0)',
+          pointHoverBackgroundColor: '#00d6b4',
+          // pointHoverBorderColor:"'#00d6b4	",
+          pointBorderWidth: 20,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 15,
+          pointRadius: 4,
+          data: data.fill
+        }]
+      },
+      options:
+      gradientChartOptionsConfigurationWithTooltipGreen,
+      
+    };
+    if (this.myChartLast) this.myChartLast.destroy();
+    this.myChartLast = new Chart(this.ctx, config1);
   }
 
 
