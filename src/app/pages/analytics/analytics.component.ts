@@ -24,8 +24,12 @@ export class AnalyticsComponent implements OnInit {
   public datasets: any;
   public data: any;
   public data1:any;
+  public data2:any;
+  public data3:any;
   public myChartData;
   public myChartLast;
+  public myChartDou;
+  public myChartGroup;
   public clicked: boolean = true;
   public clicked1: boolean = false;
   public clicked2: boolean = false;
@@ -50,8 +54,12 @@ export class AnalyticsComponent implements OnInit {
 
   tomorrow = new Date();
   barChartData: any;
+  cardData:any;
+  weeklyData:any;
+  groupData:any;
   samplesinglesdate: string;
   samplesingleedate: string;
+  capacity: any;
 
 
 
@@ -63,6 +71,8 @@ export class AnalyticsComponent implements OnInit {
     this.tomorrow.setDate(this.tomorrow.getDate());
 
     this.barChartData;
+    this.cardData;
+    this.weeklyData;
   }
 
 
@@ -77,13 +87,14 @@ export class AnalyticsComponent implements OnInit {
     console.log(this.selected, "dates")
 
 
-
+    this.getCardData(this.selected);
+    this.getWeeklyData(this.selected);
+    this.getGroupData(this.selected);
     this.getLineChartData(this.selected);
 
 
-
-    this.barChart();
-    this.dougnutChart();
+    // this.barChart();
+    // this.dougnutChart();
 
    
 
@@ -103,6 +114,10 @@ export class AnalyticsComponent implements OnInit {
     this.myChartData.update();
     this.myChartLast.data.datasets[0].data=this.data1;
     this.myChartLast.update();
+    this.myChartDou.data.datasets[0].data=this.data2;
+    this.myChartDou.update();
+    this.myChartGroup.data.datasets[0].data=this.data3;
+    this.myChartDou.update();
   }
 
   pad = function (num) {
@@ -122,16 +137,27 @@ export class AnalyticsComponent implements OnInit {
     var date1 = { begin: date.begin.getFullYear() + "-" + this.pad(date.begin.getMonth() + 1) + "-" + this.pad(date.begin.getDate()) + "T00:00:00Z", end: date.end.getFullYear() + "-" + this.pad(date.end.getMonth() + 1) + "-" + this.pad(date.end.getDate()) + "T00:00:00Z" }
     console.log(date1)
     this.getLineChartData(date1);
-    // console.log(date.begin.toISOString(),"selected dates begin")
-    // console.log(date.end.toISOString(),"selected dates end")
+    this.getCardData(date1);
+    this.getWeeklyData(date1);
+    this.getGroupData(date1);
 
-
-    // console.log(this.selectedValue,"here")
   }
 
 
 
   //APIs for the charts//
+  getCardData(date) {
+    this.httpClient.post(`${Api}/getCardData`, { "beginDate": date.begin, "endDate": date.end }, { responseType: 'json' }).subscribe(data => {
+      this.cardData = data;
+      this.capacity=this.cardData.capacity;
+      console.log(data, "data")
+
+      console.log(this.capacity, "graph data")
+
+      console.log(this.cardData, "graph data")
+    })
+  }
+
   getLineChartData(date) {
     this.httpClient.post(`${Api}/getTimeSeriesData`, { "beginDate": date.begin, "endDate": date.end }, { responseType: 'json' }).subscribe(data => {
       this.barChartData = data;
@@ -140,11 +166,29 @@ export class AnalyticsComponent implements OnInit {
       this.LastLineChart(this.barChartData);
     })
   }
+  
+  
 
 
+  getWeeklyData(date){
+    this.httpClient.post(`${Api}/getDayofWeekData`, { "beginDate": date.begin, "endDate": date.end }, { responseType: 'json' }).subscribe(data => {
+      this.weeklyData = data;
+      console.log(this.weeklyData, "graph data weekly")
+      this.dougnutChart(this.weeklyData);
+    })
+  }
+
+
+  getGroupData(date){
+    this.httpClient.post(`${Api}/getDistributionData`, { "beginDate": date.begin, "endDate": date.end }, { responseType: 'json' }).subscribe(data => {
+      this.groupData = data;
+      console.log(this.groupData, "graph data weekly")
+      this.barChart(this.groupData);
+    })
+  }
   //barchart blue color
 
-  barChart() {
+  barChart(data) {
     console.log("barchart")
 
     this.canvas = document.getElementById("CountryChart");
@@ -204,19 +248,10 @@ export class AnalyticsComponent implements OnInit {
       }
     };
 
-
-
-
-
-
-    var myChart = new Chart(this.ctx, {
+    var config3={
       type: 'bar',
-      responsive: true,
-      legend: {
-        display: false
-      },
-      data: {
-        labels: ['1 Person', '2 People', '3 People', '4 People', '5 People', 'More Than 5 People'],
+      data:{
+        labels: data.bins,
         datasets: [{
           label: "Average",
           fill: true,
@@ -226,21 +261,18 @@ export class AnalyticsComponent implements OnInit {
           borderWidth: 2,
           borderDash: [],
           borderDashOffset: 0.0,
-          data: [30, 20, 10, 20, 10, 10],
+          data: data.fill,
         }]
       },
       options: gradientBarChartConfiguration
-    });
-
-
-
-
-
+    };
+      if (this.myChartGroup) this.myChartGroup.destroy();
+      this.myChartGroup = new Chart(this.ctx, config3);
   }
 
-  dougnutChart() {
+  dougnutChart(data) {
 
-
+    // data.fill_perc=[20,30,40,50,75,80,99]
     this.canvas = document.getElementById("chartLineRed");
     this.ctx = this.canvas.getContext("2d");
 
@@ -267,65 +299,37 @@ export class AnalyticsComponent implements OnInit {
         position: "nearest"
       },
       responsive: true,
-      // scales: {
-      //   yAxes: [{
-      //     barPercentage: 1.6,
-      //     gridLines: {
-      //       drawBorder: false,
-      //       color: 'rgba(29,140,248,0.0)',
-      //       zeroLineColor: "transparent",
-      //     },
-      //     ticks: {
-      //       suggestedMin: 0,
-      //       suggestedMax: 100,
-      //       padding: 20,
-      //       fontColor: "#9a9a9a",
-      //       stepSize: 20
-      //     }
-      //   }],
-
-      //   xAxes: [{
-      //     barPercentage: 1.6,
-      //     gridLines: {
-      //       drawBorder: false,
-      //       color: 'rgba(233,32,16,0.1)',
-      //       zeroLineColor: "transparent",
-      //     },
-      //     ticks: {
-      //       padding: 0,
-      //       fontColor: "#9a9a9a"
-      //     }
-      //   }]
-      // }
     };
 
-    var data = {
-      labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-      datasets: [{
-        label: "Data",
-        fill: true,
-        backgroundColor: ["#192e5b", "#1d65a6", "#72a2c0", "#00743f", "#f2a104", "#bed905", "#e8c3b9"],
-        // backgroundColor: gradientStroke,
-        borderColor: '#585554',
-        borderWidth: 2,
-        borderDash: [],
-        borderDashOffset: 0.0,
-        pointBackgroundColor: '#ec250d',
-        pointBorderColor: 'rgba(255,255,255,0)',
-        pointHoverBackgroundColor: '#ec250d',
-        pointBorderWidth: 20,
-        pointHoverRadius: 4,
-        pointHoverBorderWidth: 15,
-        pointRadius: 4,
-        data: [80, 60, 50, 80, 25, 40, 100],
-      }]
-    };
-
-    var myChart = new Chart(this.ctx, {
+    var config2 = {
       type: 'doughnut',
-      data: data,
+      data:{
+        labels: data.weekday,
+        datasets: [{
+          label: "Data",
+          fill: true,
+          backgroundColor: ["#192e5b", "#1d65a6", "#72a2c0", "#00743f", "#f2a104", "#bed905", "#e8c3b9"],
+          // backgroundColor: gradientStroke,
+          borderColor: '#585554',
+          borderWidth: 2,
+          borderDash: [],
+          borderDashOffset: 0.0,
+          pointBackgroundColor: '#ec250d',
+          pointBorderColor: 'rgba(255,255,255,0)',
+          pointHoverBackgroundColor: '#ec250d',
+          pointBorderWidth: 20,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 15,
+          pointRadius: 4,
+          data: data.fill_perc,
+        }]
+      },
       options: gradientChartOptionsConfigurationWithTooltipRed1
-    });
+     
+    };
+
+    if (this.myChartDou) this.myChartDou.destroy();
+    this.myChartDou = new Chart(this.ctx, config2);
   }
 
   FirstLineChart(data) {
@@ -435,9 +439,10 @@ export class AnalyticsComponent implements OnInit {
   }
 
   LastLineChart(data) {
-    console.log(data, "graph data in last line chart")
+    // console.log(this.capacity, "graph data in last line chart")
     var chart_labels = data.date;
-    
+
+    console.log(this.capacity,"Data in final chart passed ................")
     let namedChartAnnotation = ChartAnnotation;
     namedChartAnnotation["id"] = "annotation";
     Chart.pluginService.register(namedChartAnnotation);
@@ -475,7 +480,7 @@ export class AnalyticsComponent implements OnInit {
           type: 'line',
           mode: 'horizontal',
           scaleID: 'y-axis-0',
-          value: 15,
+          value: this.capacity,
           borderColor: 'rgb(255, 0, 0)',
           borderWidth: 1,
 
