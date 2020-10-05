@@ -7,6 +7,7 @@ import { templateJitUrl, ThrowStmt } from '@angular/compiler';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CustomerService } from '../../customer.service';
 import { WebSocketService } from '../../web-socket.service';
+import { DomSanitizer } from '@angular/platform-browser';
 // import { AdapptDataTableComponent } from '../../components/adappt-data-table/adappt-data-table.component'
 import { AdapptSnackbarService } from '../../adappt-snackbar.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -32,7 +33,7 @@ export class CommissioningComponent implements OnInit {
 
   sensorName = "";
   locationName = "";
-  location = "meeting Room";
+  location = "Meeting Room";
   capacity = "";
   linePoints = "0.0,0.5,1.0,0.5";
   entrance = "up";
@@ -41,13 +42,17 @@ export class CommissioningComponent implements OnInit {
   liveCamera: any;
   liveStatus: any;
   liveImageInterval: any;
+  min_wait_time: any;
+  max_wait_time: any;
 
 
-  constructor(formBuilder: FormBuilder, private snackBar: AdapptSnackbarService, private adapptHttp: AdapptHttpService, private httpClient: HttpClient, private router: Router) { }
+  constructor(formBuilder: FormBuilder, private snackBar: AdapptSnackbarService, private adapptHttp: AdapptHttpService, private httpClient: HttpClient, private router: Router, private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
     this.getSensorName();
     this.getBleAddress();
+    this.loadLiveImage();
+
   }
 
   updateCapacity() {
@@ -91,7 +96,7 @@ export class CommissioningComponent implements OnInit {
     this.httpClient.get(`${Api}/getBleAddress`).subscribe((response: any) => {
       // this.snackBar.showMessage(response.msg, 'success');
       console.log(response.address);
-      this.bleAddress = response.data.address;
+      this.bleAddress = response.address;
     }, (err: any) => {
       this.snackBar.showMessage("Please check your Ip Address", 'error');
     });
@@ -149,9 +154,12 @@ export class CommissioningComponent implements OnInit {
     }
   }
   loadLiveImage() {
+    console.log(this.httpClient);
     this.httpClient.get(`${Api}/getLiveCameraData`).subscribe((response: any) => {
+
       if (response.data != '') {
-        this.liveCameraImage = response.data;
+
+        this.liveCameraImage = this.sanitizer.bypassSecurityTrustUrl("data:image/jpg;base64," + response.imageData);
       }
     }, (err) => {
       this.snackBar.showMessage('Could not fetch Image', 'error');
@@ -161,8 +169,8 @@ export class CommissioningComponent implements OnInit {
   liveViewStatus() {
     this.httpClient.get(`${Api}/liveAppStatus`).subscribe((response: any) => {
       console.log(response)
-      this.liveCamera = response.data.status;
-      this.liveStatus = response.data.status;
+      this.liveCamera = response.status;
+      this.liveStatus = response.status;
       if (this.liveStatus) {
         this.httpClient.get("${Api}/stopLiveCamera").subscribe((response: any) => {
           this.liveStatus = !this.liveStatus;
@@ -187,13 +195,17 @@ export class CommissioningComponent implements OnInit {
     }
     else {
       this.liveStatus = !this.liveStatus;
-      this.liveImageInterval = setInterval(this.loadLiveImage, 250);
+      this.liveImageInterval = setInterval(() => {
+        this.loadLiveImage();
+      }, 200);
       this.httpClient.get(`${Api}/startLiveCamera`).subscribe((response: any) => {
-        this.snackBar.showMessage(response.msg, 'success')
+
+        this.snackBar.showMessage(response.msg, 'success');
 
       }, (err) => {
+
         console.log(err)
-        this.snackBar.showMessage(err.data.err, 'error')
+        this.snackBar.showMessage(err.data.err, 'error');
 
       })
     }
@@ -213,5 +225,31 @@ export class CommissioningComponent implements OnInit {
   }
   reLoad() {
     window.location.reload();
+  }
+  updateMinWaitTime() {
+    if (Number(this.min_wait_time)) {
+      this.httpClient.post(`${Api}/putIndividualData`, { min_wait_time: parseInt(this.min_wait_time) }).subscribe((response: any) => {
+        this.snackBar.showMessage("Minimum Wait Time Updated", 'success');
+      }, (err: any) => {
+        this.snackBar.showMessage(err.data.err, 'error');
+      })
+
+    }
+    else {
+      this.snackBar.showMessage("Please Enter Valid Number", 'error');
+    }
+  }
+  updateMaxWaitTime() {
+    if (Number(this.max_wait_time)) {
+      this.httpClient.post(`${Api}/putIndividualData`, { max_wait_time: parseInt(this.max_wait_time) }).subscribe((response: any) => {
+        this.snackBar.showMessage("Maximum Wait Time Updated", 'success');
+      }, (err: any) => {
+        this.snackBar.showMessage(err.data.err, 'error');
+      })
+
+    }
+    else {
+      this.snackBar.showMessage("Please Enter Valid Number", 'error');
+    }
   }
 }

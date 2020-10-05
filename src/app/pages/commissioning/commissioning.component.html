@@ -12,10 +12,10 @@
 
                     <h4 class=" card-title"> Live Image View: </h4>
                     <div layout="row" layout-align="center center" style="padding:5px;min-height: 300px;">
-                        <!-- <img src="data:image/jpeg;base64,{{liveCameraImage}}" alt="LOADING...."
-                            style="color:#fff; border: 3px solid rgb(187, 30, 30); width:500px;height:310px"> -->
-                        <img src="../../../assets/img/pcamera.jpg" alt="loading"
-                            style="color:#fff; border: 3px solid rgb(187, 30, 30); width:450px;height:310px">
+                        <img [src]="liveCameraImage" alt="LOADING...."
+                            style="color:#fff; border: 3px solid rgb(187, 30, 30); width:500px;height:310px">
+                        <!-- <img src="../../../assets/img/pcamera.jpg" alt="loading"
+                            style="color:#fff; border: 3px solid rgb(187, 30, 30); width:450px;height:310px"> -->
                     </div>
 
 
@@ -45,7 +45,7 @@
                                         value="Creative Code Inc." />
                                 </div>
                             </div> -->
-                        <div class=" col-md-5 pr-md-1">
+                        <div class=" col-md-4 pr-md-1">
                             <div class="form-group">
                                 <h4 for="exampleFormControlSelect1"><i matTooltip="Select Line Points Intersection"
                                         class=" tim-icons icon-alert-circle-exc text-success"> </i> Line Points:
@@ -63,7 +63,7 @@
                             </button>
 
                         </div>
-                        <div class=" col-md-5 px-md-1">
+                        <div class=" col-md-4 px-md-1">
                             <div class="form-group">
                                 <h4 for="exampleFormControlSelect1"><i matTooltip="Specify Entrance Point of door"
                                         class=" tim-icons icon-alert-circle-exc text-success"> </i> Entrance Points:
@@ -79,6 +79,28 @@
                             </button>
 
                         </div>
+                        <div class=" col-md-4 pl-md-1">
+                            <div class="form-group">
+                                <h4><i matTooltip="Enter the Room Name"
+                                        class=" tim-icons icon-alert-circle-exc text-success"> </i> Enter Location:</h4>
+                                <input title="Enter the Room Name" class=" form-control" [(ngModel)]="location"
+                                    value={{location}} type="text" />
+                            </div>
+                            <button class="btn btn-success btn-sm" (click)="updateLocation()">Update
+                            </button>
+
+                        </div>
+                        <!-- <div class=" col-md-4 pl-md-1">
+                            <div class=" form-group">
+                                <h4><i matTooltip="Enter the Capacity of the Room to be filled"
+                                        class=" tim-icons icon-alert-circle-exc text-success"> </i> Min Wait Time:
+                                </h4>
+                                <input title="Enter the Capacity of the Room to be filled" class=" form-control"
+                                    [(ngModel)]="capacity" placeholder="10" type="text" />
+                            </div>
+                            <button class="btn btn-success btn-sm" (click)="updateCapacity()">Update
+                            </button>
+                        </div> -->
                         <div class=" col-md-10 px-md-1 ">
 
                             <div class="card-header">
@@ -86,17 +108,40 @@
                             </div>
                         </div>
 
-                        <div class=" col-md-5 pr-md-1">
+                        <div class=" col-md-4 pr-md-1">
                             <div class=" form-group">
                                 <h4><i matTooltip="Enter the Capacity of the Room to be filled"
                                         class=" tim-icons icon-alert-circle-exc text-success"> </i> Enter Capacity:</h4>
                                 <input title="Enter the Capacity of the Room to be filled" class=" form-control"
-                                    [(ngModel)]="capacity" placeholder="10" type="text" />
+                                    [(ngModel)]="capacity" value={{capacity}} type="text" />
                             </div>
                             <button class="btn btn-success btn-sm" (click)="updateCapacity()">Update
                             </button>
                         </div>
-                        <div class=" col-md-5 px-md-1">
+                        <div class=" col-md-4 px-md-1">
+                            <div class=" form-group">
+                                <h4><i matTooltip="Enter the Minimum Wait Time the person should wait"
+                                        class=" tim-icons icon-alert-circle-exc text-success"> </i> Min Wait Time:
+                                </h4>
+                                <input title="Enter the Minimum Wait Time the person should wait" class=" form-control"
+                                    [(ngModel)]="min_wait_time" value={{min_wait_time}} type="text" />
+                            </div>
+                            <button class="btn btn-success btn-sm" (click)="updateMinWaitTime()">Update
+                            </button>
+                        </div>
+                        <div class=" col-md-4 pl-md-1">
+                            <div class=" form-group">
+                                <h4><i matTooltip="Enter the Maximum Wait Time the person should wait"
+                                        class=" tim-icons icon-alert-circle-exc text-success"> </i> Max Wait Time:
+                                </h4>
+                                <input title="Enter the Maximum Wait Time the person should wait" class=" form-control"
+                                    [(ngModel)]="max_wait_time" value={{max_wait_time}} type="text" />
+                            </div>
+                            <button class=" btn btn-success btn-sm" (click)="updateMaxWaitTime()">Update
+                            </button>
+                        </div>
+
+                        <!-- <div class=" col-md-5 px-md-1">
                             <div class="form-group">
                                 <h4 for="exampleFormControlSelect1"><i matTooltip="Select the Location"
                                         class=" tim-icons icon-alert-circle-exc text-success"> </i> Select Location:
@@ -111,8 +156,41 @@
                             <button class="btn btn-success btn-sm" (click)="updateLocation()">Update
                             </button>
 
+                        </div> -->
+                        <!-- <div class=" col-md-10 px-md-1 ">
+
+                            <div class="card-header">
+                                <h4 class=" card-title">Wait Time:</h4>
+                            </div>
                         </div>
 
+                        <div class=" col-md-5 pr-md-1">
+                            <div class=" form-group">
+                                <h4><i matTooltip="Enter the Capacity of the Room to be filled"
+                                        class=" tim-icons icon-alert-circle-exc text-success"> </i> Minimum Wait Time:
+                                </h4>
+                                <input title="Enter the Capacity of the Room to be filled" class=" form-control"
+                                    [(ngModel)]="capacity" placeholder="10" type="text" />
+                            </div>
+                            <button class="btn btn-success btn-sm" (click)="updateCapacity()">Update
+                            </button>
+                        </div> -->
+                        <!-- <div class=" col-md-5 px-md-1">
+                            <div class="form-group">
+                                <h4 for="exampleFormControlSelect1"><i matTooltip="Select the Location"
+                                        class=" tim-icons icon-alert-circle-exc text-success"> </i> Select Location:
+                                </h4>
+                                <select title="Select the Location" class="form-control" id="exampleFormControlSelect1"
+                                    [(ngModel)]="location">
+                                    <option style="color: black;" value="meeting Room">Meeting Room</option>
+                                    <option style="color: black;" value="conference Room">Conference Room</option>
+
+                                </select>
+                            </div>
+                            <button class="btn btn-success btn-sm" (click)="updateLocation()">Update
+                            </button>
+
+                        </div> -->
                         <!-- <div class=" card-header">
                             <h4 class=" card-title">Client Line Points:</h4>
                         </div> -->
@@ -256,7 +334,7 @@
                                     </div>
                                     <div class=" col-md-6">
                                         <button mat-raised-button class=" btn btn-success btn-sm"
-                                            [disabled]="!liveStatus" (click)="reLoad()">
+                                            [disabled]="!liveStatus" (click)="startStopLiveView()">
                                             Deploy
                                         </button>
                                     </div>

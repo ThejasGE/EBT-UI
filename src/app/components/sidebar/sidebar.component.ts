@@ -52,7 +52,7 @@ export const ROUTES: RouteInfo[] = [
   },
   {
     path: "/settings",
-    title: "Settings",
+    title: "Advance Settings",
     icon: "icon-settings-gear-63",
     class: ""
   },

@@ -26,8 +26,8 @@
     "buffer_frames": "12"
   },
   "location": {
-    "location_name": "meeting Room",
-    "capacity": 24
+    "location_name": "conference Room",
+    "capacity": 30
   },
   "counter": {
     "line_points": [

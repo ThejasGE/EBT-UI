@@ -1,17 +1,17 @@
-import os
+﻿import os
 import sqlite3 
 import json
 from datetime import datetime,timedelta
 from werkzeug.security import generate_password_hash, check_password_hash
 
 class DB:
-    def __init__(self,path='db/data.db'):
-        self.path=path
+    def __init__(self):
+        self.path='/home/pi/tf_inference/db/data.db'
         #self.conn = connectToDb()      
         
      
     def connectToDb(self):
-        return sqlite3.connect(self.path)
+        return sqlite3.connect('/home/pi/tf_inference/db/data.db')
     
     #return sqlite3.connect(os.path.abspath('db/footfallCounter.db'))
 
@@ -115,7 +115,7 @@ class DB:
 
 
 
-def readConfig(path='data_cfg.json'):
+def readConfig(path='/home/pi/tf_inference/data_cfg.json'):
 
     return json.load(open(path, 'r'))
 
@@ -124,7 +124,7 @@ def readConfigAnalytics(path='data_analytics.json'):
     return json.load(open(path, 'r'))
 
     
-def saveConfig(config,path='data_cfg.json'):
+def saveConfig(config,path='/home/pi/tf_inference/data_cfg.json'):
     jsondata = readConfig()
 
     jsondata['video']['record'] = config['video']['record']
@@ -167,7 +167,7 @@ def saveConfig(config,path='data_cfg.json'):
     with open(path, 'w') as json_file:
         json.dump(jsondata, json_file,indent=2)     
 
-def saveConfig1(config,path='data_cfg.json'):
+def saveConfig1(config,path='/home/pi/tf_inference/data_cfg.json'):
     jsondata = readConfig()
     for key, value in config.items():
 

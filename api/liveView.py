@@ -14,7 +14,7 @@ time.sleep(0.1)
 for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
 	image = frame.array
 	# show the frame
-	cv2.imwrite("/home/pi/Arraystorm/static/pcImg/liveCamera.jpg", image)
+	cv2.imwrite("/home/pi/tf_inference/static/pcImg/liveCamera.jpg", image)
 	# cv2.imshow("frame",image)
 	key = cv2.waitKey(1) & 0xFF
 	# clear the stream in preparation for the next frame

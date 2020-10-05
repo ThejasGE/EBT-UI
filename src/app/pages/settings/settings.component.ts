@@ -36,9 +36,11 @@ export class SettingsComponent implements OnInit {
   max_days = ""
   max_distance = ""
   max_disappeared = ""
+  currentModel: any;
   constructor(formBuilder: FormBuilder, private snackBar: AdapptSnackbarService, private adapptHttp: AdapptHttpService, private httpClient: HttpClient) { }
 
   ngOnInit(): void {
+    this.getCurrentModel();
   }
   updateCapacity() {
     if (Number(this.capacity)) {
@@ -182,5 +184,14 @@ export class SettingsComponent implements OnInit {
     else {
       this.snackBar.showMessage("Please Enter Valid Number", 'error');
     }
+  }
+  getCurrentModel() {
+    this.httpClient.get(`${Api}/getCurrentModel`).subscribe((response: any) => {
+      // this.snackBar.showMessage(response.msg, 'success');
+      console.log(response.address);
+      this.currentModel = response.address;
+    }, (err: any) => {
+      this.snackBar.showMessage("Please check your Ip Address", 'error');
+    });
   }
 }
