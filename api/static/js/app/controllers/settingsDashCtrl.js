@@ -594,7 +594,7 @@ app.controller('settingsDashctrl', function($scope, $http, $window, $mdDialog, $
         }
     });
     $window.addEventListener("beforeunload", function(e) {
-        navigator.sendBeacon("http://192.168.1.50:8002/stopLiveCamera")
+        navigator.sendBeacon("http://192.168.1.40:8002/stopLiveCamera")
         return "Please stop Live view before closing";
     });
 });

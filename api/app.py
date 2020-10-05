@@ -160,8 +160,8 @@ def checkUpdates():
 
 @app.route('/getNetworkInfo', methods=['GET'])
 def getNetworkInfo():
-	data = os.popen('sudo /usr/bin/autohotspotN').read()
-	return jsonify(data)
+    data = os.popen('sudo /usr/bin/autohotspotN').read()
+    return jsonify(data)
 #    if(data == "Wifi already connected to a network\n"):
 #         return jsonify(msg="[INFO] 1. TON Wi-Fi on the device\
 #             2. Select d004 from the list of available Wi-Fi network\
@@ -290,9 +290,9 @@ def getAnalyticsData():
 
 @app.route("/putJsonData", methods=['POST'])
 def putJsonData():
-	data = request.get_json()
-	saveConfig(data)
-	return jsonify(data)
+    data = request.get_json()
+    saveConfig(data)
+    return jsonify(data)
 
 @app.route('/putIndividualData', methods=['POST'])
 def putIndividualData():

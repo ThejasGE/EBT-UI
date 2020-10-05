@@ -98,7 +98,6 @@ export class AnalyticsComponent implements OnInit {
 
 
 
-
     // const activationDate = this.getNowUTC();
     // console.log(activationDate,"date in utc")
 
@@ -325,7 +324,6 @@ export class AnalyticsComponent implements OnInit {
         }]
       },
       options: gradientChartOptionsConfigurationWithTooltipRed1
-
     };
 
     if (this.myChartDou) this.myChartDou.destroy();
