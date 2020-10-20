@@ -4,14 +4,14 @@
         <mat-card class="adappt-card" fxFlex="70" fxFlex.gt-md="40">
             <form fxLayout="column" [formGroup]="loginFormGroup" (ngSubmit)="login()">
                 <mat-form-field fxFlex class="input-margin" appearance="outline">
-                    <mat-label>Email ID</mat-label>
-                    <input matInput formControlName="email" placeholder="Email ID" type="email" name="email" email required>
-                    <mat-error *ngIf="loginForm.email.invalid">Email ID is required!</mat-error>
+                    <mat-label>Login Id</mat-label>
+                    <input matInput formControlName="loginId" placeholder="Login Id" type="text" name="loginId" required>
+                    <mat-error *ngIf="loginForm.loginId.invalid">Email ID is required!</mat-error>
                 </mat-form-field>
                 <mat-form-field fxFlex class="input-margin" appearance="outline">
                     <mat-label>User Name</mat-label>
-                    <input matInput formControlName="username" placeholder="User Name" type="text" name="username" required>
-                    <mat-error *ngIf="loginForm.username.invalid">User Name is required!</mat-error>
+                    <input matInput formControlName="userName" placeholder="User Name" type="text" name="userName" required>
+                    <mat-error *ngIf="loginForm.userName.invalid">User Name is required!</mat-error>
                 </mat-form-field>
                 <mat-form-field fxFlex class="input-margin" appearance="outline">
                     <mat-label>Password</mat-label>

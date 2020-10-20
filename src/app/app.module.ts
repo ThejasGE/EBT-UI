@@ -1,3 +1,4 @@
+import { CookieService } from 'ngx-cookie-service';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from "@angular/core";
@@ -15,7 +16,7 @@ import { HomedisplayComponent } from './layouts/homedisplay/homedisplay.componen
 import { WebSocketService } from './web-socket.service';
 import { NgxEasypiechartModule } from 'ngx-easypiechart';
 import { httpInterceptorProviders } from './adappt-http-interceptor';
-
+// import {CookieService} from 'ngx-cookie-service'
 
 import { NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CustomerService } from '../app/customer.service';
@@ -131,7 +132,7 @@ import { from } from 'rxjs';
   ],
 
   declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, NoRightClickDirectiveDirective, HomedisplayComponent],
-  providers: [CustomerService, UserService, httpInterceptorProviders, WebSocketService],
+  providers: [CustomerService, UserService, httpInterceptorProviders, WebSocketService, CookieService],
   bootstrap: [AppComponent],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,

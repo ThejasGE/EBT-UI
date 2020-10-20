@@ -696,28 +696,6 @@ def getCurrentWifi():
 			return jsonify(Essid=data), 200
 		else:
 			return jsonify(err="Wifi not found"), 404
-
-@app.route('/bt_serialaddr', methods=['GET'])
-def bt_serialaddr():
-    with open('serialaddress.txt', 'r') as btaddress:
-        addr = btaddress.read()
-
-    return jsonify(btAddress=addr)
-
-
-@app.route('/bt_hostaddr', methods=['GET'])
-def bt_hostaddr():
-    with open('hostaddress.txt', 'r') as hostaddress:
-        addr = hostaddress.read()
-
-    return jsonify(hostAdress=addr)
-
-
-@app.route('/bt_changeaddr', methods=['POST'])
-def bt_changeaddr():
-    addr = request.json  #change according to required API format
-    with open('hostaddress.txt', 'w') as hostaddress:
-        hostaddress.write(addr)
 			
 # @app.route('/<page>')
 # def main(page):

@@ -69,12 +69,12 @@ export const ROUTES: RouteInfo[] = [
   //   class: ""
   // },
 
-  {
-    path: "/display",
-    title: "Logout",
-    icon: "icon-bullet-list-67",
-    class: ""
-  },
+  // {
+  //   path: "/login",
+  //   title: "Logout",
+  //   icon: "icon-bullet-list-67",
+  //   class: ""
+  // },
   // {
   //   path: "/icons",
   //   title: "Icons",

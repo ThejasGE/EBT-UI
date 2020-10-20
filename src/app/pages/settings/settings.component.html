@@ -22,17 +22,19 @@
                         </div> -->
                         <div class=" col-md-5 pr-md-1">
                             <div class=" form-group">
-                                <h4> Max Distance:</h4>
-                                <input class=" form-control" [(ngModel)]="max_distance" placeholder="5" type="text" />
+                                <h4> <i matTooltip="Maximum distance between floor and device"
+                                    class=" tim-icons icon-alert-circle-exc text-success"> </i> Max Distance:</h4>
+                                <input title="Maximum distance between floor and device" class=" form-control" [(ngModel)]="max_distance" placeholder="5" type="text" />
                             </div>
                             <button class="btn btn-success btn-sm" (click)="updateMaxDistance()">Update
                             </button>
                         </div>
                         <div class=" col-md-5 px-md-1">
                             <div class=" form-group">
-                                <h4>Max Disappeared</h4>
+                                <h4> <i matTooltip="Maximum distance between floor and device"
+                                    class=" tim-icons icon-alert-circle-exc text-success"> </i> Max Disappeared</h4>
                                 <input class=" form-control" [(ngModel)]="max_disappeared" placeholder="45"
-                                    type="email" />
+                                    type="text" />
                             </div>
                             <button class="btn btn-success btn-sm" (click)="updateMaxDisappeared()">Update
                             </button>
@@ -253,16 +255,16 @@
                     <div class=" row">
                         <div class=" col-md-6 pr-md-1">
                             <div class=" form-group">
-                                <h4><i matTooltip="Name of Current Model"
+                                <h4><i matTooltip="Current Tracking Model"
                                         class=" tim-icons icon-alert-circle-exc text-success"> </i> Current Model:
-                                </h4>
-                                <input title="Upload Current Model File" disabled="" class=" form-control"
-                                    value={{currentModel}} type="text" />
+                                </h4><h3><b>{{currentModel}}</b></h3>
+                                <!-- <input title="Upload Current Model File" disabled="" class=" form-control"
+                                    value={{currentModel}} type="text" /> -->
 
                             </div>
-                            <button class="btn btn-success btn-sm"> <i
+                            <!-- <button class="btn btn-success btn-sm"> <i
                                     class=" tim-icons icon-cloud-upload-94 text-danger-states"></i>Upload new Model
-                            </button>
+                            </button> -->
                             <!-- <button class="btn btn-success btn-sm"> <i
                                     class=" tim-icons icon-cloud-upload-94 text-danger-states"></i>Upload
                             </button> -->

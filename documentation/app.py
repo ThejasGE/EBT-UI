@@ -1,5 +1,5 @@
 ﻿
-from flask import Flask, url_for, request, jsonify, render_template, make_response, send_file,redirect
+from flask import Flask, url_for, request, jsonify, render_template, make_response, send_file
 from flask_cors import CORS
 import os
 import json
@@ -16,7 +16,6 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import sqlite3
 import time
 import re
-import configparser
 from dateutil.parser import isoparse
 from datetime import datetime,timedelta
 
@@ -25,7 +24,6 @@ from subprocess import check_output
 app = Flask(__name__, static_url_path='')
 app.config['CORS_HEADERS'] = 'Content-Type'
 cors = CORS(app, resources={r"*": {"origins": "*"}})
-
 # CORS(app)
 
 # @app.after_request
@@ -106,40 +104,6 @@ def logout():
 def updateApp():
     cmd = "nohup /home/pi/tflite1/tflite1-env/bin/python3 /home/pi/tflite1/tf_inference/checkUpdates.py >> /home/pi/tflite1/tf_inference/logs/checkUpdates.log 2>&1 &"
     subprocess.Popen(cmd, shell=True)
-
-def station_to_ap_mode():
-    cmd = "sh /home/pi/tf_inference/station_to_ap_mode.sh"
-    subprocess.Popen(cmd, shell=True)
-    #os.system('sh station_to_ap_mode.sh')
-
-
-def ap_to_station_mode():
-    cmd = "sh /home/pi/tf_inference/ap_to_station_mode.sh"
-    subprocess.Popen(cmd, shell=True)
-    #os.system('sh ap_to_station_mode.sh')
-
-
-# def fetch_current_mode():
-#     print("in fetch curent mode")
-#     print(config)
-#     if config.get('MODE', 'ap') == 'True':
-#         mode = 'Access Point'
-#         print('in AP mode')
-#     else:
-#         mode = 'Station'
-#         print('in Station mode')
-
-#     return mode
-
-
-def set_current_mode(mode):
-    if mode == 'Station':
-        config.set('MODE', 'ap', 'True')
-    elif mode == 'Access Point':
-        config.set('MODE', 'ap', 'False')
-    with open('device_info.ini', 'w') as configfile:
-        config.write(configfile)
-
 
 def CreateWifiConfig(SSID, password):
   config_lines = [
@@ -593,101 +557,9 @@ def getDayofWeekData():
 #     with open("/home/pi/tflite1/tf_inference/web/static/pcImg/image.jpg", "rb") as dataUrl:        
 #     image = dataUrl.read()        
 #     encodedImage = base64.encodestring(image)        
-#     return encodedImage 
-config = configparser.ConfigParser()
-config.read('/home/pi/tf_inference/device_info.ini')
-def station_to_ap_mode():
-    cmd = "sh /home/pi/tf_inference/station_to_ap_mode.sh"
-    subprocess.Popen(cmd, shell=True)
-    #os.system('sh station_to_ap_mode.sh')
-
-
-def ap_to_station_mode():
-    cmd = "sh /home/pi/tf_inference/ap_to_station_mode.sh"
-    subprocess.Popen(cmd, shell=True)
-    #os.system('sh ap_to_station_mode.sh')
-
-
-# def fetch_current_mode():
-#     print("in fetch curent mode")
-#     print(config)
-#     if config.get('MODE', 'ap') == 'True':
-#         mode = 'Access Point'
-#         print('in AP mode')
-#     else:
-#         mode = 'Station'
-#         print('in Station mode')
-
-#     return mode
-
-
-def set_current_mode(mode):
-    print('mode before setting: {}'.format(mode))
-    if mode == 'Station':
-        config.set('MODE', 'ap', 'True')
-    elif mode == 'Access Point':
-        config.set('MODE', 'ap', 'False')
-    with open('device_info.ini', 'w') as configfile:
-        config.write(configfile)
+#     return encodedImage       
     
 
-@app.route('/fetch_mode', methods=['POST', 'GET'])
-def fetch_current_mode():
-    print("current mode")
-    print(config)
-    if config.get('MODE', 'ap') == 'True':
-        mode = 'Access Point'
-        print('in AP mode')
-    else:
-        mode = 'Station'
-        print('in Station mode')
-    return mode  
-
-
-@app.route('/fetch1_mode',methods=['GET'])
-def fetch1_mode():
-     mode = fetch_current_mode()
-     print(mode)
-     return jsonify(currentMode=mode)
-
-@app.route('/rpi_mode', methods=['GET'])
-def rpi_mode():
-    mode = fetch_current_mode()
-    if mode == 'Access Point':
-        ap_to_station_mode()
-    else:
-        station_to_ap_mode()
-
-    set_current_mode(mode)
-    mode = fetch_current_mode()
-    print('mode after setting: {}'.format(mode))
-    return jsonify(currentmode=mode)
-
-@app.route('/ap_mode', methods=['POST'])
-def ap_mode():
-    #station_to_ap_mode()
-    mode = fetch_current_mode()
-    print(mode)
-    if mode == 'Station':
-        station_to_ap_mode()
-        print('switched from station to ap')
-        set_current_mode(mode)
-        print('updated device_info.ini')
-        mode = fetch_current_mode()
-    return mode
-    
-@app.route('/station_mode', methods=['POST'])
-def station_mode():
-    #ap_to_station_mode()
-    mode = fetch_current_mode()
-    print(mode)
-    if mode == 'Access Point':
-        ap_to_station_mode()
-        print('switched from ap to station')
-        set_current_mode(mode)
-        print('updated device_info.ini')
-        mode = fetch_current_mode()
-    return mode
 @app.route("/getCurrentWifi", methods=['GET'])
 def getCurrentWifi():
 	with open("/home/pi/tf_inference/logs/currentWifiLogs.txt", 'r') as readFile:
@@ -696,28 +568,6 @@ def getCurrentWifi():
 			return jsonify(Essid=data), 200
 		else:
 			return jsonify(err="Wifi not found"), 404
-
-@app.route('/bt_serialaddr', methods=['GET'])
-def bt_serialaddr():
-    with open('serialaddress.txt', 'r') as btaddress:
-        addr = btaddress.read()
-
-    return jsonify(btAddress=addr)
-
-
-@app.route('/bt_hostaddr', methods=['GET'])
-def bt_hostaddr():
-    with open('hostaddress.txt', 'r') as hostaddress:
-        addr = hostaddress.read()
-
-    return jsonify(hostAdress=addr)
-
-
-@app.route('/bt_changeaddr', methods=['POST'])
-def bt_changeaddr():
-    addr = request.json  #change according to required API format
-    with open('hostaddress.txt', 'w') as hostaddress:
-        hostaddress.write(addr)
 			
 # @app.route('/<page>')
 # def main(page):

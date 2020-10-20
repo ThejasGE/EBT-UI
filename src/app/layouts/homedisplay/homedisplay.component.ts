@@ -69,10 +69,10 @@ export class HomedisplayComponent implements OnInit {
         this.finaltime = this.timesplitted[1] + " " + this.timesplitted[2]
         // console.log(this.finaltime, 'date')
         this.time1 = this.finaltime.toUpperCase();
-        this.upCount = 19;
+        this.upCount = response.fill;
         // this.downCount = response.data.exit;
         this.downCount = response.capacity;
-        this.fill = 50;
+        this.fill = response.fill_perc;
         this.minwaittime = response.min_wait_time;
         console.log(this.minwaittime, "wait times")
         this.roomname = response.location_name.toUpperCase();

@@ -3,14 +3,17 @@
         <div class=" col-md-6">
             <div class=" card">
                 <div class=" card-header">
-                    <h3 class=" card-title">Sensor Name: <b>{{sensorName}}</b></h3>
+                    <h3 class=" card-title">Sensor Name: <b>{{sensorName}}</b> &#124; Sensor Address:
+                        <b>{{bleAddress}}</b>
+                    </h3>
+                    <!-- <h3 class=" card-title">Sensor Address: <b>{{bleAddress}}</b></h3> -->
                 </div>
-                <div class=" card-header">
+                <!-- <div class=" card-header">
                     <h3 class=" card-title">Sensor Address: <b>{{bleAddress}}</b></h3>
-                </div>
+                </div> -->
                 <div class=" card-body">
 
-                    <h4 class=" card-title"> Live Image View: </h4>
+                    <!-- <h4 class=" card-title"> Live Image View: </h4> -->
                     <div layout="row" layout-align="center center" style="padding:5px;min-height: 300px;">
                         <img [src]="liveCameraImage" alt="LOADING...."
                             style="color:#fff; border: 3px solid rgb(187, 30, 30); width:500px;height:310px">
@@ -334,7 +337,7 @@
                                     </div>
                                     <div class=" col-md-6">
                                         <button mat-raised-button class=" btn btn-success btn-sm"
-                                            [disabled]="!liveStatus" (click)="startStopLiveView()">
+                                            [disabled]="!liveStatus" (click)="reLoad()">
                                             Deploy
                                         </button>
                                     </div>

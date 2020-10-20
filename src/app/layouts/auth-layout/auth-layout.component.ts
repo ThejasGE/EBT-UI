@@ -1,3 +1,4 @@
+import { CookieService } from 'ngx-cookie-service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
@@ -9,6 +10,7 @@ import { UserService } from '../../user.service';
 import { AdapptSnackbarService } from '../../adappt-snackbar.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { error } from '@angular/compiler/src/util';
+// import { CookieService } from 'ngx-cookie-service'
 
 
 @Component({
@@ -22,11 +24,11 @@ export class AuthLayoutComponent implements OnInit {
   loginFormGroup: FormGroup;
   show: boolean;
   constructor(formBuilder: FormBuilder, private ngxLoader: NgxUiLoaderService, private snackBar: AdapptSnackbarService, private loginService: UserService, private adapptHttp: AdapptHttpService,
-    private router: Router, private adapptAuth: AdapptAuthService) {
+    private router: Router, private adapptAuth: AdapptAuthService, private cookieService: CookieService) {
 
     this.loginFormGroup = formBuilder.group({
-      email: ["", Validators.required],
-      username: ["", Validators.required],
+      loginId: ["", Validators.required],
+      userName: ["", Validators.required],
       password: ["", Validators.required]
     });
     this.show = false;
@@ -45,19 +47,21 @@ export class AuthLayoutComponent implements OnInit {
     if (this.loginFormGroup.invalid) {
       const config = new MatSnackBarConfig();
       config.duration = 3000;
+      console.log('error1')
       this.snackBar.showMessage(
         'Login is invalid'
       );
     } else {
       this.loginService.getauthUser(this.loginFormGroup.value).subscribe(data => {
         // console.log(data)
-        if (data.myToken) {
+        if (data.auth_token) {
           this.adapptAuth.saveSession(data);
           this.router.navigate(['display']);
           // this.snackBar.showMessage(
           //   'Login Successfull'     
           // );   
         } else {
+          console.log('error2')
           this.snackBar.showMessage(
             'Login is invalid'
           );
@@ -65,7 +69,7 @@ export class AuthLayoutComponent implements OnInit {
       }, err => {
         console.log(err);
         this.snackBar.showMessage(
-          'Connection Failed..!'
+          'Invalid Login Credentials..!'
         );
 
       });
@@ -73,5 +77,8 @@ export class AuthLayoutComponent implements OnInit {
 
     }
 
+  }
+  login1() {
+    console.log(this.loginFormGroup.value)
   }
 }

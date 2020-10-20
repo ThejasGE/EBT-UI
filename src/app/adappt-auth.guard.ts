@@ -18,7 +18,7 @@ export class AdapptAuthGuard {
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     if (this.auth.isAuthenticated()) {
       if (state.url == '/login') {
-        this.router.navigate(['homedisplay']);
+        this.router.navigate(['display']);
       } else {
         return true
       }

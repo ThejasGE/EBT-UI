@@ -5,6 +5,7 @@ import { RouterModule } from "@angular/router";
 import { CommonModule } from "@angular/common";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
+// import { BrowserModule } from '@angular/platform-browser';
 
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
@@ -64,9 +65,11 @@ import { TypographyComponent } from "../../pages/typography/typography.component
 import { HomepageComponent } from "../../pages/homepage/homepage.component";
 import { SettingsComponent } from "../../pages/settings/settings.component";
 import { CommissioningComponent } from "../../pages/commissioning/commissioning.component";
-import { WificonfigComponent } from "../../pages/wificonfig/wificonfig.component";
-import { AdapptWifiListComponent } from '../../pages/wificonfig/adappt-wifi-list/adappt-wifi-list.component';
+import { WificonfigComponent, WifiDialog } from "../../pages/wificonfig/wificonfig.component";
 
+import { AdapptWifiListComponent } from '../../pages/wificonfig/adappt-wifi-list/adappt-wifi-list.component';
+// import { CommonModule } from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
 // import { HomedisplayComponent } from "../homedisplay/homedisplay.component"
 
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
@@ -81,6 +84,7 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
     NgbModule,
     MatCardModule,
     MatIconModule,
+
     MatToolbarModule,
     MatButtonModule,
     MatFormFieldModule,
@@ -140,6 +144,7 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
     CommissioningComponent,
     WificonfigComponent,
     AdapptWifiListComponent,
+    WifiDialog
 
   ],
 

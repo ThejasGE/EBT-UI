@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
-import { HttpClient,HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Router } from '@angular/router';
+import { Api } from '../app/env.service'
 
 // import { NgxUiLoaderService } from 'ngx-ui-loader';
 const httpOptions = {
@@ -16,8 +17,8 @@ const httpOptions = {
 
 export class UserService {
   // uri = "http://192.168.0.111:9000";k
-  uri ="http://localhost:9000";
-  constructor(private http: HttpClient, private router: Router) {}
+  uri = "http://localhost:9000";
+  constructor(private http: HttpClient, private router: Router) { }
   private httpErrorHandler(error) {
     if (error.status === 400) {
       return error.error;
@@ -32,24 +33,24 @@ export class UserService {
   }
 
 
-  getauthUser( uDetail): any {
-  // console.log(uDetail)
-  const obj = uDetail;
-  return this.http.post(`${this.uri}/api/authUser`, obj)
-}
+  getauthUser(uDetail): any {
+    // console.log(uDetail)
+    const obj = uDetail;
+    return this.http.post(`${Api}/login`, obj)
+  }
 
 
-createUser( obj): any {
-  return this.http.post(`${this.uri}/api/createUser`, obj)
-}
+  createUser(obj): any {
+    return this.http.post(`${this.uri}/api/createUser`, obj)
+  }
 
-getUsers( uDetail= {}): any {
-  return this.http.get(`${this.uri}/api/getUsers`, uDetail)
-} 
+  getUsers(uDetail = {}): any {
+    return this.http.get(`${this.uri}/api/getUsers`, uDetail)
+  }
 
-updateUser( uDetail): any {
-  return this.http.post(`${this.uri}/api/updateUser`, uDetail)
-} 
+  updateUser(uDetail): any {
+    return this.http.post(`${this.uri}/api/updateUser`, uDetail)
+  }
 
 
 
