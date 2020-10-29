@@ -31,9 +31,10 @@
                         </div>
                         <div class=" col-md-5 px-md-1">
                             <div class=" form-group">
-                                <h4> <i matTooltip="Maximum distance between floor and device"
-                                    class=" tim-icons icon-alert-circle-exc text-success"> </i> Max Disappeared</h4>
-                                <input class=" form-control" [(ngModel)]="max_disappeared" placeholder="45"
+                                <h4> <i matTooltip="Maximum number of consecutive frames where a detected person has been marked as
+                                    missing" class=" tim-icons icon-alert-circle-exc text-success"> </i> Max Disappeared</h4>
+                                <input title="Maximum number of consecutive frames where a detected person has been marked as
+                                missing" class=" form-control" [(ngModel)]="max_disappeared" placeholder="45"
                                     type="text" />
                             </div>
                             <button class="btn btn-success btn-sm" (click)="updateMaxDisappeared()">Update

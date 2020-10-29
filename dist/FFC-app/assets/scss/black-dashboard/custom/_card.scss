@@ -1,0 +1,282 @@
+.card {
+    background: $card-black-background;
+    border: 0;
+    position: relative;
+    width: 100%;
+    margin-bottom: 30px;
+    box-shadow: $box-shadow;
+    label {
+        color: rgba($white, 0.6);
+    }
+    .card-title {
+        margin-bottom: .75rem;
+    }
+    .card-body {
+        padding: 15px;
+        &.table-full-width {
+            padding-left: 0;
+            padding-right: 0;
+        }
+        .card-title {
+            color: $white;
+            text-transform: inherit;
+            font-weight: $font-weight-light;
+            margin-bottom: .75rem;
+        }
+        .card-description,
+        .card-category {
+            color: rgba($white, 0.6);
+        }
+    }
+    .card-header {
+        &:not([data-background-color]) {
+            background-color: transparent;
+        }
+        padding: 15px 15px 0;
+        border: 0;
+        color: rgba($white, 0.8);
+        .card-title {
+            color: $white;
+            font-weight: 100;
+        }
+        .card-category {
+            color: $dark-gray;
+            margin-bottom: 5px;
+            font-weight: 300;
+        }
+    }
+    .map {
+        border-radius: $border-radius-sm;
+        &.map-big {
+            height: 420px;
+        }
+    }
+    &.card-white {
+        background: $white;
+        .card-title {
+            color: $black;
+        }
+        .card-category,
+        .stats {
+            color: $card-stats-gray;
+        }
+        //style for inputs
+        @include form-control-placeholder(rgba($black, 0.4), 1);
+        .has-danger {
+            .form-control,
+            .input-group-prepend .input-group-text {
+                border-color: $danger-states;
+            }
+        }
+        .input-group-prepend .input-group-text {
+            border-color: rgba($black-states, 0.2);
+            color: $black-states;
+        }
+        .form-control {
+            color: $black;
+            border-color: rgba($black-states, 0.2);
+            &:focus {
+                border-color: $primary;
+            }
+        }
+        label:not(.btn) {
+            color: $default;
+        }
+        .form-group.no-border,
+        .input-group.no-border {
+            .form-control,
+            .form-control+.input-group-prepend .input-group-text,
+            .form-control+.input-group-append .input-group-text,
+            .input-group-prepend .input-group-text,
+            .input-group-append .input-group-text {
+                background-color: $opacity-gray-3;
+                &:focus,
+                &:active,
+                &:active {
+                    background-color: $opacity-gray-5;
+                }
+            }
+            .form-control {
+                &:focus {
+                    &+.input-group-prepend .input-group-text,
+                    &+.input-group-append .input-group-text {
+                        background-color: $transparent-bg;
+                    }
+                }
+            }
+        }
+        .input-group[disabled] {
+            .input-group-prepend .input-group-text,
+            .input-group-append .input-group-text {
+                background-color: $black;
+            }
+        }
+        .form-control[disabled],
+        .form-control[readonly],
+        fieldset[disabled] .form-control {
+            background: $light-gray;
+            border-color: rgba($black-states, 0.3);
+        }
+        .input-group-focus {
+            .input-group-prepend .input-group-text,
+            .input-group-append .input-group-text,
+            .form-control {
+                background-color: $white;
+                border-color: $primary;
+            }
+            &.no-border {
+                .input-group-prepend .input-group-text,
+                .input-group-append .input-group-text {
+                    background-color: $opacity-gray-5;
+                }
+            }
+        }
+        .input-group-prepend .input-group-text {
+            border-right: none;
+        }
+        .input-group-append .input-group-text {
+            border-left: none;
+        }
+        .has-danger .form-control:focus,
+        .has-success.input-group-focus .input-group-append .input-group-text,
+        .has-success.input-group-focus .input-group-prepend .input-group-text {
+            border-color: $danger-states;
+        }
+        .has-success .form-control:focus,
+        .has-success.input-group-focus .input-group-append .input-group-text,
+        .has-success.input-group-focus .input-group-prepend .input-group-text {
+            border-color: darken($success, 10%);
+        }
+    }
+    &.card-plain {
+        background: transparent;
+        box-shadow: none;
+    }
+    .image {
+        overflow: hidden;
+        height: 200px;
+        position: relative;
+    }
+    .avatar {
+        width: 30px;
+        height: 30px;
+        overflow: hidden;
+        border-radius: 50%;
+        margin-bottom: 15px;
+    }
+    label {
+        font-size: $font-size-sm;
+        margin-bottom: 5px;
+    }
+    .card-footer {
+        background-color: transparent;
+        border: 0;
+        padding: 15px;
+        .stats {
+            i {
+                margin-right: 5px;
+                position: relative;
+            }
+        }
+        h6 {
+            margin-bottom: 0;
+            padding: 7px 0;
+        }
+    }
+}
+
+.card-body {
+    padding: $card-spacer-y;
+}
+
+// .card .card-header-primary .card-icon,
+// .card .card-header-primary .card-text,
+// .card .card-header-primary:not(.card-header-icon):not(.card-header-text),
+// .card.bg-primary,
+// .card.card-rotate.bg-primary .front,
+// .card.card-rotate.bg-primary .back {
+//     background: linear-gradient(60deg, #ab47bc, #8e24aa);
+// }
+// .card .card-header-info .card-icon,
+// .card .card-header-info .card-text,
+// .card .card-header-info:not(.card-header-icon):not(.card-header-text),
+// .card.bg-info,
+// .card.card-rotate.bg-info .front,
+// .card.card-rotate.bg-info .back {
+//     background: linear-gradient(60deg, #26c6da, #00acc1);
+// }
+// .card .card-header-success .card-icon,
+// .card .card-header-success .card-text,
+// .card .card-header-success:not(.card-header-icon):not(.card-header-text),
+// .card.bg-success,
+// .card.card-rotate.bg-success .front,
+// .card.card-rotate.bg-success .back {
+//     background: linear-gradient(60deg, #66bb6a, #43a047);
+// }
+// .card .card-header-warning .card-icon,
+// .card .card-header-warning .card-text,
+// .card .card-header-warning:not(.card-header-icon):not(.card-header-text),
+// .card.bg-warning,
+// .card.card-rotate.bg-warning .front,
+// .card.card-rotate.bg-warning .back {
+//     background: linear-gradient(60deg, #ffa726, #fb8c00);
+// }
+// .card .card-header-danger .card-icon,
+// .card .card-header-danger .card-text,
+// .card .card-header-danger:not(.card-header-icon):not(.card-header-text),
+// .card.bg-danger,
+// .card.card-rotate.bg-danger .front,
+// .card.card-rotate.bg-danger .back {
+//     background: linear-gradient(60deg, #ef5350, #e53935);
+// }
+// .card .card-header-rose .card-icon,
+// .card .card-header-rose .card-text,
+// .card .card-header-rose:not(.card-header-icon):not(.card-header-text),
+// .card.bg-rose,
+// .card.card-rotate.bg-rose .front,
+// .card.card-rotate.bg-rose .back {
+//     background: linear-gradient(60deg, #ec407a, #d81b60);
+// }
+// .card .card-header-primary .card-icon,
+// .card .card-header-primary:not(.card-header-icon):not(.card-header-text),
+// .card .card-header-primary .card-text {
+//     box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(156, 39, 176, 0.4);
+// }
+// .card .card-header-danger .card-icon,
+// .card .card-header-danger:not(.card-header-icon):not(.card-header-text),
+// .card .card-header-danger .card-text {
+//     box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(244, 67, 54, 0.4);
+// }
+// .card .card-header-rose .card-icon,
+// .card .card-header-rose:not(.card-header-icon):not(.card-header-text),
+// .card .card-header-rose .card-text {
+//     box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(233, 30, 99, 0.4);
+// }
+// .card .card-header-warning .card-icon,
+// .card .card-header-warning:not(.card-header-icon):not(.card-header-text),
+// .card .card-header-warning .card-text {
+//     box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(255, 152, 0, 0.4);
+// }
+// .card .card-header-info .card-icon,
+// .card .card-header-info:not(.card-header-icon):not(.card-header-text),
+// .card .card-header-info .card-text {
+//     box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(0, 188, 212, 0.4);
+// }
+// .card .card-header-success .card-icon,
+// .card .card-header-success:not(.card-header-icon):not(.card-header-text),
+// .card .card-header-success .card-text {
+//     box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(76, 175, 80, 0.4);
+// }
+.card-icon {
+    position: relative!important;
+    // right: 7px!important;
+}
+
+@include media-breakpoint-down(sm) {
+    .card.card-chart .card-header {
+        .btn-group-toggle .tim-icons {
+            font-size: .875rem;
+            top: -1px;
+        }
+    }
+}
