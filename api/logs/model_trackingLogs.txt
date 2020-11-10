@@ -1,0 +1,1087 @@
+/home/pi/tf_inference/tflite1-env/lib/python3.7/site-packages/picamera/encoders.py:544: PiCameraResolutionRounded: frame size rounded up from 240x180 to 240x192
+  width, height, fwidth, fheight)))
+<class 'numpy.float32'>
+pathIn
+None
+videostream
+<imutils.video.pivideostream.PiVideoStream object at 0x6a72e810>
+(SIGTERM) received. Setting Exit Event to True and waiting 0.8 sec before terminating
+Exit Event set to True, breaking out of videostream loop
+Before Stream close
+After stream close
+fps after loop
+<imutils.video.fps.FPS object at 0x6c5d29d0>
+[INFO] elasped time: 2.24
+[INFO] approx. FPS: 3.58
+/home/pi/tf_inference/tflite1-env/lib/python3.7/site-packages/picamera/encoders.py:544: PiCameraResolutionRounded: frame size rounded up from 240x180 to 240x192
+  width, height, fwidth, fheight)))
+<class 'numpy.float32'>
+pathIn
+None
+videostream
+<imutils.video.pivideostream.PiVideoStream object at 0x6a697810>
+(SIGTERM) received. Setting Exit Event to True and waiting 0.8 sec before terminating
+Exit Event set to True, breaking out of videostream loop
+Before Stream close
+After stream close
+fps after loop
+<imutils.video.fps.FPS object at 0x6bc7d730>
+[INFO] elasped time: 196.70
+[INFO] approx. FPS: 5.96
+/home/pi/tf_inference/tflite1-env/lib/python3.7/site-packages/picamera/encoders.py:544: PiCameraResolutionRounded: frame size rounded up from 240x180 to 240x192
+  width, height, fwidth, fheight)))
+<class 'numpy.float32'>
+pathIn
+None
+videostream
+<imutils.video.pivideostream.PiVideoStream object at 0x6a72e7f0>
+(SIGTERM) received. Setting Exit Event to True and waiting 0.8 sec before terminating
+Exit Event set to True, breaking out of videostream loop
+Before Stream close
+After stream close
+fps after loop
+<imutils.video.fps.FPS object at 0x6a7a4e30>
+[INFO] elasped time: 259.40
+[INFO] approx. FPS: 5.98
+/home/pi/tf_inference/tflite1-env/lib/python3.7/site-packages/picamera/encoders.py:544: PiCameraResolutionRounded: frame size rounded up from 240x180 to 240x192
+  width, height, fwidth, fheight)))
+<class 'numpy.float32'>
+pathIn
+None
+videostream
+<imutils.video.pivideostream.PiVideoStream object at 0x767a5290>
+(SIGTERM) received. Setting Exit Event to True and waiting 0.8 sec before terminating
+Exit Event set to True, breaking out of videostream loop
+Before Stream close
+After stream close
+fps after loop
+<imutils.video.fps.FPS object at 0x6a75fd50>
+[INFO] elasped time: 1718.68
+[INFO] approx. FPS: 6.21
+/home/pi/tf_inference/tflite1-env/lib/python3.7/site-packages/picamera/encoders.py:544: PiCameraResolutionRounded: frame size rounded up from 240x180 to 240x192
+  width, height, fwidth, fheight)))
+<class 'numpy.float32'>
+pathIn
+None
+videostream
+<imutils.video.pivideostream.PiVideoStream object at 0x6a75e790>
+Traceback (most recent call last):
+  File "/home/pi/tf_inference/model_tracking.py", line 6, in <module>
+    streaming()
+  File "/home/pi/tf_inference/streamutils.py", line 163, in streaming
+    config=readConfig()
+  File "/home/pi/tf_inference/db.py", line 120, in readConfig
+    return json.load(open(path, 'r'))
+  File "/usr/lib/python3.7/json/__init__.py", line 296, in load
+    parse_constant=parse_constant, object_pairs_hook=object_pairs_hook, **kw)
+  File "/usr/lib/python3.7/json/__init__.py", line 348, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.7/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.7/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+: cannot connect to X server 
+: cannot connect to X server 
+: cannot connect to X server 
+: cannot connect to X server 
+/home/pi/tf_inference/tflite1-env/lib/python3.7/site-packages/picamera/encoders.py:544: PiCameraResolutionRounded: frame size rounded up from 240x180 to 240x192
+  width, height, fwidth, fheight)))
+<class 'numpy.float32'>
+pathIn
+None
+videostream
+<imutils.video.pivideostream.PiVideoStream object at 0x6a750770>
+Traceback (most recent call last):
+  File "/home/pi/tf_inference/model_tracking.py", line 6, in <module>
+    streaming()
+  File "/home/pi/tf_inference/streamutils.py", line 226, in streaming
+    image = frame.array
+AttributeError: 'numpy.ndarray' object has no attribute 'array'
+/home/pi/tf_inference/tflite1-env/lib/python3.7/site-packages/picamera/encoders.py:544: PiCameraResolutionRounded: frame size rounded up from 240x180 to 240x192
+  width, height, fwidth, fheight)))
+<class 'numpy.float32'>
+pathIn
+None
+videostream
+<imutils.video.pivideostream.PiVideoStream object at 0x6a759810>
+(SIGTERM) received. Setting Exit Event to True and waiting 0.8 sec before terminating
+Exit Event set to True, breaking out of videostream loop
+Before Stream close
+After stream close
+fps after loop
+<imutils.video.fps.FPS object at 0x69b0d3f0>
+[INFO] elasped time: 206.80
+[INFO] approx. FPS: 5.74
+/home/pi/tf_inference/tflite1-env/lib/python3.7/site-packages/picamera/encoders.py:544: PiCameraResolutionRounded: frame size rounded up from 240x180 to 240x192
+  width, height, fwidth, fheight)))
+<class 'numpy.float32'>
+pathIn
+None
+videostream
+<imutils.video.pivideostream.PiVideoStream object at 0x6a68c710>
+(SIGTERM) received. Setting Exit Event to True and waiting 0.8 sec before terminating
+Exit Event set to True, breaking out of videostream loop
+Before Stream close
+After stream close
+fps after loop
+<imutils.video.fps.FPS object at 0x69a41f50>
+[INFO] elasped time: 5.45
+[INFO] approx. FPS: 3.31
+/home/pi/tf_inference/tflite1-env/lib/python3.7/site-packages/picamera/encoders.py:544: PiCameraResolutionRounded: frame size rounded up from 240x180 to 240x192
+  width, height, fwidth, fheight)))
+<class 'numpy.float32'>
+pathIn
+None
+videostream
+<imutils.video.pivideostream.PiVideoStream object at 0x6a75b7b0>
+Traceback (most recent call last):
+  File "/home/pi/tf_inference/model_tracking.py", line 6, in <module>
+    streaming()
+  File "/home/pi/tf_inference/streamutils.py", line 163, in streaming
+    config=readConfig()
+  File "/home/pi/tf_inference/db.py", line 120, in readConfig
+    return json.load(open(path, 'r'))
+  File "/usr/lib/python3.7/json/__init__.py", line 296, in load
+    parse_constant=parse_constant, object_pairs_hook=object_pairs_hook, **kw)
+  File "/usr/lib/python3.7/json/__init__.py", line 348, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.7/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.7/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+/home/pi/tf_inference/tflite1-env/lib/python3.7/site-packages/picamera/encoders.py:544: PiCameraResolutionRounded: frame size rounded up from 240x180 to 240x192
+  width, height, fwidth, fheight)))
+<class 'numpy.float32'>
+pathIn
+None
+videostream
+<imutils.video.pivideostream.PiVideoStream object at 0x6a6ae790>
+(SIGTERM) received. Setting Exit Event to True and waiting 0.8 sec before terminating
+Exit Event set to True, breaking out of videostream loop
+Before Stream close
+After stream close
+fps after loop
+<imutils.video.fps.FPS object at 0x6a723df0>
+[INFO] elasped time: 63.51
+[INFO] approx. FPS: 5.89
+/home/pi/tf_inference/tflite1-env/lib/python3.7/site-packages/picamera/encoders.py:544: PiCameraResolutionRounded: frame size rounded up from 240x180 to 240x192
+  width, height, fwidth, fheight)))
+<class 'numpy.float32'>
+pathIn
+None
+videostream
+<imutils.video.pivideostream.PiVideoStream object at 0x6a7227d0>
+(SIGTERM) received. Setting Exit Event to True and waiting 0.8 sec before terminating
+Exit Event set to True, breaking out of videostream loop
+Before Stream close
+After stream close
+fps after loop
+<imutils.video.fps.FPS object at 0x6a798df0>
+[INFO] elasped time: 261.84
+[INFO] approx. FPS: 6.02
+/home/pi/tf_inference/tflite1-env/lib/python3.7/site-packages/picamera/encoders.py:544: PiCameraResolutionRounded: frame size rounded up from 240x180 to 240x192
+  width, height, fwidth, fheight)))
+<class 'numpy.float32'>
+pathIn
+None
+videostream
+<imutils.video.pivideostream.PiVideoStream object at 0x6a69f790>
+(SIGTERM) received. Setting Exit Event to True and waiting 0.8 sec before terminating
+Exit Event set to True, breaking out of videostream loop
+Before Stream close
+After stream close
+fps after loop
+<imutils.video.fps.FPS object at 0x6a714db0>
+[INFO] elasped time: 51.58
+[INFO] approx. FPS: 5.82
+/home/pi/tf_inference/tflite1-env/lib/python3.7/site-packages/picamera/encoders.py:544: PiCameraResolutionRounded: frame size rounded up from 240x180 to 240x192
+  width, height, fwidth, fheight)))
+<class 'numpy.float32'>
+pathIn
+None
+videostream
+<imutils.video.pivideostream.PiVideoStream object at 0x6a6ec6d0>
+(SIGTERM) received. Setting Exit Event to True and waiting 0.8 sec before terminating
+Exit Event set to True, breaking out of videostream loop
+Before Stream close
+After stream close
+fps after loop
+<imutils.video.fps.FPS object at 0x69a9c3f0>
+[INFO] elasped time: 277.79
+[INFO] approx. FPS: 6.06
+/home/pi/tf_inference/tflite1-env/lib/python3.7/site-packages/picamera/encoders.py:544: PiCameraResolutionRounded: frame size rounded up from 240x180 to 240x192
+  width, height, fwidth, fheight)))
+<class 'numpy.float32'>
+pathIn
+None
+videostream
+<imutils.video.pivideostream.PiVideoStream object at 0x6a6786f0>
+(SIGTERM) received. Setting Exit Event to True and waiting 0.8 sec before terminating
+Exit Event set to True, breaking out of videostream loop
+Before Stream close
+After stream close
+fps after loop
+<imutils.video.fps.FPS object at 0x6a696bb0>
+[INFO] elasped time: 465.98
+[INFO] approx. FPS: 5.99
+/home/pi/tf_inference/tflite1-env/lib/python3.7/site-packages/picamera/encoders.py:544: PiCameraResolutionRounded: frame size rounded up from 240x180 to 240x192
+  width, height, fwidth, fheight)))
+<class 'numpy.float32'>
+pathIn
+None
+videostream
+<imutils.video.pivideostream.PiVideoStream object at 0x6a683810>
+(SIGTERM) received. Setting Exit Event to True and waiting 0.8 sec before terminating
+Exit Event set to True, breaking out of videostream loop
+Before Stream close
+After stream close
+fps after loop
+<imutils.video.fps.FPS object at 0x69aeb030>
+[INFO] elasped time: 1401.33
+[INFO] approx. FPS: 6.07
+/home/pi/tf_inference/tflite1-env/lib/python3.7/site-packages/picamera/encoders.py:544: PiCameraResolutionRounded: frame size rounded up from 240x180 to 240x192
+  width, height, fwidth, fheight)))
+<class 'numpy.float32'>
+pathIn
+None
+videostream
+<imutils.video.pivideostream.PiVideoStream object at 0x6a6bc7b0>
+UP: 1 DOWN: 0
+wait_time 0  fill% 0.08333333333333333  occup 1/12
+Data from Detector & Tracker being written to database
+UP: 2 DOWN: 0
+wait_time 0  fill% 0.16666666666666666  occup 2/12
+Data from Detector & Tracker being written to database
+(SIGTERM) received. Setting Exit Event to True and waiting 0.8 sec before terminating
+Exit Event set to True, breaking out of videostream loop
+Before Stream close
+After stream close
+fps after loop
+<imutils.video.fps.FPS object at 0x6a6dad30>
+[INFO] elasped time: 1948.83
+[INFO] approx. FPS: 6.12
+/home/pi/tf_inference/tflite1-env/lib/python3.7/site-packages/picamera/encoders.py:544: PiCameraResolutionRounded: frame size rounded up from 240x180 to 240x192
+  width, height, fwidth, fheight)))
+<class 'numpy.float32'>
+pathIn
+None
+videostream
+<imutils.video.pivideostream.PiVideoStream object at 0x6a757710>
+(SIGTERM) received. Setting Exit Event to True and waiting 0.8 sec before terminating
+Exit Event set to True, breaking out of videostream loop
+Before Stream close
+After stream close
+fps after loop
+<imutils.video.fps.FPS object at 0x766769f0>
+[INFO] elasped time: 8834.18
+[INFO] approx. FPS: 6.12
+/home/pi/tf_inference/tflite1-env/lib/python3.7/site-packages/picamera/encoders.py:544: PiCameraResolutionRounded: frame size rounded up from 240x180 to 240x192
+  width, height, fwidth, fheight)))
+<class 'numpy.float32'>
+pathIn
+None
+videostream
+<imutils.video.pivideostream.PiVideoStream object at 0x6a6fa730>
+(SIGTERM) received. Setting Exit Event to True and waiting 0.8 sec before terminating
+Exit Event set to True, breaking out of videostream loop
+Before Stream close
+After stream close
+fps after loop
+<imutils.video.fps.FPS object at 0x69b5f6b0>
+[INFO] elasped time: 274.71
+[INFO] approx. FPS: 5.64
+/home/pi/tf_inference/tflite1-env/lib/python3.7/site-packages/picamera/encoders.py:544: PiCameraResolutionRounded: frame size rounded up from 240x180 to 240x192
+  width, height, fwidth, fheight)))
+<class 'numpy.float32'>
+pathIn
+None
+videostream
+<imutils.video.pivideostream.PiVideoStream object at 0x6a68f7d0>
+(SIGTERM) received. Setting Exit Event to True and waiting 0.8 sec before terminating
+Exit Event set to True, breaking out of videostream loop
+Before Stream close
+After stream close
+fps after loop
+<imutils.video.fps.FPS object at 0x6a706e30>
+[INFO] elasped time: 107.18
+[INFO] approx. FPS: 5.60
+/home/pi/tf_inference/tflite1-env/lib/python3.7/site-packages/picamera/encoders.py:544: PiCameraResolutionRounded: frame size rounded up from 240x180 to 240x192
+  width, height, fwidth, fheight)))
+<class 'numpy.float32'>
+pathIn
+None
+videostream
+<imutils.video.pivideostream.PiVideoStream object at 0x6a70d750>
+UP: 1 DOWN: 0
+wait_time 0  fill% 0.08333333333333333  occup 1/12
+Data from Detector & Tracker being written to database
+Data written to database at time 2020-11-04 11:05:10.688042
+UP: 1 DOWN: 1
+wait_time 0  fill% 0.0  occup 0/12
+Data from Detector & Tracker being written to database
+Data written to database at time 2020-11-04 11:05:40.097085
+(SIGTERM) received. Setting Exit Event to True and waiting 0.8 sec before terminating
+Exit Event set to True, breaking out of videostream loop
+Before Stream close
+After stream close
+fps after loop
+<imutils.video.fps.FPS object at 0x69abe3b0>
+[INFO] elasped time: 1195.05
+[INFO] approx. FPS: 5.96
+/home/pi/tf_inference/tflite1-env/lib/python3.7/site-packages/picamera/encoders.py:544: PiCameraResolutionRounded: frame size rounded up from 240x180 to 240x192
+  width, height, fwidth, fheight)))
+<class 'numpy.float32'>
+pathIn
+None
+videostream
+<imutils.video.pivideostream.PiVideoStream object at 0x6a6d36f0>
+(SIGTERM) received. Setting Exit Event to True and waiting 0.8 sec before terminating
+Exit Event set to True, breaking out of videostream loop
+Before Stream close
+After stream close
+fps after loop
+<imutils.video.fps.FPS object at 0x69b386b0>
+[INFO] elasped time: 5.60
+[INFO] approx. FPS: 4.82
+/home/pi/tf_inference/tflite1-env/lib/python3.7/site-packages/picamera/encoders.py:544: PiCameraResolutionRounded: frame size rounded up from 240x180 to 240x192
+  width, height, fwidth, fheight)))
+<class 'numpy.float32'>
+pathIn
+None
+videostream
+<imutils.video.pivideostream.PiVideoStream object at 0x6a7017b0>
+(SIGTERM) received. Setting Exit Event to True and waiting 0.8 sec before terminating
+Exit Event set to True, breaking out of videostream loop
+Before Stream close
+After stream close
+fps after loop
+<imutils.video.fps.FPS object at 0x6a777df0>
+[INFO] elasped time: 411.19
+[INFO] approx. FPS: 5.91
+/home/pi/tf_inference/tflite1-env/lib/python3.7/site-packages/picamera/encoders.py:544: PiCameraResolutionRounded: frame size rounded up from 240x180 to 240x192
+  width, height, fwidth, fheight)))
+<class 'numpy.float32'>
+pathIn
+None
+videostream
+<imutils.video.pivideostream.PiVideoStream object at 0x6a6f6770>
+(SIGTERM) received. Setting Exit Event to True and waiting 0.8 sec before terminating
+Exit Event set to True, breaking out of videostream loop
+Before Stream close
+After stream close
+fps after loop
+<imutils.video.fps.FPS object at 0x69b3e910>
+[INFO] elasped time: 48.15
+[INFO] approx. FPS: 5.71
+/home/pi/tf_inference/tflite1-env/lib/python3.7/site-packages/picamera/encoders.py:544: PiCameraResolutionRounded: frame size rounded up from 240x180 to 240x192
+  width, height, fwidth, fheight)))
+<class 'numpy.float32'>
+pathIn
+None
+videostream
+<imutils.video.pivideostream.PiVideoStream object at 0x6a7177b0>
+(SIGTERM) received. Setting Exit Event to True and waiting 0.8 sec before terminating
+Exit Event set to True, breaking out of videostream loop
+Before Stream close
+After stream close
+fps after loop
+<imutils.video.fps.FPS object at 0x69ac8450>
+[INFO] elasped time: 513.91
+[INFO] approx. FPS: 5.84
+/home/pi/tf_inference/tflite1-env/lib/python3.7/site-packages/picamera/encoders.py:544: PiCameraResolutionRounded: frame size rounded up from 240x180 to 240x192
+  width, height, fwidth, fheight)))
+<class 'numpy.float32'>
+pathIn
+None
+videostream
+<imutils.video.pivideostream.PiVideoStream object at 0x6a6ad730>
+(SIGTERM) received. Setting Exit Event to True and waiting 0.8 sec before terminating
+Exit Event set to True, breaking out of videostream loop
+Before Stream close
+After stream close
+fps after loop
+<imutils.video.fps.FPS object at 0x6a6a4dd0>
+[INFO] elasped time: 22.98
+[INFO] approx. FPS: 5.66
+/home/pi/tf_inference/tflite1-env/lib/python3.7/site-packages/picamera/encoders.py:544: PiCameraResolutionRounded: frame size rounded up from 240x180 to 240x192
+  width, height, fwidth, fheight)))
+<class 'numpy.float32'>
+pathIn
+None
+videostream
+<imutils.video.pivideostream.PiVideoStream object at 0x6a7556d0>
+(SIGTERM) received. Setting Exit Event to True and waiting 0.8 sec before terminating
+Exit Event set to True, breaking out of videostream loop
+Before Stream close
+After stream close
+fps after loop
+<imutils.video.fps.FPS object at 0x69b072f0>
+[INFO] elasped time: 2.07
+[INFO] approx. FPS: 2.41
+/home/pi/tf_inference/tflite1-env/lib/python3.7/site-packages/picamera/encoders.py:544: PiCameraResolutionRounded: frame size rounded up from 240x180 to 240x192
+  width, height, fwidth, fheight)))
+<class 'numpy.float32'>
+pathIn
+None
+videostream
+<imutils.video.pivideostream.PiVideoStream object at 0x6a73e730>
+(SIGTERM) received. Setting Exit Event to True and waiting 0.8 sec before terminating
+Exit Event set to True, breaking out of videostream loop
+Before Stream close
+After stream close
+fps after loop
+<imutils.video.fps.FPS object at 0x6a735d30>
+[INFO] elasped time: 1210.12
+[INFO] approx. FPS: 6.05
+/home/pi/tf_inference/tflite1-env/lib/python3.7/site-packages/picamera/encoders.py:544: PiCameraResolutionRounded: frame size rounded up from 240x180 to 240x192
+  width, height, fwidth, fheight)))
+<class 'numpy.float32'>
+pathIn
+None
+(SIGTERM) received. Setting Exit Event to True and waiting 0.8 sec before terminating
+videostream
+<imutils.video.pivideostream.PiVideoStream object at 0x6a71c710>
+Exit Event set to True, breaking out of videostream loop
+Before Stream close
+After stream close
+fps after loop
+None
+Traceback (most recent call last):
+  File "/home/pi/tf_inference/model_tracking.py", line 6, in <module>
+    streaming()
+  File "/home/pi/tf_inference/streamutils.py", line 159, in streaming
+    for frame,fps in stream_video(test_video,resolution):
+  File "/home/pi/tf_inference/streamutils.py", line 79, in stream_video
+    fps.stop()
+AttributeError: 'NoneType' object has no attribute 'stop'
+/home/pi/tf_inference/tflite1-env/lib/python3.7/site-packages/picamera/encoders.py:544: PiCameraResolutionRounded: frame size rounded up from 240x180 to 240x192
+  width, height, fwidth, fheight)))
+<class 'numpy.float32'>
+pathIn
+None
+videostream
+<imutils.video.pivideostream.PiVideoStream object at 0x6a6bb750>
+UP: 0 DOWN: 1
+wait_time 0  fill% 0.0  occup 0/12
+Data from Detector & Tracker being written to database
+Data written to database at time 2020-11-04 13:06:55.504494
+(SIGTERM) received. Setting Exit Event to True and waiting 0.8 sec before terminating
+Exit Event set to True, breaking out of videostream loop
+Before Stream close
+After stream close
+fps after loop
+<imutils.video.fps.FPS object at 0x766fc290>
+[INFO] elasped time: 2841.68
+[INFO] approx. FPS: 6.00
+/home/pi/tf_inference/tflite1-env/lib/python3.7/site-packages/picamera/encoders.py:544: PiCameraResolutionRounded: frame size rounded up from 240x180 to 240x192
+  width, height, fwidth, fheight)))
+<class 'numpy.float32'>
+pathIn
+None
+videostream
+<imutils.video.pivideostream.PiVideoStream object at 0x6a6b97d0>
+(SIGTERM) received. Setting Exit Event to True and waiting 0.8 sec before terminating
+Exit Event set to True, breaking out of videostream loop
+Before Stream close
+After stream close
+fps after loop
+<imutils.video.fps.FPS object at 0x6a6b0dd0>
+[INFO] elasped time: 55.28
+[INFO] approx. FPS: 5.92
+/home/pi/tf_inference/tflite1-env/lib/python3.7/site-packages/picamera/encoders.py:544: PiCameraResolutionRounded: frame size rounded up from 240x180 to 240x192
+  width, height, fwidth, fheight)))
+<class 'numpy.float32'>
+pathIn
+None
+videostream
+<imutils.video.pivideostream.PiVideoStream object at 0x6a685710>
+(SIGTERM) received. Setting Exit Event to True and waiting 0.8 sec before terminating
+Exit Event set to True, breaking out of videostream loop
+Before Stream close
+After stream close
+fps after loop
+<imutils.video.fps.FPS object at 0x69aea110>
+[INFO] elasped time: 129.15
+[INFO] approx. FPS: 6.02
+/home/pi/tf_inference/tflite1-env/lib/python3.7/site-packages/picamera/encoders.py:544: PiCameraResolutionRounded: frame size rounded up from 240x180 to 240x192
+  width, height, fwidth, fheight)))
+<class 'numpy.float32'>
+pathIn
+None
+videostream
+<imutils.video.pivideostream.PiVideoStream object at 0x6a6b3730>
+(SIGTERM) received. Setting Exit Event to True and waiting 0.8 sec before terminating
+Exit Event set to True, breaking out of videostream loop
+Before Stream close
+After stream close
+fps after loop
+<imutils.video.fps.FPS object at 0x69afcb10>
+[INFO] elasped time: 67.39
+[INFO] approx. FPS: 5.94
+/home/pi/tf_inference/tflite1-env/lib/python3.7/site-packages/picamera/encoders.py:544: PiCameraResolutionRounded: frame size rounded up from 240x180 to 240x192
+  width, height, fwidth, fheight)))
+<class 'numpy.float32'>
+pathIn
+None
+videostream
+<imutils.video.pivideostream.PiVideoStream object at 0x6a66f750>
+(SIGTERM) received. Setting Exit Event to True and waiting 0.8 sec before terminating
+Exit Event set to True, breaking out of videostream loop
+Before Stream close
+After stream close
+fps after loop
+<imutils.video.fps.FPS object at 0x69ab8f70>
+[INFO] elasped time: 110.06
+[INFO] approx. FPS: 6.01
+/home/pi/tf_inference/tflite1-env/lib/python3.7/site-packages/picamera/encoders.py:544: PiCameraResolutionRounded: frame size rounded up from 240x180 to 240x192
+  width, height, fwidth, fheight)))
+<class 'numpy.float32'>
+pathIn
+None
+videostream
+<imutils.video.pivideostream.PiVideoStream object at 0x6a70b750>
+(SIGTERM) received. Setting Exit Event to True and waiting 0.8 sec before terminating
+Exit Event set to True, breaking out of videostream loop
+Before Stream close
+After stream close
+fps after loop
+<imutils.video.fps.FPS object at 0x69b71110>
+[INFO] elasped time: 132.71
+[INFO] approx. FPS: 6.02
+/home/pi/tf_inference/tflite1-env/lib/python3.7/site-packages/picamera/encoders.py:544: PiCameraResolutionRounded: frame size rounded up from 240x180 to 240x192
+  width, height, fwidth, fheight)))
+<class 'numpy.float32'>
+pathIn
+None
+videostream
+<imutils.video.pivideostream.PiVideoStream object at 0x6a718790>
+(SIGTERM) received. Setting Exit Event to True and waiting 0.8 sec before terminating
+Exit Event set to True, breaking out of videostream loop
+Before Stream close
+After stream close
+fps after loop
+<imutils.video.fps.FPS object at 0x6a70dd50>
+[INFO] elasped time: 97.63
+[INFO] approx. FPS: 6.00
+/home/pi/tf_inference/tflite1-env/lib/python3.7/site-packages/picamera/encoders.py:544: PiCameraResolutionRounded: frame size rounded up from 240x180 to 240x192
+  width, height, fwidth, fheight)))
+<class 'numpy.float32'>
+pathIn
+None
+videostream
+<imutils.video.pivideostream.PiVideoStream object at 0x6a676750>
+(SIGTERM) received. Setting Exit Event to True and waiting 0.8 sec before terminating
+Exit Event set to True, breaking out of videostream loop
+Before Stream close
+After stream close
+fps after loop
+<imutils.video.fps.FPS object at 0x69a293f0>
+[INFO] elasped time: 46.32
+[INFO] approx. FPS: 5.79
+/home/pi/tf_inference/tflite1-env/lib/python3.7/site-packages/picamera/encoders.py:544: PiCameraResolutionRounded: frame size rounded up from 240x180 to 240x192
+  width, height, fwidth, fheight)))
+<class 'numpy.float32'>
+pathIn
+None
+videostream
+<imutils.video.pivideostream.PiVideoStream object at 0x6a6f0770>
+(SIGTERM) received. Setting Exit Event to True and waiting 0.8 sec before terminating
+Exit Event set to True, breaking out of videostream loop
+Before Stream close
+After stream close
+fps after loop
+<imutils.video.fps.FPS object at 0x69b55490>
+[INFO] elasped time: 118.70
+[INFO] approx. FPS: 5.91
+/home/pi/tf_inference/tflite1-env/lib/python3.7/site-packages/picamera/encoders.py:544: PiCameraResolutionRounded: frame size rounded up from 240x180 to 240x192
+  width, height, fwidth, fheight)))
+<class 'numpy.float32'>
+pathIn
+None
+videostream
+<imutils.video.pivideostream.PiVideoStream object at 0x6a734770>
+(SIGTERM) received. Setting Exit Event to True and waiting 0.8 sec before terminating
+Exit Event set to True, breaking out of videostream loop
+Before Stream close
+After stream close
+fps after loop
+<imutils.video.fps.FPS object at 0x69ae4390>
+[INFO] elasped time: 22.34
+[INFO] approx. FPS: 5.68
+/home/pi/tf_inference/tflite1-env/lib/python3.7/site-packages/picamera/encoders.py:544: PiCameraResolutionRounded: frame size rounded up from 240x180 to 240x192
+  width, height, fwidth, fheight)))
+<class 'numpy.float32'>
+pathIn
+None
+videostream
+<imutils.video.pivideostream.PiVideoStream object at 0x6a6e07b0>
+(SIGTERM) received. Setting Exit Event to True and waiting 0.8 sec before terminating
+Exit Event set to True, breaking out of videostream loop
+Before Stream close
+After stream close
+fps after loop
+<imutils.video.fps.FPS object at 0x69a93170>
+[INFO] elasped time: 15.18
+[INFO] approx. FPS: 5.60
+/home/pi/tf_inference/tflite1-env/lib/python3.7/site-packages/picamera/encoders.py:544: PiCameraResolutionRounded: frame size rounded up from 240x180 to 240x192
+  width, height, fwidth, fheight)))
+<class 'numpy.float32'>
+pathIn
+None
+videostream
+<imutils.video.pivideostream.PiVideoStream object at 0x6a74a770>
+(SIGTERM) received. Setting Exit Event to True and waiting 0.8 sec before terminating
+Exit Event set to True, breaking out of videostream loop
+Before Stream close
+After stream close
+fps after loop
+<imutils.video.fps.FPS object at 0x6a741db0>
+[INFO] elasped time: 33.65
+[INFO] approx. FPS: 5.80
+/home/pi/tf_inference/tflite1-env/lib/python3.7/site-packages/picamera/encoders.py:544: PiCameraResolutionRounded: frame size rounded up from 240x180 to 240x192
+  width, height, fwidth, fheight)))
+<class 'numpy.float32'>
+pathIn
+None
+videostream
+<imutils.video.pivideostream.PiVideoStream object at 0x6a69b770>
+(SIGTERM) received. Setting Exit Event to True and waiting 0.8 sec before terminating
+Exit Event set to True, breaking out of videostream loop
+Before Stream close
+After stream close
+fps after loop
+<imutils.video.fps.FPS object at 0x6a692d90>
+[INFO] elasped time: 12.27
+[INFO] approx. FPS: 5.54
+/home/pi/tf_inference/tflite1-env/lib/python3.7/site-packages/picamera/encoders.py:544: PiCameraResolutionRounded: frame size rounded up from 240x180 to 240x192
+  width, height, fwidth, fheight)))
+<class 'numpy.float32'>
+pathIn
+None
+videostream
+<imutils.video.pivideostream.PiVideoStream object at 0x6a704750>
+(SIGTERM) received. Setting Exit Event to True and waiting 0.8 sec before terminating
+Exit Event set to True, breaking out of videostream loop
+Before Stream close
+After stream close
+fps after loop
+<imutils.video.fps.FPS object at 0x69ab6810>
+[INFO] elasped time: 233.76
+[INFO] approx. FPS: 5.90
+/home/pi/tf_inference/tflite1-env/lib/python3.7/site-packages/picamera/encoders.py:544: PiCameraResolutionRounded: frame size rounded up from 240x180 to 240x192
+  width, height, fwidth, fheight)))
+<class 'numpy.float32'>
+pathIn
+None
+videostream
+<imutils.video.pivideostream.PiVideoStream object at 0x6a75d770>
+UP: 0 DOWN: 1
+wait_time 0  fill% 0.0  occup 0/12
+Data from Detector & Tracker being written to database
+Data written to database at time 2020-11-04 14:13:34.062575
+(SIGTERM) received. Setting Exit Event to True and waiting 0.8 sec before terminating
+Exit Event set to True, breaking out of videostream loop
+Before Stream close
+After stream close
+fps after loop
+<imutils.video.fps.FPS object at 0x6a752e10>
+[INFO] elasped time: 41.71
+[INFO] approx. FPS: 5.83
+/home/pi/tf_inference/tflite1-env/lib/python3.7/site-packages/picamera/encoders.py:544: PiCameraResolutionRounded: frame size rounded up from 240x180 to 240x192
+  width, height, fwidth, fheight)))
+<class 'numpy.float32'>
+pathIn
+None
+videostream
+<imutils.video.pivideostream.PiVideoStream object at 0x6a695790>
+UP: 1 DOWN: 0
+wait_time 0  fill% 0.08333333333333333  occup 1/12
+Data from Detector & Tracker being written to database
+Data written to database at time 2020-11-04 14:14:57.421724
+UP: 2 DOWN: 0
+wait_time 0  fill% 0.16666666666666666  occup 2/12
+Data from Detector & Tracker being written to database
+Data written to database at time 2020-11-04 14:16:05.774324
+UP: 2 DOWN: 1
+wait_time 0  fill% 0.08333333333333333  occup 1/12
+Data from Detector & Tracker being written to database
+Data written to database at time 2020-11-04 14:17:17.929171
+UP: 3 DOWN: 1
+wait_time 0  fill% 0.16666666666666666  occup 2/12
+Data from Detector & Tracker being written to database
+Data written to database at time 2020-11-04 14:17:31.786592
+UP: 3 DOWN: 2
+wait_time 0  fill% 0.08333333333333333  occup 1/12
+Data from Detector & Tracker being written to database
+Data written to database at time 2020-11-04 14:18:57.600431
+UP: 4 DOWN: 2
+wait_time 0  fill% 0.16666666666666666  occup 2/12
+Data from Detector & Tracker being written to database
+Data written to database at time 2020-11-04 14:19:30.799284
+UP: 4 DOWN: 3
+wait_time 0  fill% 0.08333333333333333  occup 1/12
+Data from Detector & Tracker being written to database
+Data written to database at time 2020-11-04 14:19:32.228777
+UP: 5 DOWN: 3
+wait_time 0  fill% 0.16666666666666666  occup 2/12
+Data from Detector & Tracker being written to database
+Data written to database at time 2020-11-04 14:19:56.847251
+UP: 5 DOWN: 4
+wait_time 0  fill% 0.08333333333333333  occup 1/12
+Data from Detector & Tracker being written to database
+Data written to database at time 2020-11-04 14:22:30.369229
+UP: 6 DOWN: 4
+wait_time 0  fill% 0.16666666666666666  occup 2/12
+Data from Detector & Tracker being written to database
+Data written to database at time 2020-11-04 14:24:45.130989
+UP: 6 DOWN: 5
+wait_time 0  fill% 0.08333333333333333  occup 1/12
+Data from Detector & Tracker being written to database
+Data written to database at time 2020-11-04 14:26:02.075502
+UP: 0 DOWN: 0
+wait_time 0  fill% 0.0  occup 0/12
+Data from Detector & Tracker being written to database
+Data written to database at time 2020-11-04 14:33:59.474943
+UP: 0 DOWN: 1
+wait_time 0  fill% 0.0  occup 0/12
+Data from Detector & Tracker being written to database
+Data written to database at time 2020-11-04 14:34:05.613493
+UP: 0 DOWN: 0
+wait_time 0  fill% 0.0  occup 0/12
+Data from Detector & Tracker being written to database
+Data written to database at time 2020-11-04 14:53:26.693702
+UP: 0 DOWN: 1
+wait_time 0  fill% 0.0  occup 0/12
+Data from Detector & Tracker being written to database
+Data written to database at time 2020-11-04 14:53:40.399372
+(SIGTERM) received. Setting Exit Event to True and waiting 0.8 sec before terminating
+Exit Event set to True, breaking out of videostream loop
+Before Stream close
+After stream close
+fps after loop
+<imutils.video.fps.FPS object at 0x766d6290>
+[INFO] elasped time: 2518.66
+[INFO] approx. FPS: 5.97
+/home/pi/tf_inference/tflite1-env/lib/python3.7/site-packages/picamera/encoders.py:544: PiCameraResolutionRounded: frame size rounded up from 240x180 to 240x192
+  width, height, fwidth, fheight)))
+<class 'numpy.float32'>
+pathIn
+None
+videostream
+<imutils.video.pivideostream.PiVideoStream object at 0x6a717810>
+(SIGTERM) received. Setting Exit Event to True and waiting 0.8 sec before terminating
+Exit Event set to True, breaking out of videostream loop
+Before Stream close
+After stream close
+fps after loop
+<imutils.video.fps.FPS object at 0x76759290>
+[INFO] elasped time: 36.36
+[INFO] approx. FPS: 5.58
+/home/pi/tf_inference/tflite1-env/lib/python3.7/site-packages/picamera/encoders.py:544: PiCameraResolutionRounded: frame size rounded up from 240x180 to 240x192
+  width, height, fwidth, fheight)))
+<class 'numpy.float32'>
+pathIn
+None
+videostream
+<imutils.video.pivideostream.PiVideoStream object at 0x6a74e710>
+(SIGTERM) received. Setting Exit Event to True and waiting 0.8 sec before terminating
+Exit Event set to True, breaking out of videostream loop
+Before Stream close
+After stream close
+fps after loop
+<imutils.video.fps.FPS object at 0x69b97d70>
+[INFO] elasped time: 183.47
+[INFO] approx. FPS: 5.94
+/home/pi/tf_inference/tflite1-env/lib/python3.7/site-packages/picamera/encoders.py:544: PiCameraResolutionRounded: frame size rounded up from 240x180 to 240x192
+  width, height, fwidth, fheight)))
+<class 'numpy.float32'>
+pathIn
+None
+videostream
+<imutils.video.pivideostream.PiVideoStream object at 0x6a7246f0>
+(SIGTERM) received. Setting Exit Event to True and waiting 0.8 sec before terminating
+Exit Event set to True, breaking out of videostream loop
+Before Stream close
+After stream close
+fps after loop
+<imutils.video.fps.FPS object at 0x69b8ac50>
+[INFO] elasped time: 5.28
+[INFO] approx. FPS: 4.93
+/home/pi/tf_inference/tflite1-env/lib/python3.7/site-packages/picamera/encoders.py:544: PiCameraResolutionRounded: frame size rounded up from 240x180 to 240x192
+  width, height, fwidth, fheight)))
+<class 'numpy.float32'>
+pathIn
+None
+videostream
+<imutils.video.pivideostream.PiVideoStream object at 0x6a6f8770>
+(SIGTERM) received. Setting Exit Event to True and waiting 0.8 sec before terminating
+Exit Event set to True, breaking out of videostream loop
+Before Stream close
+After stream close
+fps after loop
+<imutils.video.fps.FPS object at 0x69aaa390>
+[INFO] elasped time: 19.01
+[INFO] approx. FPS: 5.52
+/home/pi/tf_inference/tflite1-env/lib/python3.7/site-packages/picamera/encoders.py:544: PiCameraResolutionRounded: frame size rounded up from 240x180 to 240x192
+  width, height, fwidth, fheight)))
+<class 'numpy.float32'>
+pathIn
+None
+videostream
+<imutils.video.pivideostream.PiVideoStream object at 0x6a74f730>
+(SIGTERM) received. Setting Exit Event to True and waiting 0.8 sec before terminating
+Exit Event set to True, breaking out of videostream loop
+Before Stream close
+After stream close
+fps after loop
+<imutils.video.fps.FPS object at 0x69bb4e90>
+[INFO] elasped time: 329.17
+[INFO] approx. FPS: 5.85
+/home/pi/tf_inference/tflite1-env/lib/python3.7/site-packages/picamera/encoders.py:544: PiCameraResolutionRounded: frame size rounded up from 240x180 to 240x192
+  width, height, fwidth, fheight)))
+<class 'numpy.float32'>
+pathIn
+None
+videostream
+<imutils.video.pivideostream.PiVideoStream object at 0x6a7387d0>
+UP: 0 DOWN: 1
+wait_time 0  fill% 0.0  occup 0/12
+Data from Detector & Tracker being written to database
+Data written to database at time 2020-11-04 15:20:40.837313
+(SIGTERM) received. Setting Exit Event to True and waiting 0.8 sec before terminating
+Exit Event set to True, breaking out of videostream loop
+Before Stream close
+After stream close
+fps after loop
+<imutils.video.fps.FPS object at 0x6a7afd90>
+[INFO] elasped time: 857.68
+[INFO] approx. FPS: 5.96
+/home/pi/tf_inference/tflite1-env/lib/python3.7/site-packages/picamera/encoders.py:544: PiCameraResolutionRounded: frame size rounded up from 240x180 to 240x192
+  width, height, fwidth, fheight)))
+<class 'numpy.float32'>
+pathIn
+None
+videostream
+<imutils.video.pivideostream.PiVideoStream object at 0x69ad2d50>
+UP: 1 DOWN: 0
+wait_time 0  fill% 0.08333333333333333  occup 1/12
+Data from Detector & Tracker being written to database
+Data written to database at time 2020-11-04 16:03:39.191813
+UP: 1 DOWN: 1
+wait_time 0  fill% 0.0  occup 0/12
+Data from Detector & Tracker being written to database
+Data written to database at time 2020-11-04 16:03:45.759313
+UP: 2 DOWN: 1
+wait_time 0  fill% 0.08333333333333333  occup 1/12
+Data from Detector & Tracker being written to database
+Data written to database at time 2020-11-04 16:03:50.151784
+UP: 2 DOWN: 2
+wait_time 0  fill% 0.0  occup 0/12
+Data from Detector & Tracker being written to database
+Data written to database at time 2020-11-04 16:07:30.946325
+UP: 3 DOWN: 2
+wait_time 0  fill% 0.08333333333333333  occup 1/12
+Data from Detector & Tracker being written to database
+Data written to database at time 2020-11-04 16:07:48.635559
+UP: 3 DOWN: 3
+wait_time 0  fill% 0.0  occup 0/12
+Data from Detector & Tracker being written to database
+Data written to database at time 2020-11-04 16:09:29.533947
+UP: 4 DOWN: 3
+wait_time 0  fill% 0.08333333333333333  occup 1/12
+Data from Detector & Tracker being written to database
+Data written to database at time 2020-11-04 16:09:34.952244
+UP: 4 DOWN: 4
+wait_time 0  fill% 0.0  occup 0/12
+Data from Detector & Tracker being written to database
+Data written to database at time 2020-11-04 16:09:41.039663
+UP: 5 DOWN: 4
+wait_time 0  fill% 0.08333333333333333  occup 1/12
+Data from Detector & Tracker being written to database
+Data written to database at time 2020-11-04 16:09:46.349859
+UP: 5 DOWN: 5
+wait_time 0  fill% 0.0  occup 0/12
+Data from Detector & Tracker being written to database
+Data written to database at time 2020-11-04 16:09:54.875111
+UP: 6 DOWN: 5
+wait_time 0  fill% 0.08333333333333333  occup 1/12
+Data from Detector & Tracker being written to database
+Data written to database at time 2020-11-04 16:12:43.443321
+(SIGTERM) received. Setting Exit Event to True and waiting 0.8 sec before terminating
+Exit Event set to True, breaking out of videostream loop
+Before Stream close
+After stream close
+fps after loop
+<imutils.video.fps.FPS object at 0x69aef5b0>
+[INFO] elasped time: 1065.08
+[INFO] approx. FPS: 5.91
+/home/pi/tf_inference/tflite1-env/lib/python3.7/site-packages/picamera/encoders.py:544: PiCameraResolutionRounded: frame size rounded up from 240x180 to 240x192
+  width, height, fwidth, fheight)))
+<class 'numpy.float32'>
+pathIn
+None
+videostream
+<imutils.video.pivideostream.PiVideoStream object at 0x766d3290>
+(SIGTERM) received. Setting Exit Event to True and waiting 0.8 sec before terminating
+Exit Event set to True, breaking out of videostream loop
+Before Stream close
+After stream close
+fps after loop
+<imutils.video.fps.FPS object at 0x6a6b4710>
+[INFO] elasped time: 5.24
+[INFO] approx. FPS: 4.77
+/home/pi/tf_inference/tflite1-env/lib/python3.7/site-packages/picamera/encoders.py:544: PiCameraResolutionRounded: frame size rounded up from 240x180 to 240x192
+  width, height, fwidth, fheight)))
+<class 'numpy.float32'>
+pathIn
+None
+videostream
+<imutils.video.pivideostream.PiVideoStream object at 0x6a719730>
+UP: 1 DOWN: 0
+wait_time 0  fill% 0.08333333333333333  occup 1/12
+Data from Detector & Tracker being written to database
+Data written to database at time 2020-11-04 16:18:42.057165
+UP: 1 DOWN: 1
+wait_time 0  fill% 0.0  occup 0/12
+Data from Detector & Tracker being written to database
+Data written to database at time 2020-11-04 16:21:20.335016
+(SIGTERM) received. Setting Exit Event to True and waiting 0.8 sec before terminating
+Exit Event set to True, breaking out of videostream loop
+Before Stream close
+After stream close
+fps after loop
+<imutils.video.fps.FPS object at 0x6a70fd50>
+[INFO] elasped time: 313.32
+[INFO] approx. FPS: 5.57
+/home/pi/tf_inference/tflite1-env/lib/python3.7/site-packages/picamera/encoders.py:544: PiCameraResolutionRounded: frame size rounded up from 240x180 to 240x192
+  width, height, fwidth, fheight)))
+<class 'numpy.float32'>
+pathIn
+None
+videostream
+<imutils.video.pivideostream.PiVideoStream object at 0x6a683710>
+UP: 1 DOWN: 0
+wait_time 0  fill% 0.08333333333333333  occup 1/12
+Data from Detector & Tracker being written to database
+Data written to database at time 2020-11-04 16:24:06.069136
+UP: 2 DOWN: 0
+wait_time 0  fill% 0.16666666666666666  occup 2/12
+Data from Detector & Tracker being written to database
+Data written to database at time 2020-11-04 16:25:27.635480
+UP: 2 DOWN: 1
+wait_time 0  fill% 0.08333333333333333  occup 1/12
+Data from Detector & Tracker being written to database
+Data written to database at time 2020-11-04 16:27:03.649899
+(SIGTERM) received. Setting Exit Event to True and waiting 0.8 sec before terminating
+Exit Event set to True, breaking out of videostream loop
+Before Stream close
+After stream close
+fps after loop
+<imutils.video.fps.FPS object at 0x6a6a0bd0>
+[INFO] elasped time: 871.67
+[INFO] approx. FPS: 5.64
+/home/pi/tf_inference/tflite1-env/lib/python3.7/site-packages/picamera/encoders.py:544: PiCameraResolutionRounded: frame size rounded up from 240x180 to 240x192
+  width, height, fwidth, fheight)))
+<class 'numpy.float32'>
+pathIn
+None
+videostream
+<imutils.video.pivideostream.PiVideoStream object at 0x766389d0>
+UP: 1 DOWN: 0
+wait_time 0  fill% 0.08333333333333333  occup 1/12
+Data from Detector & Tracker being written to database
+Data written to database at time 2020-11-05 12:18:55.767576
+UP: 1 DOWN: 1
+wait_time 0  fill% 0.0  occup 0/12
+Data from Detector & Tracker being written to database
+Data written to database at time 2020-11-05 12:19:02.828902
+UP: 0 DOWN: 0
+wait_time 0  fill% 0.0  occup 0/12
+Data from Detector & Tracker being written to database
+Data written to database at time 2020-11-05 15:59:34.327558
+UP: 0 DOWN: 1
+wait_time 0  fill% 0.0  occup 0/12
+Data from Detector & Tracker being written to database
+Data written to database at time 2020-11-05 15:59:36.171265
+(SIGTERM) received. Setting Exit Event to True and waiting 0.8 sec before terminating
+Exit Event set to True, breaking out of videostream loop
+Before Stream close
+After stream close
+fps after loop
+<imutils.video.fps.FPS object at 0x69b7b490>
+[INFO] elasped time: 15912.68
+[INFO] approx. FPS: 6.14
+/home/pi/tf_inference/tflite1-env/lib/python3.7/site-packages/picamera/encoders.py:544: PiCameraResolutionRounded: frame size rounded up from 240x180 to 240x192
+  width, height, fwidth, fheight)))
+<class 'numpy.float32'>
+pathIn
+None
+videostream
+<imutils.video.pivideostream.PiVideoStream object at 0x6a72e710>
+(SIGTERM) received. Setting Exit Event to True and waiting 0.8 sec before terminating
+Exit Event set to True, breaking out of videostream loop
+Before Stream close
+After stream close
+fps after loop
+<imutils.video.fps.FPS object at 0x6a724dd0>
+[INFO] elasped time: 1.61
+[INFO] approx. FPS: 2.49
+/home/pi/tf_inference/tflite1-env/lib/python3.7/site-packages/picamera/encoders.py:544: PiCameraResolutionRounded: frame size rounded up from 240x180 to 240x192
+  width, height, fwidth, fheight)))
+<class 'numpy.float32'>
+pathIn
+None
+videostream
+<imutils.video.pivideostream.PiVideoStream object at 0x6a6947d0>
+(SIGTERM) received. Setting Exit Event to True and waiting 0.8 sec before terminating
+Exit Event set to True, breaking out of videostream loop
+Before Stream close
+After stream close
+fps after loop
+<imutils.video.fps.FPS object at 0x69a46050>
+[INFO] elasped time: 4.42
+[INFO] approx. FPS: 4.30
+/home/pi/tf_inference/tflite1-env/lib/python3.7/site-packages/picamera/encoders.py:544: PiCameraResolutionRounded: frame size rounded up from 240x180 to 240x192
+  width, height, fwidth, fheight)))
+<class 'numpy.float32'>
+pathIn
+None
+(SIGTERM) received. Setting Exit Event to True and waiting 0.8 sec before terminating
+videostream
+<imutils.video.pivideostream.PiVideoStream object at 0x6a6e1730>
+Exit Event set to True, breaking out of videostream loop
+Before Stream close
+After stream close
+fps after loop
+None
+Traceback (most recent call last):
+  File "/home/pi/tf_inference/model_tracking.py", line 6, in <module>
+    streaming()
+  File "/home/pi/tf_inference/streamutils.py", line 159, in streaming
+    for frame,fps in stream_video(test_video,resolution):
+  File "/home/pi/tf_inference/streamutils.py", line 79, in stream_video
+    fps.stop()
+AttributeError: 'NoneType' object has no attribute 'stop'
+/home/pi/tf_inference/tflite1-env/lib/python3.7/site-packages/picamera/encoders.py:544: PiCameraResolutionRounded: frame size rounded up from 240x180 to 240x192
+  width, height, fwidth, fheight)))
+(SIGTERM) received. Setting Exit Event to True and waiting 0.8 sec before terminating
+<class 'numpy.float32'>
+pathIn
+None
+videostream
+<imutils.video.pivideostream.PiVideoStream object at 0x6a6a0750>
+Exit Event set to True, breaking out of videostream loop
+Before Stream close
+After stream close
+fps after loop
+None
+Traceback (most recent call last):
+  File "/home/pi/tf_inference/model_tracking.py", line 6, in <module>
+    streaming()
+  File "/home/pi/tf_inference/streamutils.py", line 159, in streaming
+    for frame,fps in stream_video(test_video,resolution):
+  File "/home/pi/tf_inference/streamutils.py", line 79, in stream_video
+    fps.stop()
+AttributeError: 'NoneType' object has no attribute 'stop'

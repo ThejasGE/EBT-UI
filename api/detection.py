@@ -3,7 +3,7 @@
 import numpy as np
 import cv2
 import importlib
-    
+
 
 class Detection:
     def __init__(self):
@@ -13,17 +13,17 @@ class Detection:
         self.output_tensors=None
         self.session=None
         self.tflite=False
-        
-        #tflite specific params 
+
+        #tflite specific params
         self.resolution=None
         self.dtype=None
 
     def load_model(self,model_path,label_path):
-        
+
         self.tflite= True if '.tflite' in model_path else False
-        
+
         self.load_labels(label_path,self.tflite)
-        
+
         if self.tflite:
             self.load_tflite_model(model_path)
         else:
@@ -52,43 +52,43 @@ class Detection:
         boxes = self.session.get_tensor(self.output_tensors[0]['index'])
         classes = self.session.get_tensor(self.output_tensors[1]['index'])
         scores = self.session.get_tensor(self.output_tensors[2]['index'])
-        
-        
-        
+
+
+
         return np.squeeze(boxes),np.squeeze(scores),np.squeeze(classes).astype(np.uint8)
 
     def tf_inference(self,image):
-   
+
         (boxes, scores, classes, num)=self.session.run(self.output_tensors,
                         feed_dict={self.image_tensor: np.expand_dims(image, axis=0)})
-    
-        
+
+
         return np.squeeze(boxes),np.squeeze(scores),np.squeeze(classes).astype(np.uint8)
-    
-    
+
+
     def load_tflite_model(self,model_path):
         # Import TensorFlow libraries
         #only use tflite_runtime because the PI has issues with tensorflow tflite
         from tflite_runtime.interpreter import Interpreter
-     
+
         interpreter = Interpreter(model_path)
         interpreter.allocate_tensors()
-           
-        self.session=interpreter    
+
+        self.session=interpreter
 
         input_details = interpreter.get_input_details()
-        
+
         self.dtype=input_details[0]['dtype']
         print(self.dtype)
-        
+
         height = input_details[0]['shape'][1]
         width = input_details[0]['shape'][2]
         self.resolution=(width,height)
-        
+
         self.output_tensors = interpreter.get_output_details()
-        
+
         self.image_tensor=input_details[0]['index']
-    
+
     def load_labels(self,label_path,tflite=False):
         with open(label_path, 'r') as f:
             labels = [line.strip() for line in f.readlines()]
@@ -100,7 +100,7 @@ class Detection:
                 labels.insert(0,'???')
 
         self.labels=labels
-    
+
     def load_tf_model(self,model_path):
         import tensorflow as tf
 
@@ -114,40 +114,40 @@ class Detection:
                 tf.import_graph_def(od_graph_def, name='')
 
             self.session = tf.Session(graph=detection_graph)
-        
+
 
         self.image_tensor = detection_graph.get_tensor_by_name('image_tensor:0')
         boxes = detection_graph.get_tensor_by_name('detection_boxes:0')
         scores = detection_graph.get_tensor_by_name('detection_scores:0')
         classes = detection_graph.get_tensor_by_name('detection_classes:0')
         num_detections = detection_graph.get_tensor_by_name('num_detections:0')
-        
+
         self.output_tensors=[boxes,scores,classes,num_detections]
 
-##SUPPORT METHODS     
-        
+##SUPPORT METHODS
+
     def filter_boxes(self,results,min_conf,max_boxes,valid_classes=[0,1]):
         (boxes,scores,classes)=results
 
         new_boxes,new_scores,new_classes=[],[],[]
 
-        for i in range(min(boxes.shape[0],max_boxes)):   
+        for i in range(min(boxes.shape[0],int(max_boxes))):
 
             valid=False
             if classes[i] in valid_classes:
-                
-                if scores[i]>min_conf and sum(boxes[i])>0:
+
+                if scores[i]>float(min_conf) and sum(boxes[i])>0:
                     valid=True
 
-            if valid:   
+            if valid:
                 new_boxes.append(boxes[i])
                 new_scores.append(scores[i])
                 new_classes.append(classes[i])
 
 
-        return (new_boxes,new_scores,new_classes)    
-    
-    
+        return (new_boxes,new_scores,new_classes)
+
+
     def draw_boxes(self,image,results,labels):
         h,w=image.shape[:2]
         (boxes,scores,classes)=results
@@ -158,15 +158,15 @@ class Detection:
             cv2.rectangle(image, (xmin,ymin), (xmax,ymax), (10, 255, 0), 1)
             cv2.rectangle(image, (xmin, ymin), (xmax,ymin+12), (10, 255, 0), cv2.FILLED)
             cv2.putText(image, '{} {}%'.format('person',int(scores[i]*100)), (xmin, ymin+10), cv2.FONT_HERSHEY_SIMPLEX,\
-                        0.45, (255, 0, 0), 1) 
+                        0.45, (255, 0, 0), 1)
             #cv2.putText(image, '{} {}%'.format(labels[classes[i]],int(scores[i]*100)), (xmin, ymin+10), cv2.FONT_HERSHEY_SIMPLEX,\
-            #            0.45, (255, 0, 0), 1) 
+            #            0.45, (255, 0, 0), 1)
 
         return image
-        
-        
+
+
     def transform_image(self,frame,resolution,color=True):
-    
+
         if frame.shape[:2][::-1]!=resolution:
             frame = cv2.resize(frame, resolution, interpolation=cv2.INTER_NEAREST)
             #frame = cv2.resize(frame, resolution, interpolation=cv2.INTER_LINEAR)
@@ -187,5 +187,3 @@ class Detection:
             boxes=np.nan_to_num(boxes).clip(0,1)
             boxes=(boxes* np.array([h,w,h,w])).astype('int16')
         return (boxes,scores,classes)
-
-
