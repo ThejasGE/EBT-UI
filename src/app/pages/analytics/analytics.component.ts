@@ -292,6 +292,7 @@ export class AnalyticsComponent implements OnInit {
       },
       tooltips: {
         callbacks: {
+<<<<<<< HEAD
           label: function (tooltipItem, data) {
             var dataset = data.datasets[tooltipItem.datasetIndex];
             var total = dataset.data.reduce(function (previousValue, currentValue, currentIndex, array) {
@@ -299,6 +300,15 @@ export class AnalyticsComponent implements OnInit {
             });
             var currentValue = dataset.data[tooltipItem.index];
             var precentage = Math.round(currentValue);
+=======
+          label: function(tooltipItem, data) {
+            var dataset = data.datasets[tooltipItem.datasetIndex];
+            var total = dataset.data.reduce(function(previousValue, currentValue, currentIndex, array) {
+              return previousValue + currentValue;
+            });
+            var currentValue = dataset.data[tooltipItem.index];
+            var precentage = Math.round(currentValue);         
+>>>>>>> d928e296b6e5570e3ddb8ae67c9b5bffb61389cc
             return precentage + "%";
           }
         }
@@ -308,7 +318,7 @@ export class AnalyticsComponent implements OnInit {
 
     var config2 = {
       type: 'doughnut',
-      data: {
+      data:{
         labels: data.weekday,
         datasets: [{
           label: "Data",
@@ -330,7 +340,11 @@ export class AnalyticsComponent implements OnInit {
         }]
       },
       options: gradientChartOptionsConfigurationWithTooltipRed1
+<<<<<<< HEAD
 
+=======
+     
+>>>>>>> d928e296b6e5570e3ddb8ae67c9b5bffb61389cc
     };
 
     if (this.myChartDou) this.myChartDou.destroy();

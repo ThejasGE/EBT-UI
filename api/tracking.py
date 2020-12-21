@@ -11,64 +11,66 @@ class Tracking:
     def __init__(self,resolution,centroid_list_size=60):
         #scale the line to resolution
 
-        
+
         self.resolution=resolution
         self.centroid_list_size=centroid_list_size
-        
-        
+
+
         self.line_points=[]
         self.x_range=()
         self.y_range=()
-        
+
         self.ct = CentroidTracker()
-                
+
         self.totalUp=0
         self.totalDown=0
-        
+
         self.wait_times=[]
-        
+
         self.trackableObjects={}
         self.objects=None
 
         self.on_line_update=False
-        
+
     def scale_line(self,line_points):
         resolution=self.resolution
         return [(int(line_points[0][0]*resolution[0]),int(line_points[0][1]*resolution[1])),
                 (int(line_points[1][0]*resolution[0]),int(line_points[1][1]*resolution[1]))]
-        
-        
-    def count_reset(self,enter,exit,thresh,last_movement,minutes_inactive=120,percent_cap=2.0,reset=False):
-        
+
+
+    def count_reset(self,enter,exit,thresh,last_movement,minutes_inactive=120.0,percent_cap=2.0,reset=False):
+
         if reset:
             enter,exit=0,0
 
 
-        if minutes_inactive and last_movement/60>=minutes_inactive:
+        if minutes_inactive and last_movement/60>=float(minutes_inactive):
             enter,exit=0,0
-            
+
+        #print('Count Reset Variable Check :- \nEnter {} ; Exit {}; Last Movement {} ; Thresh {} ; Percent Cap {} ; minutes_inactive {} ; reset {}'.format(enter, exit, last_movement, thresh, percent_cap, minutes_inactive, reset))
+
         if percent_cap is not None:
             #if percentage of exits exceeds the acceptable cap then counter is reset
             if (enter-exit)/thresh < (-percent_cap):
                 enter,exit=0,0
-            #if percentage of entrance exceeds the acceptable cap then counter is capped to the threshold  
+            #if percentage of entrance exceeds the acceptable cap then counter is capped to the threshold
             if (enter-exit)/thresh > percent_cap:
                 enter=thresh
                 exit=0
-                
+
         return enter,exit
 
     def get_fill_values(self,enter,exit,thresh):
 
         fill_rate= max(0,enter-exit)
         fill_perc=fill_rate/thresh
-        
+
         return fill_perc,fill_rate
 
     def get_wait_time(self,fill_perc,wait_times,min_wait=15,max_wait=3600):
-        
+
         wait_time=0
-        
+
         if fill_perc>=1 and len(wait_times)>1:
             time_diff=np.diff([i[0] for i in wait_times])
             wait_time=np.median(np.vectorize(lambda x:x.total_seconds())(time_diff))
@@ -104,57 +106,60 @@ class Tracking:
 
     def update_counter(self,capacity,entrance='up',minutes_inactive=120,percent_cap=2.0,min_wait_time=15,max_wait_time=1800,reset=False):
         timestamp=datetime.now()
-            
+
         last_movement=(timestamp-self.wait_times[-1][0]).total_seconds() if len(self.wait_times)>0 else 0
-               
+
         if entrance=='up':
             enter,exit=self.totalUp,self.totalDown
             enter,exit=self.count_reset(enter,exit,capacity,last_movement,minutes_inactive,percent_cap,reset)
             self.totalUp,self.totalDown= enter,exit
         else:
-            exit,enter=self.totalUp,self.totalDown    
+            exit,enter=self.totalUp,self.totalDown
             enter,exit=self.count_reset(enter,exit,capacity,last_movement, minutes_inactive,percent_cap,reset)
             self.totalUp,self.totalDown=exit,enter
-            
+
         data={}
-        if self.on_line_update: 
-                
+        if self.on_line_update:
+
             self.wait_times.append([timestamp,self.totalUp,self.totalDown])
             self.wait_times=self.wait_times[-50:]
-            
+
             fill_perc,fill_rate=self.get_fill_values(enter,exit,capacity)
 
             wait_time=self.get_wait_time(fill_perc,self.wait_times,min_wait_time,max_wait_time)
-           
+
             print('UP: {} DOWN: {}'.format(self.totalUp,self.totalDown))
             print( 'wait_time {}  fill% {}  occup {}/{}'.format(wait_time,fill_perc,fill_rate,capacity))
-            
+
             data={'in':enter , 'out':exit ,'fill':fill_rate,'fill_perc':int(fill_perc*100),'wait':wait_time, 'pidatetime':timestamp.timestamp()}
-            
-            
+
+
         return self.on_line_update,data
-    
+
     def track_objects(self,boxes,line_points,buffer_frames=5,max_disappeared=20,max_distance=50):
-        
+
         line_points=self.scale_line(line_points)
-        self.line_points=line_points
-        
+        if self.line_points==[]:
+            self.line_points=line_points
+
         #print(line_points,x_range,y_range )
         self.on_line_update=False
-        
+
+        #print("In tracking.py, function Tracking.track_objects()")
+
         self.objects = self.ct.update(boxes,max_disappeared=max_disappeared,max_distance=max_distance)
-        
+
         #if x>y its a horizontal line else its a vertical
-        horizontal= True if line_points[0][0]<line_points[0][1] else False
+        horizontal= True if self.line_points[0][0]<self.line_points[0][1] else False
         if horizontal:
             line_idx=[0,1]
         else:
             line_idx=[1,0]
-        
-        self.line_range=(line_points[0][line_idx[0]],line_points[1][line_idx[0]])
-        self.move_range=(line_points[0][line_idx[1]],line_points[1][line_idx[1]])
-            
-        
+
+        self.line_range=(self.line_points[0][line_idx[0]],self.line_points[1][line_idx[0]])
+        self.move_range=(self.line_points[0][line_idx[1]],self.line_points[1][line_idx[1]])
+
+
         for (objectID, centroid) in self.objects.items():
             # check to see if a trackable object exists for the current
             # object ID
@@ -165,26 +170,26 @@ class Tracking:
             else:
                 movement = [c[line_idx[1]] for c in to.centroids[-5:]]
                 direction = centroid[line_idx[1]] - np.mean(movement)
-                
+
                 to.centroids=to.centroids[-self.centroid_list_size:]
                 to.centroids.append(centroid)
-                
-                if to.buffer>0:
-                    to.buffer-=1
-                
+
+                if int(to.buffer)>0:
+                    to.buffer=int(to.buffer)-1
+
                 line_dir=centroid[line_idx[0]]
                 move_dir=centroid[line_idx[1]]
-                
+
                 betweenLine=(self.line_range[0]<=line_dir<=self.line_range[1])
-                
+
                 if to.buffer==0 and betweenLine:
-                    
+
                     prev_line_dir=to.centroids[-2][line_idx[0]]
                     prev_move_dir=to.centroids[-2][line_idx[1]]
-                
+
                     line_limit=self.x_to_y_scaler(line_dir,self.line_range,self.move_range)
                     prev_line_limit=self.x_to_y_scaler(prev_line_dir,self.line_range,self.move_range)
-                    
+
 
                     if direction < 0 and move_dir <= line_limit and prev_move_dir>prev_line_limit:
                             self.totalUp += 1
@@ -199,29 +204,29 @@ class Tracking:
                             to.buffer=buffer_frames
 
             self.trackableObjects[objectID] = to
-            
+
 class MotionTracker:
-    
+
     def __init__(self,frequency=0.33):
         self.trackers=[]
-        
+
         self.counter=0
         self.freq_numbers=np.linspace(0,100,int(100*frequency),dtype=int)
-        
-        
+
+
     def check_count(self):
-        
+
         if self.counter>=100:
             self.counter=0
         else:
             self.counter+=1
-            
-        
+
+
         if self.counter in self.freq_numbers:
             return True
-            
+
         return False
-        
+
     def start_trackers(self,image,boxes):
         self.trackers=[]
                 #print(results[0])
@@ -229,18 +234,18 @@ class MotionTracker:
             tracker = dlib.correlation_tracker()
             tracker.start_track(image, dlib.rectangle(xmin,ymin,xmax,ymax))
             self.trackers.append(tracker)
-            
-            
+
+
     def update_trackers(self,image):
         boxes=[]
         for tracker in self.trackers:
             tracker.update(image)
             pos = tracker.get_position()
             boxes.append([int(pos.top()),int(pos.left()),int(pos.bottom()),int(pos.right())])
-                
+
         return (np.array(boxes),np.ones(len(boxes)),np.ones(len(boxes)))
-        
-        
+
+
 class TrackableObject:
 	def __init__(self, objectID, centroid):
 		# store the object ID, then initialize a list of centroids
@@ -251,7 +256,7 @@ class TrackableObject:
 		# initialize a boolean used to indicate if the object has
 		# already been counted or not
 		self.counted = False
-		self.buffer =0        
+		self.buffer =0
 
 class CentroidTracker:
 	def __init__(self):
@@ -300,7 +305,7 @@ class CentroidTracker:
 				# if we have reached a maximum number of consecutive
 				# frames where a given object has been marked as
 				# missing, deregister it
-				if self.disappeared[objectID] > self.maxDisappeared:
+				if self.disappeared[objectID] > int(self.maxDisappeared):
 					self.deregister(objectID)
 
 			# return early as there are no centroids or tracking info
@@ -367,7 +372,7 @@ class CentroidTracker:
 				# if the distance between centroids is greater than
 				# the maximum distance, do not associate the two
 				# centroids to the same object
-				if D[row, col] > self.maxDistance:
+				if D[row, col] > float(self.maxDistance):
 					continue
 
 				# otherwise, grab the object ID for the current row,
@@ -402,8 +407,10 @@ class CentroidTracker:
 					# check to see if the number of consecutive
 					# frames the object has been marked "disappeared"
 					# for warrants deregistering the object
-					if self.disappeared[objectID] > self.maxDisappeared:
+					if self.disappeared[objectID] > int(self.maxDisappeared):
 						self.deregister(objectID)
+				for col in unusedCols:
+					self.register(inputCentroids[col])
 
 			# otherwise, if the number of input centroids is greater
 			# than the number of existing object centroids we need to
