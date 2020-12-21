@@ -20,14 +20,13 @@ import { error } from '@angular/compiler/src/util';
 
 })
 export class AuthLayoutComponent implements OnInit {
-  title = 'Admin Dashboard';
+  title = 'Admin Login';
   loginFormGroup: FormGroup;
   show: boolean;
   constructor(formBuilder: FormBuilder, private ngxLoader: NgxUiLoaderService, private snackBar: AdapptSnackbarService, private loginService: UserService, private adapptHttp: AdapptHttpService,
     private router: Router, private adapptAuth: AdapptAuthService, private cookieService: CookieService) {
 
     this.loginFormGroup = formBuilder.group({
-      loginId: ["", Validators.required],
       userName: ["", Validators.required],
       password: ["", Validators.required]
     });
@@ -56,7 +55,7 @@ export class AuthLayoutComponent implements OnInit {
         // console.log(data)
         if (data.auth_token) {
           this.adapptAuth.saveSession(data);
-          this.router.navigate(['display']);
+          this.router.navigate(['commissioning']);
           // this.snackBar.showMessage(
           //   'Login Successfull'     
           // );   

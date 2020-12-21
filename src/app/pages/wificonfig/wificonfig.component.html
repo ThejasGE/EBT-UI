@@ -9,8 +9,8 @@
                     <div class=" card-body">
                         <div fxLayout="row">
                             <!-- <p>Current Mode: {{ mode }}</p> -->
-                            <h4 fxFlex><i matTooltip="Access point is:HotSpot Mode, Station is:Network Mode"
-                                class=" tim-icons icon-alert-circle-exc text-success"> </i> Current Mode</h4>
+                            <h4 fxFlex><i matTooltip="To connect to the device as a Hotspot, choose ‘Access Point’ mode. To connect the device to an existing WiFi network, choose ‘Station’ mode"
+                                class=" tim-icons icon-alert-circle-exc text-success"> </i> Device Mode</h4>
                             <div fxflex>
                                 <h3>{{presentMode}}</h3>
                             </div>
@@ -21,11 +21,11 @@
                             <h4 fxFlex><i class=" tim-icons icon-double-right text-success"> </i>Toggle Between Modes</h4>
                             <div fxflex>
                                 <!-- <mat-slide-toggle color="primary">Toggle WiFi:</mat-slide-toggle> -->
-                                <mat-slide-toggle color="primary" class="margin-left text-success"
+                                <!--<mat-slide-toggle color="primary" class="margin-left text-success"
                                     [checked]="presentMode=='Access Point'" (click)="switchMode();reLoad();"
                                     matTooltip="Switches from Station to AP Mode">
-                                    <!-- <mat-icon>refresh</mat-icon> -->
-                                </mat-slide-toggle>
+                                </mat-slide-toggle>-->
+                                <button class="btn btn-success btn-sm" (click)="switchMode();reLoad();">{{presentMode == 'Station'? 'Switch to Access': 'Switch to Station'}}</button>
                             </div>
                         </div>
                         <div fxLayout="row">
@@ -34,7 +34,7 @@
                             <div fxflex>
                                 <!-- <mat-slide-toggle color="primary">Toggle WiFi:</mat-slide-toggle> -->
                                 <button mat-mini-fab class="margin-left text-success" (click)="searchNetwork()"
-                                    matTooltip="WiFi List Gets Updated Every Minutes">
+                                    matTooltip="WiFi List Gets Updated Every Minute">
                                     <mat-icon>refresh</mat-icon>
                                 </button>
                             </div>
@@ -54,7 +54,8 @@
                     </div> -->
                 </div>
                 <div class=" card-body">
-                    <div class=" table-full-width table-responsive">
+                
+                    <!-- <div class=" table-full-width table-responsive">
 
                         <table class=" table">
 
@@ -72,10 +73,8 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <span class=" title">{{network}}</span>
-                                        <!-- <p class=" text-muted">
-                                            Dwuamish Head, Seattle, WA 8:47 AM
-                                        </p> -->
+                                        <p class=" title">{{network}}</p>
+                                        
                                     </td>
                                     <td class=" td-actions text-right">
                                         <button class=" btn btn-link" type="button" (click)="openDialog()"
@@ -84,139 +83,104 @@
                                         </button>
                                     </td>
                                 </tr>
-                                <!-- <tr>
-                                    <td>
-                                        <div class=" form-check">
-                                            <label class=" form-check-label">
-                                                <input checked="" class=" form-check-input" type="checkbox" value="" />
-
-                                                <span class=" form-check-sign">
-                                                    <span class=" check"> </span>
-                                                </span>
-                                            </label>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p class=" title">GDPR Compliance</p>
-                                        <p class=" text-muted">
-                                            The GDPR is a regulation that requires businesses to
-                                            protect the personal data and privacy of Europe citizens
-                                            for transactions that occur within EU member states.
-                                        </p>
-                                    </td>
-                                    <td class=" td-actions text-right">
-                                        <button class=" btn btn-link" type="button" placement="left"
-                                            ngbTooltip="Edit Task" container="body">
-                                            <i class=" tim-icons icon-pencil"> </i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class=" form-check">
-                                            <label class=" form-check-label">
-                                                <input class=" form-check-input" type="checkbox" value="" />
-
-                                                <span class=" form-check-sign">
-                                                    <span class=" check"> </span>
-                                                </span>
-                                            </label>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p class=" title">Solve the issues</p>
-                                        <p class=" text-muted">
-                                            Fifty percent of all respondents said they would be more
-                                            likely to shop at a company
-                                        </p>
-                                    </td>
-                                    <td class=" td-actions text-right">
-                                        <button class=" btn btn-link" type="button" placement="left"
-                                            ngbTooltip="Edit Task" container="body">
-                                            <i class=" tim-icons icon-pencil"> </i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class=" form-check">
-                                            <label class=" form-check-label">
-                                                <input class=" form-check-input" type="checkbox" value="" />
-
-                                                <span class=" form-check-sign">
-                                                    <span class=" check"> </span>
-                                                </span>
-                                            </label>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p class=" title">Release v2.0.0</p>
-                                        <p class=" text-muted">
-                                            Ra Ave SW, Seattle, WA 98116, SUA 11:19 AM
-                                        </p>
-                                    </td>
-                                    <td class=" td-actions text-right">
-                                        <button class=" btn btn-link" type="button" placement="left"
-                                            ngbTooltip="Edit Task" container="body">
-                                            <i class=" tim-icons icon-pencil"> </i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class=" form-check">
-                                            <label class=" form-check-label">
-                                                <input class=" form-check-input" type="checkbox" value="" />
-
-                                                <span class=" form-check-sign">
-                                                    <span class=" check"> </span>
-                                                </span>
-                                            </label>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p class=" title">Export the processed files</p>
-                                        <p class=" text-muted">
-                                            The report also shows that consumers will not easily
-                                            forgive a company once a breach exposing their personal
-                                            data occurs.
-                                        </p>
-                                    </td>
-                                    <td class=" td-actions text-right">
-                                        <button class=" btn btn-link" type="button" placement="left"
-                                            ngbTooltip="Edit Task" container="body">
-                                            <i class=" tim-icons icon-pencil"> </i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class=" form-check">
-                                            <label class=" form-check-label">
-                                                <input class=" form-check-input" type="checkbox" value="" />
-
-                                                <span class=" form-check-sign">
-                                                    <span class=" check"> </span>
-                                                </span>
-                                            </label>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p class=" title">Arival at export process</p>
-                                        <p class=" text-muted">
-                                            Capitol Hill, Seattle, WA 12:34 AM
-                                        </p>
-                                    </td>
-                                    <td class=" td-actions text-right">
-                                        <button class=" btn btn-link" type="button" placement="left"
-                                            ngbTooltip="Edit Task" container="body">
-                                            <i class=" tim-icons icon-pencil"> </i>
-                                        </button>
-                                    </td>
-                                </tr> -->
+                                
                             </tbody>
                         </table>
-                    </div>
+                        </div> -->
+                        <form fxLayout="column" [formGroup]="wifiFormGroup" (ngSubmit)="wifiConnect()">
+                            <!-- <mat-slide-toggle color="primary" [(ngModel)]="hasParking" (change)="toggle($event)"
+                                formControlName="hasParking">
+                                Parking
+                            </mat-slide-toggle>
+                            <mat-slide-toggle color="primary" [(ngModel)]="hasLMS" (change)="toggle($event)"
+                                formControlName="hasLMS">
+                                LMS
+                            </mat-slide-toggle>
+                            <mat-slide-toggle color="primary" [(ngModel)]="hasOpenArea" (change)="toggle($event)"
+                                formControlName="hasOpenArea">
+                                Open Area
+                            </mat-slide-toggle>
+                            <mat-slide-toggle color="primary" [(ngModel)]="hasHotdesk" (change)="toggle($event)"
+                                formControlName="hasHotdesk">
+                                Hot Desk
+                            </mat-slide-toggle>
+                            <mat-slide-toggle color="primary" [(ngModel)]="hasCrbs" (change)="toggle($event)"
+                                formControlName="hasCrbs">
+                                CRBS
+                            </mat-slide-toggle>
+                            <mat-slide-toggle color="primary" [(ngModel)]="hasOccupancy" (change)="toggle($event)"
+                                formControlName="hasOccupancy">
+                                Occupancy
+                            </mat-slide-toggle>
+                            <mat-slide-toggle color="primary" [(ngModel)]="hasAllocation" (change)="toggle($event)"
+                                formControlName="hasAllocation">
+                                Seat Allocation
+                            </mat-slide-toggle> -->
+            
+            
+                            <!-- <form [formGroup]="form" novalidate>
+                            <mat-form-field class="select-form">
+                                <mat-select [formControl]="selectedServices" placeholder="Services" multiple>
+                                    <mat-option *ngFor="let product of productType" selected="true" [value]="name">
+                                        {{product.name}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            </form> -->
+            
+                            <div class=" col-md-10">
+                                <div class=" form-group">
+                                    <h3>SSID:</h3>
+                                    <!-- <input class="form-control" placeholder="IP Address" type="text" name="ipAddress" required> -->
+                                    <!-- <mat-error *ngIf="ethernetForm.ipAddress.invalid">IP Address is invalid!</mat-error> -->
+                                    <select title="Select Wifi Network" formControlName="username" name="username"
+                                        placeholder="select wifi network" class="form-control" placeholder="Available Network"
+                                        id="exampleFormControlSelect1" style="color:white;" required>
+                                        <option value="" disabled selected>Select Available Networks</option>
+                                        <option *ngFor="let network of networks" style="color: black;" placeholder="Available Networks" [value]="network">
+                                            {{network}}
+                                        </option>
+                                        <!-- <option style="color: black;" value="down">Down</option> -->
+            
+                                    </select>
+                                    <mat-error *ngIf="wifiForm.username.invalid">ssid is required,Select from DropDown</mat-error>
+                                    <!-- <mat-error *ngIf="wifiFormGroup.ssid.invalid">User Name is required!</mat-error> -->
+                                </div>
+                            </div>
+                            <div class=" col-md-10">
+            
+                                <div class=" form-group">
+                                    <h3>Password:</h3>
+                                    <!-- <input class="form-control" placeholder="Password" type="text" name="ipAddress" required> -->
+                                    <!-- <mat-error *ngIf="ethernetForm.ipAddress.invalid">IP Address is invalid!</mat-error> -->
+                                    <!-- <input class="form-control" [type]="show ? 'text' : 'password'" formControlName="password"
+                                        placeholder="Password" type="password" name="password" required>
+                                    <button mat-button *ngIf="!this.show" matSuffix mat-icon-button aria-label="Clear"
+                                        (click)="this.show = !this.show;  ">
+                                        <mat-icon>visibility</mat-icon>
+                                    </button>
+                                    <button mat-button *ngIf="this.show" matSuffix mat-icon-button aria-label="Clear"
+                                        (click)="this.show = !this.show;  ">
+                                        <mat-icon>visibility_off</mat-icon>
+                                    </button> -->
+                                    <!-- <input class="form-control" placeholder="Password" [type]="hide ? 'password' : 'text'"
+                                        formControlName="password" required>
+                                    <mat-icon matSuffix mat-icon-button (click)="hide = !hide">
+                                        {{hide ? 'Disable' : 'enable'}}</mat-icon>
+                                    <mat-hint *ngIf="!passwordInput.value">Enter your password</mat-hint> -->
+                                    <input class="form-control" placeholder="Enter Password" formControlName="password" name="password" type="password"
+                                        id="myInput" minlength="8" required>
+                                    <input type="checkbox" (click)="myFunction()"> <span> Show Password</span>
+                                </div>
+                                <!-- <mat-error *ngIf="wifiForm.password.invalid">Password is required!</mat-error> -->
+                                <mat-error *ngIf="wifiForm.password.errors">Password must be at least 8 characters</mat-error>
+                            </div>
+                            <div mat-dialog-actions>
+                                
+                                <button class="btn btn-success btn-sm" color="basic" type="submit" cdkFocusInitial>Add Network</button>
+                            </div>
+                        </form>
+                    
                 </div>
             </div>
         </div>

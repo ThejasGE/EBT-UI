@@ -93,8 +93,9 @@ export class WifiDialog {
       })
 
 
-      // console.log(this.wifiFormGroup.value);
+
     }
+    // console.log(this.wifiFormGroup.value);
   }
 }
 
@@ -115,6 +116,7 @@ export class WificonfigComponent implements OnInit {
   bleAddress: any;
   hostAddress: any;
   hostform: FormGroup;
+  wifiFormGroup: FormGroup;
 
 
   constructor(formBuilder: FormBuilder, private snackBar: AdapptSnackbarService, private adapptHttp: AdapptHttpService, private httpClient: HttpClient, private router: Router, private sanitizer: DomSanitizer, public dialog: MatDialog) {
@@ -122,6 +124,11 @@ export class WificonfigComponent implements OnInit {
       // email:  ["", Validators.required],
       btaddress: ["", Validators.required],
       // password: ["", Validators.required]
+    });
+    this.wifiFormGroup = formBuilder.group({
+      // email:  ["", Validators.required],
+      username: ["", Validators.required],
+      password: ["", Validators.required]
     });
   }
 
@@ -140,6 +147,31 @@ export class WificonfigComponent implements OnInit {
       this.snackBar.showMessage('Wifi Networks Not Available ,Device is in Hotspot Mode', 'error')
     })
 
+  }
+  get wifiForm() {
+    return this.wifiFormGroup.controls;
+  }
+  wifiConnect() {
+
+    if (this.wifiFormGroup.valid) {
+      this.httpClient.post(`${Api}/putScanNetwork`, this.wifiFormGroup.value).subscribe(response => {
+        this.snackBar.showMessage('Network Added to the Device', 'success')
+      }, (err: any) => {
+        this.snackBar.showMessage('Error: Please Check the Networks Availabe', 'error')
+      })
+
+
+
+    }
+    // console.log(this.wifiFormGroup.value);
+  }
+  myFunction() {
+    var x = <HTMLInputElement>document.getElementById("myInput");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
   }
   openDialog(): void {
     const dialogRef = this.dialog.open(WifiDialog, {
@@ -173,11 +205,11 @@ export class WificonfigComponent implements OnInit {
         window.location.hash = 'wifisetting';
         window.location.reload();
       }
-    }, 2000);
+    }, 1000);
   }
   btAddress() {
     this.httpClient.get(`${Api}/bt_serialaddr`).subscribe((response: any) => {
-      this.bleAddress = response.btAdress;
+      this.bleAddress = response.btAddress;
     }, (err: any) => {
       this.snackBar.showMessage('Please Connect to Bluetooth')
     })

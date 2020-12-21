@@ -27,7 +27,7 @@ const routes: Routes = [
   //         { path: '404', component: NotFoundComponent },
   // { path: "userprofile", component: UserProfileSettingComponent },
   { path: "commissioning", component: CommissioningComponent, canActivate: [AdapptAuthGuard] },
-  { path: "display", component: HomedisplayComponent, canActivate: [AdapptAuthGuard] },
+  { path: "display", component: HomedisplayComponent },
   { path: "analytics", component: AnalyticsComponent, canActivate: [AdapptAuthGuard] },
   { path: "analytics", component: AnalyticsComponent, canActivate: [AdapptAuthGuard] },
   { path: "settings", component: SettingsComponent, canActivate: [AdapptAuthGuard] },

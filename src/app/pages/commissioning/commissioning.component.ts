@@ -35,7 +35,7 @@ export class CommissioningComponent implements OnInit {
   locationName = "";
   location = "Meeting Room";
   capacity = "";
-  linePoints = "0.0,0.5,1.0,0.5";
+  linePoints = "0.5,0.0,0.5,1.0";
   entrance = "up";
   bleAddress = "";
   liveCameraImage: any;
@@ -52,7 +52,9 @@ export class CommissioningComponent implements OnInit {
     this.getSensorName();
     this.getBleAddress();
     this.loadLiveImage();
-
+    setInterval(() => {
+      this.reLoad();
+    }, 960000);
   }
 
   updateCapacity() {
@@ -98,7 +100,7 @@ export class CommissioningComponent implements OnInit {
       console.log(response.address);
       this.bleAddress = response.address;
     }, (err: any) => {
-      this.snackBar.showMessage("Please check your Ip Address", 'error');
+      this.snackBar.showMessage("Sensor Ble Address not found", 'error');
     });
   }
   updateLocationName() {

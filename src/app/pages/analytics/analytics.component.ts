@@ -286,16 +286,22 @@ export class AnalyticsComponent implements OnInit {
       legend: {
         display: true
       },
-
+      animation: {
+        animateScale: true,
+        animateRotate: true
+      },
       tooltips: {
-        backgroundColor: '#f5f5f5',
-        titleFontColor: '#333',
-        bodyFontColor: '#666',
-        bodySpacing: 4,
-        xPadding: 12,
-        mode: "nearest",
-        intersect: 0,
-        position: "nearest"
+        callbacks: {
+          label: function (tooltipItem, data) {
+            var dataset = data.datasets[tooltipItem.datasetIndex];
+            var total = dataset.data.reduce(function (previousValue, currentValue, currentIndex, array) {
+              return previousValue + currentValue;
+            });
+            var currentValue = dataset.data[tooltipItem.index];
+            var precentage = Math.round(currentValue);
+            return precentage + "%";
+          }
+        }
       },
       responsive: true,
     };
@@ -324,6 +330,7 @@ export class AnalyticsComponent implements OnInit {
         }]
       },
       options: gradientChartOptionsConfigurationWithTooltipRed1
+
     };
 
     if (this.myChartDou) this.myChartDou.destroy();

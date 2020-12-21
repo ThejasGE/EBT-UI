@@ -3,7 +3,7 @@
         <div class=" col-md-6">
             <div class=" card">
                 <div class=" card-header">
-                    <h3 class=" card-title">Sensor Name: <b>{{sensorName}}</b> &#124; Sensor Address:
+                    <h3 class=" card-title">Sensor Id: <b>{{sensorName}}</b> &#124; Sensor Address:
                         <b>{{bleAddress}}</b>
                     </h3>
                     <!-- <h3 class=" card-title">Sensor Address: <b>{{bleAddress}}</b></h3> -->
@@ -29,10 +29,10 @@
         <div class=" col-md-6">
             <div class=" card">
                 <div class=" card-header">
-                    <h2 class=" card-title">Camera Alignment Settings</h2>
+                    <h2 class=" card-title">Sensor Alignment Settings</h2>
                 </div>
                 <div class=" card-header">
-                    <h4 class=" card-title">Client Line Points:</h4>
+                    <h4 class=" card-title">Virtual Line Points:</h4>
                 </div>
 
 
@@ -50,10 +50,12 @@
                             </div> -->
                         <div class=" col-md-4 pr-md-1">
                             <div class="form-group">
-                                <h4 for="exampleFormControlSelect1"><i matTooltip="Select Line Points Intersection"
+                                <h4 for="exampleFormControlSelect1"><i matTooltip=" Choose between Horizontal or Vertical Line points intersection to capture people flow
+                                    "
                                         class=" tim-icons icon-alert-circle-exc text-success"> </i> Line Points:
                                 </h4>
-                                <select name="linePoints" id="linePoints" title="Select Line Points Intersection"
+                                <select name="linePoints" id="linePoints" title=" Choose between Horizontal or Vertical Line points intersection to capture people flow
+                                "
                                     class="form-control" placeholder="Horizontal Line Points" [(ngModel)]="linePoints">
                                     <option style="color: black;" value="0.0,0.5,1.0,0.5">Horizontal Line Points
                                     </option>
@@ -68,10 +70,10 @@
                         </div>
                         <div class=" col-md-4 px-md-1">
                             <div class="form-group">
-                                <h4 for="exampleFormControlSelect1"><i matTooltip="Specify Entrance Point of door"
-                                        class=" tim-icons icon-alert-circle-exc text-success"> </i> Entrance Points:
+                                <h4 for="exampleFormControlSelect1"><i matTooltip="Specify the direction of entrance to the premise for detecting Inward movement of people"
+                                        class=" tim-icons icon-alert-circle-exc text-success"> </i> Entry Direction:
                                 </h4>
-                                <select title="Specify Entrance Point of door" class="form-control"
+                                <select title="Specify the direction of entrance to the premise for detecting Inward movement of people" class="form-control"
                                     [(ngModel)]="entrance" id="exampleFormControlSelect1">
                                     <option style="color: black;" value="up">Up</option>
                                     <option style="color: black;" value="down">Down</option>
@@ -84,9 +86,11 @@
                         </div>
                         <div class=" col-md-4 pl-md-1">
                             <div class="form-group">
-                                <h4><i matTooltip="Enter the Room Name"
-                                        class=" tim-icons icon-alert-circle-exc text-success"> </i> Enter Location:</h4>
-                                <input title="Enter the Room Name" class=" form-control" [(ngModel)]="location"
+                                <h4><i matTooltip="Please enter the location of the enclosed area, where the sensor is currently placed. Please note that this will be displayed on the main screen
+                                    "
+                                        class=" tim-icons icon-alert-circle-exc text-success"> </i> Location:</h4>
+                                <input title="Please enter the location of the enclosed area, where the sensor is currently placed. Please note that this will be displayed on the main screen
+                                " class=" form-control" [(ngModel)]="location"
                                     value={{location}} type="text" />
                             </div>
                             <button class="btn btn-success btn-sm" (click)="updateLocation()">Update
@@ -113,9 +117,11 @@
 
                         <div class=" col-md-4 pr-md-1">
                             <div class=" form-group">
-                                <h4><i matTooltip="Enter the Capacity of the Room to be filled"
-                                        class=" tim-icons icon-alert-circle-exc text-success"> </i> Enter Capacity:</h4>
-                                <input title="Enter the Capacity of the Room to be filled" class=" form-control"
+                                <h4><i matTooltip="Please enter the maximum capacity of people allowed to enter the chosen area 
+                                    "
+                                        class=" tim-icons icon-alert-circle-exc text-success"> </i> People Capacity:</h4>
+                                <input title="Please enter the maximum capacity of people allowed to enter the chosen area 
+                                " class=" form-control"
                                     [(ngModel)]="capacity" value={{capacity}} type="text" />
                             </div>
                             <button class="btn btn-success btn-sm" (click)="updateCapacity()">Update
@@ -123,10 +129,12 @@
                         </div>
                         <div class=" col-md-4 px-md-1">
                             <div class=" form-group">
-                                <h4><i matTooltip="Enter the Minimum Wait Time the person should wait"
+                                <h4><i matTooltip="Please specify the minimum amount of time (in minutes) the person can wait if capacity threshold is reached
+                                    "
                                         class=" tim-icons icon-alert-circle-exc text-success"> </i> Min Wait Time:
                                 </h4>
-                                <input title="Enter the Minimum Wait Time the person should wait" class=" form-control"
+                                <input title="Please specify the minimum amount of time (in minutes) the person can wait if capacity threshold is reached
+                                " class=" form-control"
                                     [(ngModel)]="min_wait_time" value={{min_wait_time}} type="text" />
                             </div>
                             <button class="btn btn-success btn-sm" (click)="updateMinWaitTime()">Update
@@ -134,10 +142,12 @@
                         </div>
                         <div class=" col-md-4 pl-md-1">
                             <div class=" form-group">
-                                <h4><i matTooltip="Enter the Maximum Wait Time the person should wait"
+                                <h4><i matTooltip="Please specify the maximum amount of time (in minutes) the person can wait if capacity threshold is reached
+                                    "
                                         class=" tim-icons icon-alert-circle-exc text-success"> </i> Max Wait Time:
                                 </h4>
-                                <input title="Enter the Maximum Wait Time the person should wait" class=" form-control"
+                                <input title="Please specify the maximum amount of time (in minutes) the person can wait if capacity threshold is reached
+                                " class=" form-control"
                                     [(ngModel)]="max_wait_time" value={{max_wait_time}} type="text" />
                             </div>
                             <button class=" btn btn-success btn-sm" (click)="updateMaxWaitTime()">Update
@@ -337,7 +347,7 @@
                                     </div>
                                     <div class=" col-md-6">
                                         <button mat-raised-button class=" btn btn-success btn-sm"
-                                            [disabled]="!liveStatus" (click)="reLoad()">
+                                            [disabled]="!liveStatus" (click)="startStopLiveView()">
                                             Deploy
                                         </button>
                                     </div>

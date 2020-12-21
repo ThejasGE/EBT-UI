@@ -22,19 +22,21 @@
                         </div> -->
                         <div class=" col-md-5 pr-md-1">
                             <div class=" form-group">
-                                <h4> <i matTooltip="Maximum distance between floor and device"
-                                    class=" tim-icons icon-alert-circle-exc text-success"> </i> Max Distance:</h4>
-                                <input title="Maximum distance between floor and device" class=" form-control" [(ngModel)]="max_distance" placeholder="5" type="text" />
+                                <h4> <i matTooltip="Please input the maximum height (in feet) between the sensor placement and the floor
+
+                                    "
+                                    class=" tim-icons icon-alert-circle-exc text-success"> </i> Maximum Height:</h4>
+                                <input title="Please input the maximum height (in feet) between the sensor placement and the floor
+
+                                " class=" form-control" [(ngModel)]="max_distance" placeholder="5" type="text" />
                             </div>
                             <button class="btn btn-success btn-sm" (click)="updateMaxDistance()">Update
                             </button>
                         </div>
                         <div class=" col-md-5 px-md-1">
                             <div class=" form-group">
-                                <h4> <i matTooltip="Maximum number of consecutive frames where a detected person has been marked as
-                                    missing" class=" tim-icons icon-alert-circle-exc text-success"> </i> Max Disappeared</h4>
-                                <input title="Maximum number of consecutive frames where a detected person has been marked as
-                                missing" class=" form-control" [(ngModel)]="max_disappeared" placeholder="45"
+                                <h4> <i matTooltip="Please set the maximum number of consecutive frames for a detecting a person. Upon reaching this threshold, the person will be marked missing by the sensor" class=" tim-icons icon-alert-circle-exc text-success"> </i> Detection Range</h4>
+                                <input title="Please set the maximum number of consecutive frames for a detecting a person. Upon reaching this threshold, the person will be marked missing by the sensor" class=" form-control" [(ngModel)]="max_disappeared" placeholder="45"
                                     type="text" />
                             </div>
                             <button class="btn btn-success btn-sm" (click)="updateMaxDisappeared()">Update
@@ -146,10 +148,12 @@
                     <div class=" row">
                         <div class=" col-md-5 pr-md-1">
                             <div class=" form-group">
-                                <h4><i matTooltip="Enter the Percentage Capacity where the People could Occupy"
-                                        class=" tim-icons icon-alert-circle-exc text-success"> </i> Percentage Capacity:
+                                <h4><i matTooltip="Enter the capacity percentage of the people allowed to enter the space
+                                    "
+                                        class=" tim-icons icon-alert-circle-exc text-success"> </i> Capacity Percentage:
                                 </h4>
-                                <input title="Enter the Percentage Capacity where the People could Occupy"
+                                <input title="Enter the capacity percentage of the people allowed to enter the space
+                                "
                                     class=" form-control" [(ngModel)]="percent_cap" type="text" />
                             </div>
                             <button class="btn btn-success btn-sm" (click)="updatePercentageCap()">Update
@@ -157,10 +161,10 @@
                         </div>
                         <div class=" col-md-5 px-md-1">
                             <div class=" form-group">
-                                <h4><i matTooltip="Enter the Minutes InActive Time to reset the Occupancy Count"
-                                        class=" tim-icons icon-alert-circle-exc text-success"> </i> Minutes InActive:
+                                <h4><i matTooltip="Enter the timeout in minutes for no activity detection before the sensor auto-resets"
+                                        class=" tim-icons icon-alert-circle-exc text-success"> </i> Sensor Timeout:
                                 </h4>
-                                <input title="Enter the Minutes InActive Time to reset the Occupancy Count"
+                                <input title="Enter the timeout in minutes for no activity detection before the sensor auto-resets"
                                     class=" form-control" [(ngModel)]="minutes_inactive" type="text" />
                             </div>
                             <button class="btn btn-success btn-sm" (click)="updateMinutesInactive()">Update

@@ -1,5 +1,5 @@
 ﻿import os
-import sqlite3 
+import sqlite3
 import json
 from datetime import datetime,timedelta
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -7,36 +7,36 @@ from werkzeug.security import generate_password_hash, check_password_hash
 class DB:
     def __init__(self):
         self.path='/home/pi/tf_inference/db/data.db'
-        #self.conn = connectToDb()      
-        
-     
+        #self.conn = connectToDb()
+
+
     def connectToDb(self):
         return sqlite3.connect('/home/pi/tf_inference/db/data.db')
-    
+
     #return sqlite3.connect(os.path.abspath('db/footfallCounter.db'))
 
 
     def createDB(self):
         conn = self.connectToDb()
-        create_table_sql='''CREATE TABLE IF NOT EXISTS peopleCounting( 
+        create_table_sql='''CREATE TABLE IF NOT EXISTS peopleCounting(
                             ENTER INT NOT NULL, EXIT INT NOT NULL,FILL INT, FILL_PERC INT, WAIT INT,
                             TIMESTAMP TEXT NOT NULL PRIMARY KEY)'''
 
         conn.execute(create_table_sql)
         conn.commit()
         conn.close()
-       
+
     def limitDB(self,max_days=None):
         if max_days is not None:
             conn = self.connectToDb()
-            query='DELETE FROM peopleCounting WHERE TIMESTAMP < %s' % ((datetime.now()-timedelta(days=max_days)).timestamp())
+            query='DELETE FROM peopleCounting WHERE TIMESTAMP < %s' % ((datetime.now()-timedelta(days=int(max_days))).timestamp())
             conn.execute(query)
             conn.commit()
             conn.close()
 
-            
+
     def readDatabyDate(self,min_date=None,max_date=None):
-     
+
             conn = self.connectToDb()
             if min_date and max_date:
                 query='SELECT ENTER,EXIT,FILL,FILL_PERC,WAIT,TIMESTAMP FROM peopleCounting WHERE TIMESTAMP between %s and %s' % (min_date.timestamp(),max_date.timestamp())
@@ -52,7 +52,7 @@ class DB:
             conn.close()
             return rows,title
 
-        
+
     def readDbLatestData(self):
         temp = {}
         conn = self.connectToDb()
@@ -60,29 +60,25 @@ class DB:
                   FROM peopleCounting WHERE TIMESTAMP=(SELECT max(TIMESTAMP)  FROM peopleCounting) LIMIT 1'''
         cursor = conn.execute(query)
         row = cursor.fetchone()
-        
+
         temp['enter'] = row[0]
         temp['exit'] = row[1]
         temp['fill'] = row[2]
         temp['fill_perc'] = row[3]
         temp['wait'] = row[4]
         temp['timestamp'] = row[5]
-        
+
         conn.close()
         return temp
-    def readFillData(self):
-        count={}
-        conn=self.connectToDb()
-        
 
-    
+
     def writeDbData(self,data):
         conn = self.connectToDb()
         query2 = "INSERT INTO peopleCounting(ENTER, EXIT,FILL,FILL_PERC,WAIT, TIMESTAMP) VALUES( %d, %d, %d,%d, %d, %s)" %(data['in'], data['out'], data['fill'],data['fill_perc'],data['wait'],data['pidatetime'])
         conn.execute(query2)
         conn.commit()
         conn.close()
-    
+
     def validateLogin(self, loginId, username, password):
         conn = self.connectToDb()
         query = "SELECT * FROM users WHERE name = '%s' and loginId = '%s' " % (
@@ -127,7 +123,7 @@ def readConfigAnalytics(path='data_analytics.json'):
 
     return json.load(open(path, 'r'))
 
-    
+
 def saveConfig(config,path='/home/pi/tf_inference/data_cfg.json'):
     jsondata = readConfig()
 
@@ -136,7 +132,7 @@ def saveConfig(config,path='/home/pi/tf_inference/data_cfg.json'):
     jsondata['video']['display'] = config['video']['display']
     jsondata['video']['test'] = config['video']['test']
     jsondata['video']['test_video'] = config['video']['test_video']
-    
+
     jsondata['image']['color'] = config['image']['color']
 
     jsondata['model']['model_path'] = config['model']['model_path']
@@ -155,7 +151,7 @@ def saveConfig(config,path='/home/pi/tf_inference/data_cfg.json'):
     jsondata["location"]['capacity'] = config['location']['capacity']
 
     jsondata['counter']['line_points'] = config['counter']['line_points']
-    
+
     jsondata['counter']['entrance'] = config['counter']['entrance']
     jsondata['counter']['minutes_inactive'] = config['counter']['minutes_inactive']
     jsondata['counter']['percent_cap'] = config['counter']['percent_cap']
@@ -169,7 +165,7 @@ def saveConfig(config,path='/home/pi/tf_inference/data_cfg.json'):
     jsondata['db']['max_days'] = config['db']['max_days']
 
     with open(path, 'w') as json_file:
-        json.dump(jsondata, json_file,indent=2)     
+        json.dump(jsondata, json_file,indent=2)
 
 def saveConfig1(config,path='/home/pi/tf_inference/data_cfg.json'):
     jsondata = readConfig()
@@ -187,16 +183,16 @@ def saveConfig1(config,path='/home/pi/tf_inference/data_cfg.json'):
             jsondata['video']['test_video'] = value
 
         elif key == "color":
-            jsondata['image']['color'] = value        
-        
+            jsondata['image']['color'] = value
+
         elif key == "model_path":
             jsondata['model']['model_path'] = value
         elif key == "label_path":
             jsondata['model']['label_path'] = value
-        
+
         elif key == "frequency":
             jsondata['motion']['frequency'] = value
-        
+
         elif key == "min_conf":
             jsondata['detection']['min_conf'] = value
         elif key == "max_boxes":
@@ -210,10 +206,10 @@ def saveConfig1(config,path='/home/pi/tf_inference/data_cfg.json'):
             jsondata['tracking']['buffer_frames'] = value
 
         elif key == "location_name":
-            jsondata['location']['location_name'] = value 
+            jsondata['location']['location_name'] = value
         elif key == "capacity":
             jsondata['location']['capacity'] = value
-            
+
         elif key == "line_points":
             jsondata['counter']['line_points'] = value
         elif key == "entrance":
@@ -239,9 +235,9 @@ def saveConfig1(config,path='/home/pi/tf_inference/data_cfg.json'):
             jsondata['db']['max_days'] = value
         else:
             print("[INFO] Data Not Found")
-        
+
         with open(path, 'w') as json_file:
-            json.dump(jsondata, json_file,indent=2)  
+            json.dump(jsondata, json_file,indent=2)
 
 
 def mask_image(image, left_limit, right_limit, up_limit, down_limit):
@@ -250,4 +246,3 @@ def mask_image(image, left_limit, right_limit, up_limit, down_limit):
     masked = cv2.bitwise_and(image, image, mask = mask)
     masked[np.where((masked == [0,0,0] ).all(axis = 2))] = [255,255,255]
     return masked
-

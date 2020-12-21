@@ -238,6 +238,7 @@ def getCount():
     
     config_data1=db.readConfig()['counter']
     data['min_wait_time']=config_data1['min_wait_time']
+    np.savetxt('/home/pi/tf_inference/num.txt', data[['fill','capacity']],fmt='[%.2f,%.2f]', delimiter=',')  
     return jsonify(data)
 
 @app.route('/getConfig', methods=['GET'])

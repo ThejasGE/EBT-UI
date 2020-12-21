@@ -70,11 +70,7 @@ class DB:
         
         conn.close()
         return temp
-    def readFillData(self):
-        count={}
-        conn=self.connectToDb()
-        
-
+    
     
     def writeDbData(self,data):
         conn = self.connectToDb()
@@ -83,17 +79,17 @@ class DB:
         conn.commit()
         conn.close()
     
-    def validateLogin(self, loginId, username, password):
+    def validateLogin(self,username, password):
         conn = self.connectToDb()
-        query = "SELECT * FROM users WHERE name = '%s' and loginId = '%s' " % (
-            username, loginId)
+        query = "SELECT * FROM users WHERE name = '%s'" % (
+            username)
         cursor = conn.execute(query)
         row = cursor.fetchall()
         conn.close()
         if(len(row) == 1):
             print(row[0])
-            if(check_password_hash(row[0][3], password)):
-                return (True, row[0][3][16:])
+            if(check_password_hash(row[0][2], password)):
+                return (True, row[0][2][16:])
             else:
                 return (False, None)
         else:

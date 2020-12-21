@@ -10,16 +10,16 @@ export class AdapptAuthService {
 
   saveSession(data) {
     let OrDate = new Date();
-    OrDate.setHours(OrDate.getHours() + 8);
+    OrDate.setMinutes(OrDate.getMinutes() + 15);
     this.cookieService.set('auth_token', data.auth_token, OrDate);
-    this.cookieService.set('loginId', data.loginId);
+    // this.cookieService.set('loginId', data.loginId);
     this.cookieService.set('user', data.userName);
     // this.cookieService.set('admin', data.isAdmin);
     // this.cookieService.set('active', data.isActive)
   }
   deleteSession() {
     this.cookieService.delete('auth_token');
-    this.cookieService.delete('loginId');
+    // this.cookieService.delete('loginId');
     // this.cookieService.delete('admin');
     // this.cookieService.delete('active');
     this.cookieService.delete('user');

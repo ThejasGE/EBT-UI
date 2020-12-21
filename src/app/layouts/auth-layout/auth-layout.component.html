@@ -3,11 +3,11 @@
     <div fxLayout="row" fxLayoutAlign="center center">
         <mat-card class="adappt-card" fxFlex="70" fxFlex.gt-md="40">
             <form fxLayout="column" [formGroup]="loginFormGroup" (ngSubmit)="login()">
-                <mat-form-field fxFlex class="input-margin" appearance="outline">
+                <!-- <mat-form-field fxFlex class="input-margin" appearance="outline">
                     <mat-label>Login Id</mat-label>
                     <input matInput formControlName="loginId" placeholder="Login Id" type="text" name="loginId" required>
                     <mat-error *ngIf="loginForm.loginId.invalid">Email ID is required!</mat-error>
-                </mat-form-field>
+                </mat-form-field> -->
                 <mat-form-field fxFlex class="input-margin" appearance="outline">
                     <mat-label>User Name</mat-label>
                     <input matInput formControlName="userName" placeholder="User Name" type="text" name="userName" required>

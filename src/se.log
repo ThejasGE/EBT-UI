@@ -1,0 +1,60 @@
+  File "/home/pi/tf_inference/se.py", line 46
+    host=host_function()
+                       ^
+TabError: inconsistent use of tabs and spaces in indentation
+  File "/home/pi/tf_inference/se.py", line 46
+    host=host_function()
+                       ^
+IndentationError: unindent does not match any outer indentation level
+  File "/home/pi/tf_inference/se.py", line 47
+    file = open("/home/pi/tf_inference/num.txt", "r") 
+                                                     ^
+TabError: inconsistent use of tabs and spaces in indentation
+  File "/home/pi/tf_inference/se.py", line 93
+    filem=file.read()
+                    ^
+IndentationError: unindent does not match any outer indentation level
+  File "/home/pi/tf_inference/se.py", line 93
+    filem=file.read()
+                    ^
+IndentationError: unindent does not match any outer indentation level
+  File "/home/pi/tf_inference/se.py", line 93
+    filem=file.read()
+                    ^
+IndentationError: unindent does not match any outer indentation level
+  File "/home/pi/tf_inference/se.py", line 93
+    filem=file.read()
+                    ^
+IndentationError: unindent does not match any outer indentation level
+  File "/home/pi/tf_inference/se.py", line 93
+    filem=file.read()
+                    ^
+IndentationError: unindent does not match any outer indentation level
+  File "/home/pi/tf_inference/se.py", line 93
+    filem=file.read()
+                    ^
+IndentationError: unindent does not match any outer indentation level
+Traceback (most recent call last):
+  File "/home/pi/tf_inference/se.py", line 87, in <module>
+    data=ser.readline() 
+  File "/usr/lib/python2.7/dist-packages/serial/serialposix.py", line 501, in read
+    'device reports readiness to read but returned no data '
+serial.serialutil.SerialException: device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+Exception in thread Thread-6:
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/threading.py", line 801, in __bootstrap_inner
+    self.run()
+  File "/usr/lib/python2.7/threading.py", line 1073, in run
+    self.function(*self.args, **self.kwargs)
+  File "/home/pi/tf_inference/se.py", line 52, in send_everymin
+    host=host_function()
+  File "/home/pi/tf_inference/se.py", line 34, in host_function
+    hostaddress = open("/home/pi/tf_inference/hostaddress.txt", "r")
+IOError: [Errno 2] No such file or directory: '/home/pi/tf_inference/hostaddress.txt'
+
+Traceback (most recent call last):
+  File "/home/pi/tf_inference/se.py", line 87, in <module>
+    data=ser.readline() 
+  File "/usr/lib/python2.7/dist-packages/serial/serialposix.py", line 501, in read
+    'device reports readiness to read but returned no data '
+serial.serialutil.SerialException: device reports readiness to read but returned no data (device disconnected or multiple access on port?)
