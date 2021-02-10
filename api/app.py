@@ -69,7 +69,7 @@ def liveCameraOn():
     subprocess.Popen(cmd, shell=True)
     #cmd = "ps -aef | grep yolo_opencv.py | awk '{print $2}' | sudo xargs kill -9"
     #subprocess.Popen(cmd, shell=True)
-    cmd = "nohup /home/pi/tf_inference/tflite1-env/bin/python3 /home/pi/tf_inference/liveView.py >> /home/pi/tf_inference/logs/liveView.log 2>&1 &"
+    cmd = "nohup /home/pi/tf_inference/tflite1-env/bin/python3 /home/pi/tf_inference/liveView.py"
     subprocess.Popen(cmd, shell=True)
 
 @app.route('/login', methods=['POST'])
@@ -104,7 +104,7 @@ def logout():
     else:
         return jsonify(err="URL Not found"), 404
 def updateApp():
-    cmd = "nohup /home/pi/tf_inference/tflite1-env/bin/python3 /home/pi/tf_inference/checkUpdates.py >> /home/pi/tf_inference/logs/checkUpdates.log 2>&1 &"
+    cmd = "nohup /home/pi/tflite1/tflite1-env/bin/python3 /home/pi/tflite1/tf_inference/checkUpdates.py >> /home/pi/tflite1/tf_inference/logs/checkUpdates.log 2>&1 &"
     subprocess.Popen(cmd, shell=True)
 
 def station_to_ap_mode():
@@ -163,8 +163,6 @@ def CreateWifiConfig(SSID, password):
 
 @app.route('/startLiveCamera', methods=['GET'])
 def startLiveCamera():
-    pc_off()
-    time.sleep(0.6)
     liveCameraOn()
     status = getLiveAppStatus()
     if(status):
@@ -176,8 +174,6 @@ def startLiveCamera():
 @app.route('/stopLiveCamera', methods=['GET'])
 def stopLiveCamera():
     liveCameraOff()
-    time.sleep(0.6)
-    pc_on()
     status = getLiveAppStatus()
     # if(not status):
     # liveCameraOff()
@@ -219,7 +215,7 @@ def getScanNetwork():
 		data = readFile.read()
 		if(data):
 			data=data.split('\n')
-			return jsonify(Essid=data[:6]), 200
+			return jsonify(Essid=data[0:-1]), 200
 		else:
 			return jsonify(err="Address not found"), 404
 
@@ -230,7 +226,7 @@ def putScanNetwork():
     CreateWifiConfig(data_1["username"], data_1["password"])
     data_2 = os.popen("cat /etc/wpa_supplicant/wpa_supplicant.conf").read()
     return jsonify(data_2)
-
+    
 @app.route('/getCount', methods=['GET'])
 def getCount():
     data=DB().readDbLatestData()
@@ -239,14 +235,26 @@ def getCount():
     config_data=db.readConfig()['location']
     data['capacity']=config_data['capacity']
     data['location_name']=config_data['location_name']
-
+    
     config_data1=db.readConfig()['counter']
     data['min_wait_time']=config_data1['min_wait_time']
-<<<<<<< HEAD
-    np.savetxt('/home/pi/tf_inference/num.txt', data[['fill','capacity']],fmt='[%.2f,%.2f]', delimiter=',')  
-=======
-    np.savetxt('/home/pi/tf_inference/num.txt', np.array([[data['fill'],data['capacity']]]),fmt='[%d,%d]', delimiter=',')  
->>>>>>> d928e296b6e5570e3ddb8ae67c9b5bffb61389cc
+    np.savetxt('/home/pi/tf_inference/num.txt', np.array([[data['fill']]]),fmt='[%d]')  
+    return jsonify(data)
+
+
+@app.route('/resetCount', methods=['GET'])
+def resetCount():
+    data=DB().writeDbData()
+    data['timestamp']=datetime.fromtimestamp(float(data['timestamp'])).ctime()
+    #data['capacity']=int(data['enter']/data['fill'])
+    config_data=db.readConfig()['location']
+    data['capacity']=config_data['capacity']
+    
+    data['location_name']=config_data['location_name']
+    
+    config_data1=db.readConfig()['counter']
+    data['min_wait_time']=config_data1['min_wait_time']
+    
     return jsonify(data)
 
 @app.route('/getConfig', methods=['GET'])
@@ -268,15 +276,11 @@ def liveAppStatus():
     return jsonify(status=status)
 
 def pc_off():
-    cmd = "ps -aef | grep /home/pi/tf_inference/model_tracking.py | awk '{print $2}' | sudo xargs kill -15"
+    cmd = "ps -aef | grep /home/pi/tflite1/tf_inference/model_tracking.py | awk '{print $2}' | sudo xargs kill -9"
     subprocess.Popen(cmd, shell=True)
 
 def pc_on():
-    cmd = "ps -aef | grep /home/pi/tf_inference/model_tracking.py | awk '{print $2}' | sudo xargs kill -15"
-    subprocess.Popen(cmd, shell=True)
-
-
-    cmd = "nohup /home/pi/tf_inference/tflite1-env/bin/python3 /home/pi/tf_inference/model_tracking.py >> /home/pi/tf_inference/logs/model_trackingLogs.txt 2>&1 &"
+    cmd = "nohup /home/pi/tflite1/tflite1-env/bin/python3 /home/pi/tflite1/tf_inference/model_tracking.py >> /home/pi/tflite1/tf_inference/logs/model_trackingLogs.txt 2>&1 &"
     subprocess.Popen(cmd, shell=True)
 
 def getLiveAppStatus():
@@ -310,7 +314,7 @@ def getBleAddress():
         return jsonify(address=data), 200
     else:
         return jsonify(err="Address not found"), 404
-
+    
 @app.route('/getSensorName', methods=['GET'])
 def getSensorName():
     with open("/etc/hostname", 'r') as readFile:
@@ -319,8 +323,8 @@ def getSensorName():
         return jsonify(address=data), 200
     else:
         return jsonify(err="Address not found"), 404
-
-
+    
+    
 @app.route("/getJsonData", methods=['GET'])
 def getJsonData():
     data = db.readConfig()
@@ -390,7 +394,7 @@ def uploadNewModel():
 	model_path = current_path + current_model_name + "/model.tflite"
 	label_path = current_path + current_model_name + "/labelmap.txt"
 	jsondata = db.readConfig()
-	jsondata['model']['model_path'] = model_path
+	jsondata['model']['model_path'] = model_path	
 	jsondata['model']['label_path'] = label_path
 	print("jsondata:",jsondata)
 	return jsonify(address=current_model_list), 200
@@ -488,15 +492,15 @@ def getTSData():
     #data.reset_index().to_dict(orient='list')
     return jsonify(data.reset_index().to_dict(orient='list'))
 
-@app.route('/getCardData', methods=['POST'])
+@app.route('/getCardData', methods=['POST'])    
 def getCardData():
     input_dates=request.json
     #print(input_dates)
     min_date=isoparse(input_dates['beginDate']).replace(tzinfo=None)
     max_date=isoparse(input_dates['endDate']).replace(tzinfo=None)
     max_date+=timedelta(hours = 23,minutes=59)
-
-
+    
+    
     prev_week_min=min_date - timedelta(days=min_date.weekday())
     prev_week_min-= timedelta(days=7)
     prev_week_max=prev_week_min+timedelta(days=6, hours=23, minutes=59)
@@ -504,10 +508,10 @@ def getCardData():
 
     min_date = min_date - timedelta(days=min_date.weekday())
     max_date = max_date +  (timedelta(days=6)-timedelta(days=max_date.weekday()))
-
+    
     config_data=db.readConfig()
     capacity=config_data['location']['capacity']
-
+    
     db_data,title=DB().readDatabyDate(prev_week_min,max_date)
     data=pd.DataFrame(db_data,columns=title).drop(['enter','exit','wait'],axis=1)
     data['fill']=data['fill'].astype('float32')
@@ -519,10 +523,10 @@ def getCardData():
     else:
         data['datetime']=data['timestamp'].astype('float32').apply(datetime.fromtimestamp)
         data['datetime']=data['datetime'].astype('datetime64[ns]')
-
+        
     data['weekofyear']=data['datetime'].dt.weekofyear
     data=data.groupby('weekofyear')['fill'].agg(('mean','max'))
-
+    
     data['perc_change']=data['mean'].pct_change()*100
     data=data.fillna(0).round(0)
     data['capacity']=capacity
@@ -533,10 +537,10 @@ def getCardData():
 @app.route('/getDistributionData', methods=['POST'])
 def getDistributionData():
     input_dates=request.json
-
+   
     min_date=isoparse(input_dates['beginDate']).replace(tzinfo=None)
     max_date=isoparse(input_dates['endDate']).replace(tzinfo=None)
-
+    
     db_data,title=DB().readDatabyDate(min_date,max_date)
     config_data=readConfig()
     capacity=config_data['location']['capacity']
@@ -562,14 +566,14 @@ def getDistributionData():
     data['bins']=pd.cut(data['fill'],bins=bins,retbins=False,include_lowest=False,labels=labels,right=True)
     data=data.groupby('bins')['fill'].agg(('count'))/data[data['fill']>0]['fill'].count()*100
     data=data.fillna(0).round(0)
-
+   
     '''
     {'bins': ['1-2', '3-5', '6-7', '8-10', '>10'],
      'fill': [70.0, 15.0, 7.0, 5.0, 3.0]}
     '''
     return jsonify(data.reset_index().to_dict(orient='list'))
 
-
+        
 @app.route('/getDayofWeekData', methods=['POST'])
 def getDayofWeekData():
     input_dates=request.json
@@ -593,7 +597,7 @@ def getDayofWeekData():
     data=data.reindex(index)
     data['weekday']=data.index.day_name().str[:3]
     data=data.groupby('weekday',sort=False).mean().fillna(0).round(1)
-
+    
     '''
     {'weekday': ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
      'fill': [0.4, 0.0, 0.0, 0.5, 0.4, 2.5, 0.0],
@@ -602,11 +606,11 @@ def getDayofWeekData():
     return jsonify(data.reset_index().to_dict(orient='list'))
 
 # @app.route('/getCameraData', methods=['GET'])
-# def getCameraData():
-#     with open("/home/pi/tf_inference/web/static/pcImg/image.jpg", "rb") as dataUrl:
-#     image = dataUrl.read()
-#     encodedImage = base64.encodestring(image)
-#     return encodedImage
+# def getCameraData():    
+#     with open("/home/pi/tflite1/tf_inference/web/static/pcImg/image.jpg", "rb") as dataUrl:        
+#     image = dataUrl.read()        
+#     encodedImage = base64.encodestring(image)        
+#     return encodedImage 
 config = configparser.ConfigParser()
 config.read('/home/pi/tf_inference/device_info.ini')
 def station_to_ap_mode():
@@ -642,7 +646,7 @@ def set_current_mode(mode):
         config.set('MODE', 'ap', 'False')
     with open('device_info.ini', 'w') as configfile:
         config.write(configfile)
-
+    
 
 @app.route('/fetch_mode', methods=['POST', 'GET'])
 def fetch_current_mode():
@@ -654,7 +658,7 @@ def fetch_current_mode():
     else:
         mode = 'Station'
         print('in Station mode')
-    return mode
+    return mode  
 
 
 @app.route('/fetch1_mode',methods=['GET'])
@@ -688,7 +692,7 @@ def ap_mode():
         print('updated device_info.ini')
         mode = fetch_current_mode()
     return mode
-
+    
 @app.route('/station_mode', methods=['POST'])
 def station_mode():
     #ap_to_station_mode()
@@ -728,15 +732,13 @@ def bt_hostaddr():
 
 @app.route('/bt_changeaddr', methods=['POST'])
 def bt_changeaddr():
-    print(request.form)
-    addr = request.form['btaddress']
- #change according to required API format
+    addr = request.json  #change according to required API format
     with open('/home/pi/tf_inference/hostaddress.txt', 'w') as hostaddress:
         hostaddress.write(addr)
-    return jsonify(success=True)
-
+			
 # @app.route('/<page>')
 # def main(page):
 #     return render_template("../src/index.html")
 
 app.run(port=8001,host="0.0.0.0")
+

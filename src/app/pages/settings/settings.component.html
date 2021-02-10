@@ -25,7 +25,7 @@
                                 <h4> <i matTooltip="Please input the maximum height (in feet) between the sensor placement and the floor
 
                                     "
-                                    class=" tim-icons icon-alert-circle-exc text-success"> </i> Maximum Height:</h4>
+                                    class=" tim-icons icon-alert-circle-exc text-success"> </i> Maximum Distance:</h4>
                                 <input title="Please input the maximum height (in feet) between the sensor placement and the floor
 
                                 " class=" form-control" [(ngModel)]="max_distance" placeholder="5" type="text" />
@@ -35,7 +35,7 @@
                         </div>
                         <div class=" col-md-5 px-md-1">
                             <div class=" form-group">
-                                <h4> <i matTooltip="Please set the maximum number of consecutive frames for a detecting a person. Upon reaching this threshold, the person will be marked missing by the sensor" class=" tim-icons icon-alert-circle-exc text-success"> </i> Detection Range</h4>
+                                <h4> <i matTooltip="Please set the maximum number of consecutive frames for a detecting a person. Upon reaching this threshold, the person will be marked missing by the sensor" class=" tim-icons icon-alert-circle-exc text-success"> </i> Detection Range:</h4>
                                 <input title="Please set the maximum number of consecutive frames for a detecting a person. Upon reaching this threshold, the person will be marked missing by the sensor" class=" form-control" [(ngModel)]="max_disappeared" placeholder="45"
                                     type="text" />
                             </div>
@@ -170,6 +170,7 @@
                             <button class="btn btn-success btn-sm" (click)="updateMinutesInactive()">Update
                             </button>
                         </div>
+                       
                         <!-- <div class=" col-md-4 pl-md-1">
                             <div class="form-group">
                                 <h4 for="exampleFormControlSelect1"><i matTooltip="Select the Location"
@@ -274,6 +275,17 @@
                                     class=" tim-icons icon-cloud-upload-94 text-danger-states"></i>Upload
                             </button> -->
                         </div>
+                        <div class=" col-md-4 px-md-1">
+                            <div class=" form-group">
+                                <h4><i matTooltip="Restores to default Factory settings"
+                                        class=" tim-icons icon-alert-circle-exc text-success"> </i> Factory Reset:
+                                </h4>
+                                <!-- <input title="Enter the timeout in minutes for no activity detection before the sensor auto-resets"
+                                    class=" form-control" [(ngModel)]="minutes_inactive" type="text" /> -->
+                            </div>
+                            <button class="btn btn-success btn-sm" (click)="updateAllvalue();reLoad();">Restore
+                            </button>
+                        </div>
                         <!-- <div class=" col-md-5 px-md-1">
                             <div class=" form-group">
                                 <h4><i matTooltip="Upload New Model File"
@@ -336,25 +348,39 @@
                 <div class=" card-body">
 
                     <div class=" row">
+                        <!-- <div class=" col-md-5 pr-md-1">
+                            <div class=" form-group">
+                                <h4><i matTooltip="Please enter the Company of the enclosed area, where the sensor is currently placed. Please note that this will be displayed on the main screen"
+                                        class=" tim-icons icon-alert-circle-exc text-success"> </i> Company Name:</h4>
+                                <input title="Please enter the Company of the enclosed area, where the sensor is currently placed. Please note that this will be displayed on the main screen" class=" form-control" [(ngModel)]="company"
+                                   minlength=3 maxlength=21  type="text" />
+                            </div>
+                            <button class="btn btn-success btn-sm" (click)="updateCompanyName()">Set
+                            </button>
+                        </div> -->
+                        
                         <div class=" col-md-5 pr-md-1">
                             <div class=" form-group">
-                                <h4><i matTooltip="Set Frequency Range"
-                                        class=" tim-icons icon-alert-circle-exc text-success"> </i> Frequency:</h4>
-                                <input title="Set Frequency Range" class=" form-control" [(ngModel)]="frequency"
-                                    placeholder="10" type="text" />
-                            </div>
-                            <button class="btn btn-success btn-sm" (click)="updateFrequency()">Set
-                            </button>
-                        </div>
-                        <div class=" col-md-5 px-md-1">
-                            <div class=" form-group">
-                                <h4><i matTooltip="Set Number of Buffer Frames per second"
+                                <h4><i matTooltip="No of Frames during which a centroid which has crossed the Threshold Line will not update the counter upon crossing the Line once again"
                                         class=" tim-icons icon-alert-circle-exc text-success"> </i> Buffer Frames:
                                 </h4>
-                                <input title="Set Number of Buffer Frames per second" class=" form-control"
+                                <input title="No of Frames during which a centroid which has crossed the Threshold Line will not update the counter upon crossing the Line once again" class=" form-control"
                                     [(ngModel)]="buffer_frames" placeholder="5" type="text" />
                             </div>
                             <button class="btn btn-success btn-sm" (click)="updateBufferFrames()">Set
+                            </button>
+                        </div>
+                        <div class=" col-md-4 px-md-1">
+                            <div class=" form-group">
+                                <h4><i matTooltip="Please specify the maximum amount of time (in minutes) the person can wait if capacity threshold is reached
+                                    "
+                                        class=" tim-icons icon-alert-circle-exc text-success"> </i> Max Wait Time:
+                                </h4>
+                                <input title="Please specify the maximum amount of time (in minutes) the person can wait if capacity threshold is reached
+                                " class=" form-control"
+                                    [(ngModel)]="max_wait_time" value={{max_wait_time}} type="text" placeholder="5" />
+                            </div>
+                            <button class=" btn btn-success btn-sm" (click)="updateMaxWaitTime()">Update
                             </button>
                         </div>
                         <!-- <div class=" col-md-4 pl-md-1">

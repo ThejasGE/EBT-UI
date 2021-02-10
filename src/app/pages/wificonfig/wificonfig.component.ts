@@ -144,7 +144,7 @@ export class WificonfigComponent implements OnInit {
       this.networks = response.Essid;
 
     }, (err: any) => {
-      this.snackBar.showMessage('Wifi Networks Not Available ,Device is in Hotspot Mode', 'error')
+      this.snackBar.showMessage('Wifi Networks Not Available', 'error')
     })
 
   }

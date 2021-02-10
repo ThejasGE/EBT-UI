@@ -33,10 +33,10 @@ export class CommissioningComponent implements OnInit {
 
   sensorName = "";
   locationName = "";
-  location = "Meeting Room";
+  location = "";
   capacity = "";
-  linePoints = "0.5,0.0,0.5,1.0";
-  entrance = "up";
+  linePoints = "";
+  entrance: any;
   bleAddress = "";
   liveCameraImage: any;
   liveCamera: any;
@@ -44,6 +44,9 @@ export class CommissioningComponent implements OnInit {
   liveImageInterval: any;
   min_wait_time: any;
   max_wait_time: any;
+  entryDirection = "";
+  lining: any;
+  company: any;
 
 
   constructor(formBuilder: FormBuilder, private snackBar: AdapptSnackbarService, private adapptHttp: AdapptHttpService, private httpClient: HttpClient, private router: Router, private sanitizer: DomSanitizer) { }
@@ -52,35 +55,44 @@ export class CommissioningComponent implements OnInit {
     this.getSensorName();
     this.getBleAddress();
     this.loadLiveImage();
+    this.selectEntry();
+    this.selectLocation();
+    this.selectCapacity();
+    this.selectMaxWaitTime();
+    this.selectMinWaitTime();
+    this.selectLinepoints();
+    this.selectCompany();
     setInterval(() => {
       this.reLoad();
     }, 960000);
   }
 
   updateCapacity() {
-    if (Number(this.capacity)) {
+    if (Number(this.capacity) > 0) {
       this.httpClient.post(`${Api}/putIndividualData`, { capacity: parseInt(this.capacity) }).subscribe((response: any) => {
         this.snackBar.showMessage("Capacity of Room Updated", 'success');
+
       }, (err: any) => {
         this.snackBar.showMessage(err.data.err, 'error');
       })
 
     }
     else {
-      this.snackBar.showMessage("Please Enter Valid Number", 'error');
+      this.snackBar.showMessage("Please Enter Valid Number Greater than Zero", 'error');
     }
   }
   updateLocation() {
-    if (this.location) {
+    if (this.location !== '' && this.location.length >= 3) {
       this.httpClient.post(`${Api}/putIndividualData`, { location_name: this.location }).subscribe((response: any) => {
         this.snackBar.showMessage("Location Updated", 'success');
+
       }, (err: any) => {
         this.snackBar.showMessage(err.data.err, 'error');
       })
 
     }
     else {
-      this.snackBar.showMessage("Please Select Valid Location Name", 'error');
+      this.snackBar.showMessage("Please Enter Valid Location Name with minimum of 3 characters", 'error');
     }
   }
   getSensorName() {
@@ -103,17 +115,30 @@ export class CommissioningComponent implements OnInit {
       this.snackBar.showMessage("Sensor Ble Address not found", 'error');
     });
   }
-  updateLocationName() {
-    if (this.locationName) {
-      this.httpClient.post(`${Api}/putIndividualData`, { location_name: this.locationName }).subscribe((response: any) => {
-        this.snackBar.showMessage("Location Name Updated", 'success');
+  // updateLocationName() {
+  //   if (this.locationName !== '' && this.locationName.length >= 3) {
+  //     this.httpClient.post(`${Api}/putIndividualData`, { location_name: this.locationName }).subscribe((response: any) => {
+  //       this.snackBar.showMessage("Location Name Updated", 'success');
+  //     }, (err: any) => {
+  //       this.snackBar.showMessage(err.data.err, 'error');
+  //     })
+
+  //   }
+  //   else {
+  //     this.snackBar.showMessage("Please Enter Valid Location Name with minimum of 3 characters", 'error');
+  //   }
+  // }
+  updateCompanyName() {
+    if (this.company !== '' && this.company.length >= 3) {
+      this.httpClient.post(`${Api}/putIndividualData`, { company_name: this.company }).subscribe((response: any) => {
+        this.snackBar.showMessage("Company Name Updated", 'success');
       }, (err: any) => {
         this.snackBar.showMessage(err.data.err, 'error');
       })
 
     }
     else {
-      this.snackBar.showMessage("Please Select Valid Location Name", 'error');
+      this.snackBar.showMessage("Please Enter Valid Company Name with minimum 3 characters", 'error');
     }
   }
   updateLinePoints() {
@@ -154,6 +179,46 @@ export class CommissioningComponent implements OnInit {
     else {
       this.snackBar.showMessage('Please Enter Valid Entrance', 'error')
     }
+  }
+  selectEntry() {
+    this.httpClient.get(`${Api}/getJsonData`).subscribe((response: any) => {
+      this.entryDirection = response.counter.entrance
+      this.entrance = this.entryDirection
+    })
+  }
+  selectMinWaitTime() {
+    this.httpClient.get(`${Api}/getJsonData`).subscribe((response: any) => {
+      this.min_wait_time = response.counter.min_wait_time
+
+    })
+  }
+  selectMaxWaitTime() {
+    this.httpClient.get(`${Api}/getJsonData`).subscribe((response: any) => {
+      this.max_wait_time = response.counter.max_wait_time
+
+    })
+  }
+  selectLocation() {
+    this.httpClient.get(`${Api}/getJsonData`).subscribe((response: any) => {
+      this.location = response.location.location_name
+    })
+  }
+  selectCompany() {
+    this.httpClient.get(`${Api}/getJsonData`).subscribe((response: any) => {
+      this.company = response.location.company_name
+    })
+  }
+  selectLinepoints() {
+    this.httpClient.get(`${Api}/getJsonData`).subscribe((response: any) => {
+      this.lining = response.counter.line_points
+      this.linePoints = this.lining;
+    })
+  }
+  selectCapacity() {
+    this.httpClient.get(`${Api}/getJsonData`).subscribe((response: any) => {
+      this.capacity = response.location.capacity
+
+    })
   }
   loadLiveImage() {
     console.log(this.httpClient);
@@ -226,10 +291,18 @@ export class CommissioningComponent implements OnInit {
     }
   }
   reLoad() {
-    window.location.reload();
+    setInterval(() => { window.location.reload() }, 2000)
+  };
+
+  resetCount() {
+    this.httpClient.get(`${Api}/resetCount`).subscribe((response: any) => {
+      this.snackBar.showMessage('The Count has been Reset to Zero')
+    }, (err) => {
+      this.snackBar.showMessage('Something is Wrong, Please Wait', 'error')
+    })
   }
   updateMinWaitTime() {
-    if (Number(this.min_wait_time)) {
+    if (Number(this.min_wait_time) > 0) {
       this.httpClient.post(`${Api}/putIndividualData`, { min_wait_time: parseInt(this.min_wait_time) }).subscribe((response: any) => {
         this.snackBar.showMessage("Minimum Wait Time Updated", 'success');
       }, (err: any) => {
@@ -242,7 +315,7 @@ export class CommissioningComponent implements OnInit {
     }
   }
   updateMaxWaitTime() {
-    if (Number(this.max_wait_time)) {
+    if (Number(this.max_wait_time) > 0) {
       this.httpClient.post(`${Api}/putIndividualData`, { max_wait_time: parseInt(this.max_wait_time) }).subscribe((response: any) => {
         this.snackBar.showMessage("Maximum Wait Time Updated", 'success');
       }, (err: any) => {
@@ -253,5 +326,27 @@ export class CommissioningComponent implements OnInit {
     else {
       this.snackBar.showMessage("Please Enter Valid Number", 'error');
     }
+  }
+  updateAllvalue() {
+
+    this.httpClient.post(`${Api}/putIndividualData`, {
+      max_wait_time: 5, capacity: 12, entrance: "up", percent_cap: 1.5, min_wait_time: 10, max_distance: 55, max_disappeared: 3, buffer_frames: 6, frequency: 0, location_name: "Meeting Room", company_name: "XYZ", line_points: [
+        [
+          0.5,
+          0
+        ],
+        [
+          0.5,
+          1
+        ]
+      ]
+    }).subscribe((response: any) => {
+      this.snackBar.showMessage("Restored to Default Value", 'success');
+    }, (err: any) => {
+      this.snackBar.showMessage(err.data.err, 'error');
+    })
+
+
+
   }
 }

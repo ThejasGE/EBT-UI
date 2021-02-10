@@ -70,17 +70,16 @@ class DB:
 
         conn.close()
         return temp
-<<<<<<< HEAD
-    def readFillData(self):
-        count={}
-        conn=self.connectToDb()
+
+
+    def writeDbData(self,data):
         
-
-    
-=======
-
-
->>>>>>> d928e296b6e5570e3ddb8ae67c9b5bffb61389cc
+        conn = self.connectToDb()
+        query2 = "INSERT INTO peopleCounting(ENTER, EXIT,FILL,FILL_PERC,WAIT, TIMESTAMP) VALUES( %d, %d, %d,%d, %d, %s)" %(0,0,0,0,0,data['pidatetime'])
+        conn.execute(query2)
+        conn.commit()
+        conn.close()
+        
     def writeDbData(self,data):
         conn = self.connectToDb()
         query2 = "INSERT INTO peopleCounting(ENTER, EXIT,FILL,FILL_PERC,WAIT, TIMESTAMP) VALUES( %d, %d, %d,%d, %d, %s)" %(data['in'], data['out'], data['fill'],data['fill_perc'],data['wait'],data['pidatetime'])

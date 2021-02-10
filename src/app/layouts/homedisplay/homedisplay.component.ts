@@ -44,16 +44,18 @@ export class HomedisplayComponent implements OnInit {
   fill2: 100;
   url;
   msg = "";
+  companyName: any;
 
 
   constructor(formBuilder: FormBuilder, private ngxLoader: NgxUiLoaderService, private snackBar: AdapptSnackbarService, private loginService: UserService, private adapptHttp: AdapptHttpService,
     private router: Router, private adapptAuth: AdapptAuthService, private httpClient: HttpClient) { }
 
   ngOnInit() {
+    this.selectCompany();
     this.loadLiveImage();
     setInterval(() => {
       this.loadLiveImage();
-    }, 200);
+    }, 100);
     setInterval(() => {
       this.time2 = new Date();
     }, 1000);
@@ -73,7 +75,7 @@ export class HomedisplayComponent implements OnInit {
         this.upCount = response.fill;
         // this.downCount = response.data.exit;
         this.downCount = response.capacity;
-        this.fill = response.fill_perc;
+        this.fill = Math.round(this.upCount * 100 / this.downCount);
         this.minwaittime = response.min_wait_time;
         console.log(this.minwaittime, "wait times")
         this.roomname = response.location_name.toUpperCase();
@@ -107,6 +109,13 @@ export class HomedisplayComponent implements OnInit {
       this.waitingtime = this.minwaittime + " Minutes";
       return true
     }
+  }
+  selectCompany() {
+    this.httpClient.get(`${Api}/getJsonData`).subscribe((response: any) => {
+      this.companyName = response.location.company_name
+
+      // this.entrance = this.entryDirection
+    })
   }
   selectFile(event) {
     if (!event.target.files[0] || event.target.files[0].length == 0) {

@@ -12,15 +12,26 @@
                     <h3 class=" card-title">Sensor Address: <b>{{bleAddress}}</b></h3>
                 </div> -->
                 <div class=" card-body">
-
+                    
                     <!-- <h4 class=" card-title"> Live Image View: </h4> -->
-                    <div layout="row" layout-align="center center" style="padding:5px;min-height: 300px;">
+                    <div *ngIf="entryDirection == 'down'&& lining =='0.5,0,0.5,1'" fxlayout="row" layout-align="center center" style="min-height: 10px;">
+                        <img   src="../../../assets/img/arrowright.png" alt="loading" style="color:rgb(14, 12, 12); border: 3px solid rgb(20, 19, 19); width:50px;height:40px"></div>
+                    <div *ngIf="entryDirection == 'down'&& lining =='0,0.5,1,0.5'" fxlayout="row" class="d-flex justify-content-center"style="min-height: 5px;">
+                    <img   src="../../../assets/img/arrowdown.png" alt="loading" style="color:rgb(14, 12, 12); border: 3px solid rgb(20, 19, 19); width:40px;height:50px">
+                </div>
+                
+                    <div layout="row" layout-align="center center" style="min-height: 300px;">
                         <img [src]="liveCameraImage" alt="LOADING...."
                             style="color:#fff; border: 3px solid rgb(187, 30, 30); width:500px;height:310px">
                         <!-- <img src="../../../assets/img/pcamera.jpg" alt="loading"
                             style="color:#fff; border: 3px solid rgb(187, 30, 30); width:450px;height:310px"> -->
                     </div>
-
+                    <div *ngIf="entryDirection == 'up' && lining =='0,0.5,1,0.5'"  fxlayout="row" class="d-flex justify-content-center"style="min-height: 5px;">
+                        
+                        <img   src="../../../assets/img/arrowup.png" alt="loading" style="color:rgb(24, 22, 22); border: 3px solid rgb(20, 19, 19); width:40px;height:50px">
+                    </div>
+                        <div *ngIf="entryDirection == 'up'&& lining =='0.5,0,0.5,1'" fxlayout="row" class="d-flex justify-content-end" style="min-height: 10px;">
+                            <img   src="../../../assets/img/arrowleft.png" alt="loading" style="color:rgb(14, 12, 12); border: 3px solid rgb(20, 19, 19); width:50px;height:40px"></div>
 
                 </div>
             </div>
@@ -57,30 +68,39 @@
                                 <select name="linePoints" id="linePoints" title=" Choose between Horizontal or Vertical Line points intersection to capture people flow
                                 "
                                     class="form-control" placeholder="Horizontal Line Points" [(ngModel)]="linePoints">
-                                    <option style="color: black;" value="0.0,0.5,1.0,0.5">Horizontal Line Points
+                                    <option value="" disabled selected>Select Line Points</option>
+                                    <option style="color: black;" value="0,0.5,1,0.5">Horizontal Line Points
                                     </option>
-                                    <option style="color: black;" value="0.5,0.0,0.5,1.0">Vertical Line Points
+                                    <option style="color: black;" value="0.5,0,0.5,1">Vertical Line Points
                                     </option>
 
                                 </select>
                             </div>
-                            <button class="btn btn-success btn-sm" (click)="updateLinePoints()">Update
+                            <button class="btn btn-success btn-sm" (click)="updateLinePoints();reLoad();">Update
                             </button>
 
                         </div>
                         <div class=" col-md-4 px-md-1">
                             <div class="form-group">
                                 <h4 for="exampleFormControlSelect1"><i matTooltip="Specify the direction of entrance to the premise for detecting Inward movement of people"
-                                        class=" tim-icons icon-alert-circle-exc text-success"> </i> Entry Direction:
+                                        class=" tim-icons icon-alert-circle-exc text-success"> </i> Entry Direction
                                 </h4>
-                                <select title="Specify the direction of entrance to the premise for detecting Inward movement of people" class="form-control"
+                                <select *ngIf="lining =='0,0.5,1,0.5'" title="Specify the direction of entrance to the premise for detecting Inward movement of people" class="form-control"
                                     [(ngModel)]="entrance" id="exampleFormControlSelect1">
+                                    <option value="" disabled selected>Select Entry Direction</option>
                                     <option style="color: black;" value="up">Up</option>
                                     <option style="color: black;" value="down">Down</option>
 
                                 </select>
+                                <select *ngIf="lining =='0.5,0,0.5,1'" title="Specify the direction of entrance to the premise for detecting Inward movement of people" class="form-control"
+                                    [(ngModel)]="entrance" id="exampleFormControlSelect1">
+                                    <option value="" disabled selected>Select Entry Direction</option>
+                                    <option style="color: black;" value="up">Left</option>
+                                    <option style="color: black;" value="down">Right</option>
+
+                                </select>
                             </div>
-                            <button class="btn btn-success btn-sm" (click)="updateEntranceData()">Update
+                            <button class="btn btn-success btn-sm" (click)="updateEntranceData();reLoad();">Update
                             </button>
 
                         </div>
@@ -91,7 +111,7 @@
                                         class=" tim-icons icon-alert-circle-exc text-success"> </i> Location:</h4>
                                 <input title="Please enter the location of the enclosed area, where the sensor is currently placed. Please note that this will be displayed on the main screen
                                 " class=" form-control" [(ngModel)]="location"
-                                    value={{location}} type="text" />
+                                    placeholder={{location}} type="text" />
                             </div>
                             <button class="btn btn-success btn-sm" (click)="updateLocation()">Update
                             </button>
@@ -120,27 +140,27 @@
                                 <h4><i matTooltip="Please enter the maximum capacity of people allowed to enter the chosen area 
                                     "
                                         class=" tim-icons icon-alert-circle-exc text-success"> </i> People Capacity:</h4>
-                                <input title="Please enter the maximum capacity of people allowed to enter the chosen area 
-                                " class=" form-control"
-                                    [(ngModel)]="capacity" value={{capacity}} type="text" />
+                                        <input title="Please enter the location of the enclosed area, where the sensor is currently placed. Please note that this will be displayed on the main screen
+                                        " class=" form-control" [(ngModel)]="capacity"
+                                            placeholder={{capacity}} type="text" />
                             </div>
-                            <button class="btn btn-success btn-sm" (click)="updateCapacity()">Update
+                            <button class="btn btn-success btn-sm" (click)="updateCapacity();reLoad();">Update
                             </button>
                         </div>
-                        <div class=" col-md-4 px-md-1">
+                        <div class=" col-md-4 pr-md-1">
                             <div class=" form-group">
                                 <h4><i matTooltip="Please specify the minimum amount of time (in minutes) the person can wait if capacity threshold is reached
                                     "
-                                        class=" tim-icons icon-alert-circle-exc text-success"> </i> Min Wait Time:
+                                        class=" tim-icons icon-alert-circle-exc text-success"> </i> Min Wait  Time:
                                 </h4>
                                 <input title="Please specify the minimum amount of time (in minutes) the person can wait if capacity threshold is reached
                                 " class=" form-control"
-                                    [(ngModel)]="min_wait_time" value={{min_wait_time}} type="text" />
+                                    [(ngModel)]="min_wait_time" value={{min_wait_time}} type="text" placeholder="10"/>
                             </div>
                             <button class="btn btn-success btn-sm" (click)="updateMinWaitTime()">Update
                             </button>
                         </div>
-                        <div class=" col-md-4 pl-md-1">
+                        <!-- <div class=" col-md-3 pl-md-1">
                             <div class=" form-group">
                                 <h4><i matTooltip="Please specify the maximum amount of time (in minutes) the person can wait if capacity threshold is reached
                                     "
@@ -148,9 +168,19 @@
                                 </h4>
                                 <input title="Please specify the maximum amount of time (in minutes) the person can wait if capacity threshold is reached
                                 " class=" form-control"
-                                    [(ngModel)]="max_wait_time" value={{max_wait_time}} type="text" />
+                                    [(ngModel)]="max_wait_time" value={{max_wait_time}} type="text" placeholder="5" />
                             </div>
                             <button class=" btn btn-success btn-sm" (click)="updateMaxWaitTime()">Update
+                            </button>
+                        </div> -->
+                        <div class=" col-md-4 pl-md-1">
+                            <div class=" form-group">
+                                <h4><i matTooltip="Please enter the Company of the enclosed area, where the sensor is currently placed. Please note that this will be displayed on the main screen"
+                                        class=" tim-icons icon-alert-circle-exc text-success"> </i> Company Name:</h4>
+                                <input title="Please enter the Company Name of the enclosed area within 20 Character, Please note that this will be displayed on the main screen" class=" form-control" [(ngModel)]="company"
+                                   minlength=3 maxlength=20  type="text" />
+                            </div>
+                            <button class="btn btn-success btn-sm" (click)="updateCompanyName()">Update
                             </button>
                         </div>
 
@@ -332,7 +362,7 @@
                             </div>
                         </div> -->
                         <div class=" row">
-                            <div class=" col-lg-9 ml-auto mr-auto">
+                            <div class=" col-lg-12 ml-auto mr-auto">
                                 <div class=" row">
                                     <!-- <div class=" col-md-4">
                                         <button class=" btn btn-danger btn-block"
@@ -340,15 +370,21 @@
                                             Top Left
                                         </button>
                                     </div> -->
-                                    <div class=" col-md-6">
+                                    <div class=" col-md-5">
                                         <button mat-raised-button class=" btn btn-success btn-sm"
                                             (click)="startStopLiveView()" [disabled]="liveStatus">Start Live
                                             View</button>
                                     </div>
-                                    <div class=" col-md-6">
+                                    <div class=" col-md-3">
                                         <button mat-raised-button class=" btn btn-success btn-sm"
-                                            [disabled]="!liveStatus" (click)="startStopLiveView()">
+                                            [disabled]="!liveStatus" (click)="startStopLiveView();reLoad();">
                                             Deploy
+                                        </button>
+                                    </div>
+                                    <div class=" col-md-3">
+                                        <button mat-raised-button class=" btn btn-success btn-sm"
+                                            [disabled]="liveStatus" (click)="resetCount();reLoad();">
+                                            Reset Count
                                         </button>
                                     </div>
                                 </div>
