@@ -1,6 +1,0 @@
-{
-    "hourlyPattern": {
-        "TimeData": ["12am", "1am", "2am", "3am", "4am", "5am", "6am", "7am", "8am", "9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm", "8pm", "9pm", "10pm", "11pm"],
-        "PercentageData": [2, 2, 2, 6, 13, 30, 46, 100, 25, 40, 22, 0, 10, 0, 88, 100]
-    }
-}

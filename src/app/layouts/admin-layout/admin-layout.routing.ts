@@ -1,7 +1,7 @@
 import { Routes } from "@angular/router";
 
 // import {AuthLayoutComponent} from "../auth-layout/auth-layout.component";
-import { AnalyticsComponent } from "../../pages/analytics/analytics.component";
+// import { AnalyticsComponent } from "../../pages/analytics/analytics.component";
 // import { ClientServicesComponent } from "../../pages/client-services/client-services.component";
 // import { BillingComponent } from "../../pages/billing/billing.component"
 // import { onBoardComponent } from "../../pages/onBoard/onboard.component"
@@ -15,7 +15,7 @@ import { TypographyComponent } from "../../pages/typography/typography.component
 import { CommissioningComponent } from '../../pages/commissioning/commissioning.component';
 import { WificonfigComponent } from '../../pages/wificonfig/wificonfig.component';
 import { HomepageComponent } from 'src/app/pages/homepage/homepage.component';
-import { SettingsComponent } from '../../pages/settings/settings.component';
+// import { SettingsComponent } from '../../pages/settings/settings.component';
 // import { HomedisplayComponent } from '../homedisplay/homedisplay.component';
 
 export const AdminLayoutRoutes: Routes = [
@@ -27,8 +27,8 @@ export const AdminLayoutRoutes: Routes = [
   { path: "commissioning", component: CommissioningComponent },
   { path: "wifisetting", component: WificonfigComponent },
   { path: "homepage", component: HomepageComponent },
-  { path: "settings", component: SettingsComponent },
-  { path: "analytics", component: AnalyticsComponent }
+  // { path: "settings", component: SettingsComponent },
+  // { path: "analytics", component: AnalyticsComponent }
 
   // { path: "display", component: HomedisplayComponent }
   // { path: "icons", component: IconsComponent },

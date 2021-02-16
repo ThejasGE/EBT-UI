@@ -78,6 +78,7 @@
         "@angular/service-worker": "^9.1.11",
         "@auth0/angular-jwt": "^4.2.0",
         "@ng-bootstrap/ng-bootstrap": "6.1.0",
+        "@rxweb/reactive-form-validators": "^2.1.2",
         "angular-pdf": "^2.0.0",
         "angular-pdf-generator": "^0.1.0",
         "body-parser": "^1.19.0",

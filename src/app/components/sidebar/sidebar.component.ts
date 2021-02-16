@@ -19,18 +19,18 @@ export const ROUTES: RouteInfo[] = [
   //   icon: "icon-settings",
   //   class: ""
   // },
-  {
-    path: "/display",
-    title: "Display",
-    icon: "icon-tv-2",
-    class: ""
-  },
-  {
-    path: "/analytics",
-    title: "Analytics",
-    icon: "icon-chart-bar-32",
-    class: ""
-  },
+  // {
+  //   path: "/display",
+  //   title: "Display",
+  //   icon: "icon-tv-2",
+  //   class: ""
+  // },
+  // {
+  //   path: "/analytics",
+  //   title: "Analytics",
+  //   icon: "icon-chart-bar-32",
+  //   class: ""
+  // },
   {
     path: "/commissioning",
     title: "Commissioning",
@@ -46,16 +46,16 @@ export const ROUTES: RouteInfo[] = [
   // },
   {
     path: "/wifisetting",
-    title: "Wifi Configuration",
+    title: "Network Configuration",
     icon: "icon-wifi",
     class: ""
-  },
-  {
-    path: "/settings",
-    title: "Advance Settings",
-    icon: "icon-settings-gear-63",
-    class: ""
-  },
+  }
+  // {
+  //   path: "/settings",
+  //   title: "Advance Settings",
+  //   icon: "icon-settings-gear-63",
+  //   class: ""
+  // },
   // {
   //   path: "/onBoard",
   //   title: "onBoard",

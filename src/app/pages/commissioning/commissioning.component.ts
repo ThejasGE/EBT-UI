@@ -30,7 +30,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./commissioning.component.scss']
 })
 export class CommissioningComponent implements OnInit {
-
+  userFormGroup: FormGroup
   sensorName = "";
   locationName = "";
   location = "";
@@ -52,16 +52,17 @@ export class CommissioningComponent implements OnInit {
   constructor(formBuilder: FormBuilder, private snackBar: AdapptSnackbarService, private adapptHttp: AdapptHttpService, private httpClient: HttpClient, private router: Router, private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
-    this.getSensorName();
-    this.getBleAddress();
-    this.loadLiveImage();
-    this.selectEntry();
-    this.selectLocation();
-    this.selectCapacity();
-    this.selectMaxWaitTime();
-    this.selectMinWaitTime();
-    this.selectLinepoints();
-    this.selectCompany();
+
+    // this.getSensorName();
+    // this.getBleAddress();
+    // this.loadLiveImage();
+    // this.selectEntry();
+    // this.selectLocation();
+    // this.selectCapacity();
+    // this.selectMaxWaitTime();
+    // this.selectMinWaitTime();
+    // this.selectLinepoints();
+    // this.selectCompany();
     setInterval(() => {
       this.reLoad();
     }, 960000);

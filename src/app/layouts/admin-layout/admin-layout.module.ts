@@ -53,7 +53,7 @@ import { AuthLayoutComponent } from '../auth-layout/auth-layout.component';
 // import { ClientServicesComponent } from "../../pages/client-services/client-services.component"
 // import { UpdateServiceDialogComponent } from '../../pages/client-services/client-services.component';
 // import { BillingComponent } from "../../pages/billing/billing.component"
-import { AnalyticsComponent } from "../../pages/analytics/analytics.component";
+// import { AnalyticsComponent } from "../../pages/analytics/analytics.component";
 import { IconsComponent } from "../../pages/icons/icons.component";
 import { MapComponent } from "../../pages/map/map.component";
 import { NotificationsComponent } from "../../pages/notifications/notifications.component";
@@ -63,7 +63,7 @@ import { TypographyComponent } from "../../pages/typography/typography.component
 // import { onBoardComponent } from "../../pages/onBoard/onboard.component";
 // import { AdapptDataTableComponent } from "../../components/adappt-data-table/adappt-data-table.component";
 import { HomepageComponent } from "../../pages/homepage/homepage.component";
-import { SettingsComponent } from "../../pages/settings/settings.component";
+// import { SettingsComponent } from "../../pages/settings/settings.component";
 import { CommissioningComponent } from "../../pages/commissioning/commissioning.component";
 import { WificonfigComponent, WifiDialog } from "../../pages/wificonfig/wificonfig.component";
 
@@ -124,7 +124,7 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
   ],
   declarations: [
-    AnalyticsComponent,
+    // AnalyticsComponent,
     // CustomerService,
     // AuthLayoutComponent,
     // UpdateServiceDialogComponent,
@@ -140,7 +140,7 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
     HomepageComponent,
     MapComponent,
     // AdapptDataTableComponent,
-    SettingsComponent,
+    // SettingsComponent,
     CommissioningComponent,
     WificonfigComponent,
     AdapptWifiListComponent,

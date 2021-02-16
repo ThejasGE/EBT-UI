@@ -22,7 +22,7 @@ import { NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CustomerService } from '../app/customer.service';
 import { UserService } from '../app/user.service';
 
-
+import { RxReactiveFormsModule } from "@rxweb/reactive-form-validators"
 
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -123,7 +123,7 @@ import { from } from 'rxjs';
     MatDatepickerModule,
     MatMenuModule,
     FlexLayoutModule,
-
+    FormsModule, ReactiveFormsModule, RxReactiveFormsModule,
     NgxUiLoaderModule,
     NgxEasypiechartModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),

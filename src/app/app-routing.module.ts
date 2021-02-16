@@ -9,10 +9,10 @@ import { AuthLayoutComponent } from '../app/layouts/auth-layout/auth-layout.comp
 import { HomedisplayComponent } from './layouts/homedisplay/homedisplay.component'
 import { NoRightClickDirectiveDirective } from './no-right-click-directive.directive';
 import { CommissioningComponent } from '../app/pages/commissioning/commissioning.component'
-import { AnalyticsComponent } from './pages/analytics/analytics.component';
-import { SettingsComponent } from './pages/settings/settings.component';
+// import { AnalyticsComponent } from './pages/analytics/analytics.component';
+// import { SettingsComponent } from './pages/settings/settings.component';
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'display', canActivate: [AdapptAuthGuard] },
+  { path: '', pathMatch: 'full', redirectTo: 'commissioning', canActivate: [AdapptAuthGuard] },
   { path: 'login', component: AuthLayoutComponent },
   {
     path: '', component: AdminLayoutComponent, children: [
@@ -28,9 +28,9 @@ const routes: Routes = [
   // { path: "userprofile", component: UserProfileSettingComponent },
   { path: "commissioning", component: CommissioningComponent, canActivate: [AdapptAuthGuard] },
   { path: "display", component: HomedisplayComponent },
-  { path: "analytics", component: AnalyticsComponent, canActivate: [AdapptAuthGuard] },
-  { path: "analytics", component: AnalyticsComponent, canActivate: [AdapptAuthGuard] },
-  { path: "settings", component: SettingsComponent, canActivate: [AdapptAuthGuard] },
+  // { path: "analytics", component: AnalyticsComponent, canActivate: [AdapptAuthGuard] },
+  // { path: "analytics", component: AnalyticsComponent, canActivate: [AdapptAuthGuard] },
+  // { path: "settings", component: SettingsComponent, canActivate: [AdapptAuthGuard] },
   { path: '**', component: AuthLayoutComponent }
 ];
 

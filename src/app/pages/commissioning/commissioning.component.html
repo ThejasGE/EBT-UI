@@ -1,20 +1,38 @@
 <div class=" content">
     <div class=" row">
-        <div class=" col-md-6">
+        <div class=" col-md-7">
             <div class=" card">
                 <div class=" card-header">
-                    <h3 class=" card-title">Sensor Id: <b>{{sensorName}}</b> &#124; Sensor Address:
-                        <b>{{bleAddress}}</b>
+                    <h3 class=" card-title">Device Settings:
                     </h3>
-                    <!-- <h3 class=" card-title">Sensor Address: <b>{{bleAddress}}</b></h3> -->
                 </div>
-                <!-- <div class=" card-header">
-                    <h3 class=" card-title">Sensor Address: <b>{{bleAddress}}</b></h3>
-                </div> -->
+              
                 <div class=" card-body">
-                    
-                    <!-- <h4 class=" card-title"> Live Image View: </h4> -->
-                    <div *ngIf="entryDirection == 'down'&& lining =='0.5,0,0.5,1'" fxlayout="row" layout-align="center center" style="min-height: 10px;">
+                    <div class=" col-md-6 pr-md-1">
+                        <div class=" form-group">
+                            <h4><i matTooltip="Please enter the name the Device of the enclosed area, where the sensor is currently placed"
+                                
+                                    class=" tim-icons icon-alert-circle-exc text-success"> </i> Device Name:</h4>
+                                    <input title="Please enter the name the Device of the enclosed area, where the sensor is currently placed" class=" form-control"
+                                        placeholder="" type="text" />
+                        </div>
+                        <button class="btn btn-success btn-sm" >Update
+                        </button>
+                    </div>
+                    <div class=" col-md-6 px-md-1">
+                        <div class=" form-group">
+                            <h4><i matTooltip="Please enter the Server Ip address for a device, please note this an optional field
+                                "
+                                    class=" tim-icons icon-alert-circle-exc text-success"> </i> Server Ip Address:
+                            </h4>
+                            <input title=" lease enter the Server Ip address for a device, please note this an optional field" class=" form-control" pattern="^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$"
+                                 type="text" placeholder="192.168.1.1"/>
+                        </div>
+                        <button class="btn btn-success btn-sm">Update
+                        </button>
+                    </div>
+                   
+                    <!-- <div *ngIf="entryDirection == 'down'&& lining =='0.5,0,0.5,1'" fxlayout="row" layout-align="center center" style="min-height: 10px;">
                         <img   src="../../../assets/img/arrowright.png" alt="loading" style="color:rgb(14, 12, 12); border: 3px solid rgb(20, 19, 19); width:50px;height:40px"></div>
                     <div *ngIf="entryDirection == 'down'&& lining =='0,0.5,1,0.5'" fxlayout="row" class="d-flex justify-content-center"style="min-height: 5px;">
                     <img   src="../../../assets/img/arrowdown.png" alt="loading" style="color:rgb(14, 12, 12); border: 3px solid rgb(20, 19, 19); width:40px;height:50px">
@@ -23,21 +41,20 @@
                     <div layout="row" layout-align="center center" style="min-height: 300px;">
                         <img [src]="liveCameraImage" alt="LOADING...."
                             style="color:#fff; border: 3px solid rgb(187, 30, 30); width:500px;height:310px">
-                        <!-- <img src="../../../assets/img/pcamera.jpg" alt="loading"
-                            style="color:#fff; border: 3px solid rgb(187, 30, 30); width:450px;height:310px"> -->
+
                     </div>
                     <div *ngIf="entryDirection == 'up' && lining =='0,0.5,1,0.5'"  fxlayout="row" class="d-flex justify-content-center"style="min-height: 5px;">
                         
                         <img   src="../../../assets/img/arrowup.png" alt="loading" style="color:rgb(24, 22, 22); border: 3px solid rgb(20, 19, 19); width:40px;height:50px">
                     </div>
                         <div *ngIf="entryDirection == 'up'&& lining =='0.5,0,0.5,1'" fxlayout="row" class="d-flex justify-content-end" style="min-height: 10px;">
-                            <img   src="../../../assets/img/arrowleft.png" alt="loading" style="color:rgb(14, 12, 12); border: 3px solid rgb(20, 19, 19); width:50px;height:40px"></div>
+                            <img   src="../../../assets/img/arrowleft.png" alt="loading" style="color:rgb(14, 12, 12); border: 3px solid rgb(20, 19, 19); width:50px;height:40px"></div> -->
 
                 </div>
             </div>
         </div>
 
-        <div class=" col-md-6">
+        <!-- <div class=" col-md-6">
             <div class=" card">
                 <div class=" card-header">
                     <h2 class=" card-title">Sensor Alignment Settings</h2>
@@ -52,13 +69,7 @@
 
 
                     <div class=" row">
-                        <!-- <div class=" col-md-5 pr-md-1">
-                                <div class=" form-group">
-                                    <label> Company (disabled) </label>
-                                    <input class=" form-control" disabled="" placeholder="Company" type="text"
-                                        value="Creative Code Inc." />
-                                </div>
-                            </div> -->
+                      
                         <div class=" col-md-4 pr-md-1">
                             <div class="form-group">
                                 <h4 for="exampleFormControlSelect1"><i matTooltip=" Choose between Horizontal or Vertical Line points intersection to capture people flow
@@ -117,17 +128,7 @@
                             </button>
 
                         </div>
-                        <!-- <div class=" col-md-4 pl-md-1">
-                            <div class=" form-group">
-                                <h4><i matTooltip="Enter the Capacity of the Room to be filled"
-                                        class=" tim-icons icon-alert-circle-exc text-success"> </i> Min Wait Time:
-                                </h4>
-                                <input title="Enter the Capacity of the Room to be filled" class=" form-control"
-                                    [(ngModel)]="capacity" placeholder="10" type="text" />
-                            </div>
-                            <button class="btn btn-success btn-sm" (click)="updateCapacity()">Update
-                            </button>
-                        </div> -->
+                        
                         <div class=" col-md-10 px-md-1 ">
 
                             <div class="card-header">
@@ -160,19 +161,7 @@
                             <button class="btn btn-success btn-sm" (click)="updateMinWaitTime()">Update
                             </button>
                         </div>
-                        <!-- <div class=" col-md-3 pl-md-1">
-                            <div class=" form-group">
-                                <h4><i matTooltip="Please specify the maximum amount of time (in minutes) the person can wait if capacity threshold is reached
-                                    "
-                                        class=" tim-icons icon-alert-circle-exc text-success"> </i> Max Wait Time:
-                                </h4>
-                                <input title="Please specify the maximum amount of time (in minutes) the person can wait if capacity threshold is reached
-                                " class=" form-control"
-                                    [(ngModel)]="max_wait_time" value={{max_wait_time}} type="text" placeholder="5" />
-                            </div>
-                            <button class=" btn btn-success btn-sm" (click)="updateMaxWaitTime()">Update
-                            </button>
-                        </div> -->
+                       
                         <div class=" col-md-4 pl-md-1">
                             <div class=" form-group">
                                 <h4><i matTooltip="Please enter the Company of the enclosed area, where the sensor is currently placed. Please note that this will be displayed on the main screen"
@@ -184,150 +173,10 @@
                             </button>
                         </div>
 
-                        <!-- <div class=" col-md-5 px-md-1">
-                            <div class="form-group">
-                                <h4 for="exampleFormControlSelect1"><i matTooltip="Select the Location"
-                                        class=" tim-icons icon-alert-circle-exc text-success"> </i> Select Location:
-                                </h4>
-                                <select title="Select the Location" class="form-control" id="exampleFormControlSelect1"
-                                    [(ngModel)]="location">
-                                    <option style="color: black;" value="meeting Room">Meeting Room</option>
-                                    <option style="color: black;" value="conference Room">Conference Room</option>
-
-                                </select>
-                            </div>
-                            <button class="btn btn-success btn-sm" (click)="updateLocation()">Update
-                            </button>
-
-                        </div> -->
-                        <!-- <div class=" col-md-10 px-md-1 ">
-
-                            <div class="card-header">
-                                <h4 class=" card-title">Wait Time:</h4>
-                            </div>
-                        </div>
-
-                        <div class=" col-md-5 pr-md-1">
-                            <div class=" form-group">
-                                <h4><i matTooltip="Enter the Capacity of the Room to be filled"
-                                        class=" tim-icons icon-alert-circle-exc text-success"> </i> Minimum Wait Time:
-                                </h4>
-                                <input title="Enter the Capacity of the Room to be filled" class=" form-control"
-                                    [(ngModel)]="capacity" placeholder="10" type="text" />
-                            </div>
-                            <button class="btn btn-success btn-sm" (click)="updateCapacity()">Update
-                            </button>
-                        </div> -->
-                        <!-- <div class=" col-md-5 px-md-1">
-                            <div class="form-group">
-                                <h4 for="exampleFormControlSelect1"><i matTooltip="Select the Location"
-                                        class=" tim-icons icon-alert-circle-exc text-success"> </i> Select Location:
-                                </h4>
-                                <select title="Select the Location" class="form-control" id="exampleFormControlSelect1"
-                                    [(ngModel)]="location">
-                                    <option style="color: black;" value="meeting Room">Meeting Room</option>
-                                    <option style="color: black;" value="conference Room">Conference Room</option>
-
-                                </select>
-                            </div>
-                            <button class="btn btn-success btn-sm" (click)="updateLocation()">Update
-                            </button>
-
-                        </div> -->
-                        <!-- <div class=" card-header">
-                            <h4 class=" card-title">Client Line Points:</h4>
-                        </div> -->
-
+                       
                     </div>
 
-                    <!-- <div fxlayout="row" class="d-flex justify-content-start " fxflex>
-                            <select placeholder="Select Line Points" [ng-model]="selectedParameter"
-                                style="max-width: 300px;">
-                                <optgroup label="Select Line Points">
-
-                                    <option value="horlinePoints">Horizontal Line Points</option>
-                                    <option value="verlinePoints">Vertical Line Points</option>
-
-                                </optgroup>
-                            </select>
-                            
-                            <button class="btn btn-success btn-sm" ng-click="updateEntranceData()">Update
-                            </button>
-
-                        </div> -->
-
-
-                    <!-- <md-card-content>
-                        <div class=" card-header">
-                            <h4 class=" card-title">Entrance:</h4>
-                        </div>
-                        <div fxlayout="row" class="d-flex justify-content-start" fxflex>
-                            <select placeholder="Select Line Points" [ng-model]="selectedParameter"
-                                style="max-width: 300px;">
-                                <optgroup label="Select Entrance Point">
-
-                                    <option value="up">Up</option>
-                                    <option value="down">Down</option>
-
-                                </optgroup>
-                            </select>
-                        
-                            <button class="btn btn-success btn-sm" ng-click="updateEntranceData()">Update
-                            </button>
-
-                        </div>
-
-                    </md-card-content> -->
-                    <!-- <ngb-alert [type]="'primary'" *ngIf="!staticAlertClosed3" [dismissible]="false">
-                        <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close"
-                            (click)="staticAlertClosed3 = true">
-                            <i class="tim-icons icon-simple-remove"></i>
-                        </button>
-                        <span>
-                            <b> Primary - </b> This is a regular notification made
-                            with ".alert-primary"
-                        </span>
-                        </ngb-alert>
-                        <ngb-alert [type]="'info'" *ngIf="!staticAlertClosed4" [dismissible]="false">
-                            <button type="button" aria-hidden="true" class="close" data-dismiss="alert"
-                                aria-label="Close" (click)="staticAlertClosed4 = true">
-                                <i class="tim-icons icon-simple-remove"></i>
-                            </button>
-                            <span>
-                                <b> Info - </b> This is a regular notification made with
-                                ".alert-info"
-                            </span>
-                        </ngb-alert>
-                        <ngb-alert [type]="'success'" *ngIf="!staticAlertClosed5" [dismissible]="false">
-                            <button type="button" aria-hidden="true" class="close" data-dismiss="alert"
-                                aria-label="Close" (click)="staticAlertClosed5 = true">
-                                <i class="tim-icons icon-simple-remove"></i>
-                            </button>
-                            <span>
-                                <b> Success - </b> This is a regular notification made
-                                with ".alert-success"
-                            </span>
-                        </ngb-alert>
-                        <ngb-alert [type]="'warning'" *ngIf="!staticAlertClosed6" [dismissible]="false">
-                            <button type="button" aria-hidden="true" class="close" data-dismiss="alert"
-                                aria-label="Close" (click)="staticAlertClosed6 = true">
-                                <i class="tim-icons icon-simple-remove"></i>
-                            </button>
-                            <span>
-                                <b> Warning - </b> This is a regular notification made
-                                with ".alert-warning"
-                            </span>
-                        </ngb-alert>
-                        <ngb-alert [type]="'danger'" *ngIf="!staticAlertClosed7" [dismissible]="false">
-                            <button type="button" aria-hidden="true" class="close" data-dismiss="alert"
-                                aria-label="Close" (click)="staticAlertClosed7 = true">
-                                <i class="tim-icons icon-simple-remove"></i>
-                            </button>
-                            <span>
-                                <b> Danger - </b> This is a regular notification made with
-                                ".alert-danger"
-                            </span>
-                        </ngb-alert> -->
+                   
                 </div>
 
 
@@ -336,40 +185,21 @@
 
 
 
-                <!-- <div class=" col-md-4 pr-md-1">
-                        <div class=" form-group">
-                            <h4><i matTooltip="Enter the Capacity of the Room to be filled"
-                                    class=" tim-icons icon-alert-circle-exc text-success"> </i> Enter Capacity:</h4>
-                            <input title="Enter the Capacity of the Room to be filled" class=" form-control"
-                                [(ngModel)]="capacity" placeholder="10" type="text" />
-                        </div>
-                        <button class="btn btn-success btn-sm" (click)="updateCapacity()">Update
-                        </button>
-                    </div> -->
+              
 
 
 
             </div>
-        </div>
-        <div class=" col-md-6">
+        </div> -->
+        <!-- <div class=" col-md-6">
             <div class=" card">
                 <div class=" card-body">
                     <div class=" places-buttons">
-                        <!-- <div class=" row">
-                            <div class=" col-md-2 ml-auto mr-auto text-center">
-                                <h4 class=" card-title">Notifications Places</h4>
-                                <p class=" category">Click to view notifications</p>
-                            </div>
-                        </div> -->
+                        
                         <div class=" row">
                             <div class=" col-lg-12 ml-auto mr-auto">
                                 <div class=" row">
-                                    <!-- <div class=" col-md-4">
-                                        <button class=" btn btn-danger btn-block"
-                                            (click)="showNotification('top', 'left')">
-                                            Top Left
-                                        </button>
-                                    </div> -->
+                                   
                                     <div class=" col-md-5">
                                         <button mat-raised-button class=" btn btn-success btn-sm"
                                             (click)="startStopLiveView()" [disabled]="liveStatus">Start Live
@@ -390,34 +220,10 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- <div class=" row">
-                            <div class=" col-lg-8 ml-auto mr-auto">
-                                <div class=" row">
-                                    <div class=" col-md-4">
-                                        <button class=" btn btn-danger btn-block"
-                                            (click)="showNotification('bottom', 'left')">
-                                            Bottom Left
-                                        </button>
-                                    </div>
-                                    <div class=" col-md-4">
-                                        <button class=" btn btn-danger btn-block" (click)="
-                          showNotification('bottom', 'center')
-                        ">
-                                            Bottom Center
-                                        </button>
-                                    </div>
-                                    <div class=" col-md-4">
-                                        <button class=" btn btn-danger btn-block"
-                                            (click)="showNotification('bottom', 'right')">
-                                            Bottom Right
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
+                        
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 </div>
